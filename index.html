@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Piotrowski | Computer Science & Data Analysis</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+            color: #1f2937; /* Dark gray text */
+        }
+        .section-title {
+            @apply text-3xl font-bold text-center mb-12;
+        }
+        .card {
+            @apply bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300;
+        }
+        .card:hover {
+            @apply -translate-y-2 shadow-xl;
+        }
+        .tag {
+            @apply text-xs font-semibold px-3 py-1 rounded-full;
+        }
+        .tag-python { @apply bg-blue-100 text-blue-800; }
+        .tag-ai { @apply bg-purple-100 text-purple-800; }
+        .tag-java { @apply bg-red-100 text-red-800; }
+        .tag-data { @apply bg-green-100 text-green-800; }
+        .tag-web { @apply bg-yellow-100 text-yellow-800; }
+        .tag-cloud { @apply bg-gray-100 text-gray-800; }
+        .tag-db { @apply bg-indigo-100 text-indigo-800; }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600">Paul Piotrowski</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#about" class="text-gray-600 hover:text-blue-600">About</a>
+                <a href="#projects" class="text-gray-600 hover:text-blue-600">Projects</a>
+                <a href="#experience" class="text-gray-600 hover:text-blue-600">Experience</a>
+                <a href="#skills" class="text-gray-600 hover:text-blue-600">Skills</a>
+                <a href="mailto:paulrpiotrowski@gmail.com" class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors">
+                    Contact Me
+                </a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block px-6 py-2 text-gray-600 hover:bg-gray-50">About</a>
+            <a href="#projects" class="block px-6 py-2 text-gray-600 hover:bg-gray-50">Projects</a>
+            <a href="#experience" class="block px-6 py-2 text-gray-600 hover:bg-gray-50">Experience</a>
+            <a href="#skills" class="block px-6 py-2 text-gray-600 hover:bg-gray-50">Skills</a>
+            <a href="mailto:paulrpiotrowski@gmail.com" class="block px-6 py-3 text-blue-600 font-semibold hover:bg-gray-50">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="hero" class="bg-white">
+            <div class="container mx-auto px-6 py-24 md:py-32 flex flex-col md:flex-row items-center">
+                <div class="md:w-3/5 text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
+                        Hi, I'm Paul Piotrowski
+                    </h1>
+                    <p class="text-xl md:text-2xl text-blue-600 font-semibold mt-4">
+                        Computer Science Student & Data Analyst
+                    </p>
+                    <p class="mt-6 text-lg text-gray-700 max-w-xl">
+                        I build data-driven, full-stack applications that bridge the gap between business needs and intelligent tech solutions. I'm passionate about solving complex problems and thrive in fast-paced environments.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#projects" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors">
+                            View My Projects
+                        </a>
+                        <a href="https://github.com/PaulPio" target="_blank" class="bg-gray-800 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-900 transition-colors">
+                            GitHub Profile
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-2/5 mt-10 md:mt-0 flex justify-center">
+                    <!-- Placeholder for a professional photo or a creative graphic -->
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full shadow-xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-6">About Me</h2>
+                    <p class="text-lg text-gray-700 space-y-4">
+                        I am a Computer Science student at Florida International University (3.67 GPA) with a journey rooted in solving real-world business challenges. My goal has always been to get into tech, and my professional role as a Sales Supervisor has been the key to supporting my education.
+                    </p>
+                    <p class="text-lg text-gray-700 space-y-4 mt-4">
+                        This unique path has given me a powerful blend of skills: I not only understand how to architect a Java algorithm or a Python backend, but I also know how to lead a team and use data to drive real business results, like increasing customer satisfaction by over 80%. I thrive on building, leading, and learning.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Project 1: Senior Helper -->
+                    <div class="card">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3">Senior Helper - AI Companion</h3>
+                            <p class="text-gray-700 mb-4 text-sm">
+                                Led a 3-person team in a 36-hour hackathon to build a full-stack, conversational AI agent for seniors, featuring emergency alerts and live data.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="tag tag-python">Python</span>
+                                <span class="tag tag-ai">Google Gemini</span>
+                                <span class="tag tag-python">Flask</span>
+                                <span class="tag tag-web">JavaScript</span>
+                                <span class="tag tag-cloud">Render</span>
+                                <span class="tag tag-cloud">Netlify</span>
+                                <span class="tag tag-web">REST API</span>
+                            </div>
+                            <a href="https://seniorhelper.netlify.app/" target="_blank" class="font-semibold text-blue-600 hover:underline">Live Demo &rarr;</a>
+                            <a href="https://github.com/PaulPio/SeniorHelper" target="_blank" class="font-semibold text-blue-600 hover:underline ml-4">View Code &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Water Quality Platform -->
+                    <div class="card">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3">Water Quality Data Platform</h3>
+                            <p class="text-gray-700 mb-4 text-sm">
+                                Developed a full-stack team project to deliver an end-to-end water quality data platform, including data ingestion scripts and an interactive dashboard.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="tag tag-python">Python</span>
+                                <span class="tag tag-data">Pandas</span>
+                                <span class="tag tag-db">MongoDB</span>
+                                <span class="tag tag-data">Streamlit</span>
+                                <span class="tag tag-python">Flask</span>
+                            </div>
+                            <a href="https://github.com/PaulPio/FIU-PROJECTS" target="_blank" class="font-semibold text-blue-600 hover:underline">View Code &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Puzzle Solver -->
+                    <div class="card">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3">Algorithmic Puzzle Solver</h3>
+                            <p class="text-gray-700 mb-4 text-sm">
+                                A Java application that solves cryptarithmetic puzzles (e.g., "SEND + MORE = MONEY") using a recursive backtracking algorithm.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="tag tag-java">Java</span>
+                                <span class="tag tag-ai">Recursion</span>
+                                <span class="tag tag-ai">Algorithms</span>
+                                <span class="tag tag-java">OOP</span>
+                            </div>
+                            <a href="https://github.com/PaulPio/FIU-PROJECTS/tree/master/src/A4" target="_blank" class="font-semibold text-blue-600 hover:underline">View Code &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                        <h3 class="text-xl font-bold">Sales Supervisor</h3>
+                        <p class="text-lg font-semibold text-blue-600 mb-4">Stride Rent a Car | Sep 2022 - Present</p>
+                        <ul class="list-disc list-inside space-y-3 text-gray-700">
+                            <li>Led and mentored a team of 6 sales associates, fostering a high-performance culture through data-driven coaching.</li>
+                            <li>Spearheaded a customer feedback initiative, analyzing qualitative data to inform strategic process improvements and elevate customer satisfaction scores from 40% to 75%.</li>
+                            <li>Designed and automated weekly performance reports using advanced Excel (Power Query, Pivot Tables) to track KPIs, reducing manual reporting time by 6 hours/week.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="max-w-5xl mx-auto">
+                    
+                    <div class="mb-10">
+                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800">Data Analysis & Databases</h3>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <span class="tag tag-data text-base">SQL</span>
+                            <span class="tag tag-db text-base">MySQL</span>
+                            <span class="tag tag-db text-base">MongoDB</span>
+                            <span class="tag tag-data text-base">Data Analysis</span>
+                            <span class="tag tag-data text-base">Data Cleaning</span>
+                            <span class="tag tag-data text-base">Advanced Excel</span>
+                            <span class="tag tag-data text-base">Power Query</span>
+                            <span class="tag tag-data text-base">Pivot Tables</span>
+                            <span class="tag tag-data text-base">Streamlit</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-10">
+                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800">Programming & Tools</h3>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <span class="tag tag-python text-base">Python</span>
+                            <span class="tag tag-java text-base">Java</span>
+                            <span class="tag tag-java text-base">C++</span>
+                            <span class="tag tag-python text-base">Flask</span>
+                            <span class="tag tag-cloud text-base">Git & GitHub</span>
+                            <span class="tag tag-web text-base">HTML/CSS</span>
+                            <span class="tag tag-web text-base">JavaScript</span>
+                            <span class="tag tag-cloud text-base">Selenium</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800">Leadership & Soft Skills</h3>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <span class="tag text-base">Team Mentorship</span>
+                            <span class="tag text-base">Agile Methodologies</span>
+                            <span class="tag text-base">Conflict Resolution</span>
+                            <span class="tag text-base">Decision Making</span>
+                            <span class="tag text-base">Effective Onboarding</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-gray-900 text-white text-center">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-lg text-gray-300 max-w-xl mx-auto mb-8">
+                    I'm actively seeking challenging computer science and data internships. I'd love to chat about how my skills and experience can help your team.
+                </p>
+                <a href="mailto:paulrpiotrowski@gmail.com" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors">
+                    Get In Touch
+                </a>
+                <div class="flex justify-center space-x-8 mt-10">
+                    <!-- LinkedIn Icon -->
+                    <a href="https://www.linkedin.com/in/paul-pio/" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <!-- GitHub Icon -->
+                    <a href="https://github.com/PaulPio" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Paul Piotrowski. Built with HTML, Tailwind CSS, and passion.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        // Close menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
+
