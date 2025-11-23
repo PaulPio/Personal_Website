@@ -21,7 +21,7 @@ const projects = [
         ],
         links: [
             { text: "Live Demo", url: "https://mdcgradtrack.netlify.app/" },
-            { text: "View Code", url: "https://github.com/PaulPio/GradTrack" }
+            { text: "View Code", url: "https://github.com/PaulPio/GradTrack/tree/AIAgent" }
         ]
     },
     {
