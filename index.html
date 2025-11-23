@@ -39,11 +39,12 @@
 
                 <!-- Projects Dropdown -->
                 <div class="relative group z-50">
-                    <button class="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none py-2">
+                    <a href="#projects" class="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none py-2">
                         <span data-i18n="nav_projects">Projects</span>
                         <svg class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
+                    </a>
                     <div class="absolute left-0 mt-0 w-48 bg-white dark:bg-gray-800 rounded-md shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left z-50 border border-gray-100 dark:border-gray-700">
+                        <a href="#projects" class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400" data-category="featured" data-i18n="filter_featured">Featured Projects</a>
                         <a href="#projects" class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400" data-category="all" data-i18n="filter_all">All Projects</a>
                         <a href="#projects" class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400" data-category="personal" data-i18n="filter_personal">Personal Projects</a>
                         <a href="#projects" class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400" data-category="school" data-i18n="filter_school">School Assignments</a>
@@ -91,6 +92,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-800 transition-colors duration-300">
             <a href="#about" class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800" data-i18n="nav_about">About</a>
             <div class="px-6 py-2 text-gray-600 dark:text-gray-300 font-semibold" data-i18n="nav_projects">Projects</div>
+            <a href="#projects" class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800" data-category="featured" data-i18n="filter_featured">Featured</a>
             <a href="#projects" class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800" data-category="all" data-i18n="filter_all">All</a>
             <a href="#projects" class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800" data-category="personal" data-i18n="filter_personal">Personal</a>
             <a href="#projects" class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800" data-category="school" data-i18n="filter_school">School</a>
