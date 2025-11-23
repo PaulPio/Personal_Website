@@ -13,10 +13,10 @@ const projects = [
         },
         category: "personal", // or 'school'
         tags: [
-            { name: "TypeScript", color: "bg-blue-100 text-blue-800" },
-            { name: "React", color: "bg-blue-100 text-blue-800" },
-            { name: "Google Gemini API", color: "bg-purple-100 text-purple-800" },
-            { name: "Tailwind CSS", color: "bg-blue-100 text-blue-800" }
+            { name: "TypeScript", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "React", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "Google Gemini API", color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200" },
+            { name: "Tailwind CSS", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" }
         ],
         links: [
             { text: "Live Demo", url: "https://mdcgradtrack.netlify.app/" },
@@ -37,13 +37,13 @@ const projects = [
         },
         category: "personal",
         tags: [
-            { name: "Python", color: "bg-blue-100 text-blue-800" },
-            { name: "Google Gemini", color: "bg-purple-100 text-purple-800" },
-            { name: "Flask", color: "bg-blue-100 text-blue-800" },
-            { name: "JavaScript", color: "bg-yellow-100 text-yellow-800" },
-            { name: "Render", color: "bg-gray-100 text-gray-800" },
-            { name: "Netlify", color: "bg-gray-100 text-gray-800" },
-            { name: "REST API", color: "bg-yellow-100 text-yellow-800" }
+            { name: "Python", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "Google Gemini", color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200" },
+            { name: "Flask", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "JavaScript", color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200" },
+            { name: "Render", color: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200" },
+            { name: "Netlify", color: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200" },
+            { name: "REST API", color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200" }
         ],
         links: [
             { text: "Live Demo", url: "https://seniorhelper.netlify.app/" },
@@ -64,11 +64,11 @@ const projects = [
         },
         category: "school",
         tags: [
-            { name: "Python", color: "bg-blue-100 text-blue-800" },
-            { name: "Pandas", color: "bg-green-100 text-green-800" },
-            { name: "MongoDB", color: "bg-indigo-100 text-indigo-800" },
-            { name: "Streamlit", color: "bg-green-100 text-green-800" },
-            { name: "Flask", color: "bg-blue-100 text-blue-800" }
+            { name: "Python", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "Pandas", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" },
+            { name: "MongoDB", color: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200" },
+            { name: "Streamlit", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" },
+            { name: "Flask", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" }
         ],
         links: [
             { text: "View Code", url: "https://github.com/PaulPio/FIU-PROJECTS" }
@@ -88,9 +88,9 @@ const projects = [
         },
         category: "school",
         tags: [
-            { name: "C", color: "bg-red-100 text-red-800" },
-            { name: "Linux", color: "bg-gray-100 text-gray-800" },
-            { name: "Algorithms", color: "bg-blue-100 text-blue-800" }
+            { name: "C", color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200" },
+            { name: "Linux", color: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200" },
+            { name: "Algorithms", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" }
         ],
         links: [
             { text: "View Code", url: "#" }
@@ -155,7 +155,7 @@ const translations = {
         section_experience: "Experiencia Laboral",
         job_title: "Supervisor de Ventas",
         job_company: "Stride Rent a Car | Sep 2022 - Presente",
-        job_desc_1: "Dirigí y asesoré a un equipo de 6 asociados de ventas, fomentando una cultura de alto rendimiento a través del coaching basado en datos.",
+        job_desc_1: "Dirigí y asesoré a un equipo de 6 asociados de ventas, fomentando una cultura de alto rendimiento a través del coaching basado en dados.",
         job_desc_2: "Encabecé una iniciativa de retroalimentación de clientes, analizando datos cualitativos para informar mejoras estratégicas de procesos y elevar los puntajes de satisfacción del cliente del 40% al 75%.",
         job_desc_3: "Diseñé y automaticé informes semanales de rendimiento utilizando Excel avanzado (Power Query, Tablas Dinámicas) para rastrear KPIs, reduciendo el tiempo de informes manuales en 6 horas/semana.",
         section_skills: "Competencias Principales",
@@ -250,6 +250,11 @@ function setupEventListeners() {
             e.preventDefault();
             currentCategory = e.target.dataset.category;
             renderProjects();
+            // Smooth scroll to projects section to ensure user sees the content
+            const projectsSection = document.getElementById('projects');
+            if(projectsSection) {
+                projectsSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 }
@@ -273,7 +278,7 @@ function renderProjects() {
 
         // Tags HTML
         const tagsHtml = project.tags.map(tag =>
-            `<span class="text-xs font-semibold px-3 py-1 rounded-full ${tag.color} dark:bg-opacity-20 dark:text-opacity-90">${tag.name}</span>`
+            `<span class="text-xs font-semibold px-3 py-1 rounded-full ${tag.color}">${tag.name}</span>`
         ).join('');
 
         // Links HTML
