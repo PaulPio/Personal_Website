@@ -1,6 +1,7 @@
 const projects = [
     {
         id: "gradtrack",
+        featured: true,
         title: {
             en: "GradTrack AI Agent",
             es: "Agente de IA GradTrack",
@@ -11,7 +12,7 @@ const projects = [
             es: "Desarrolló una aplicación web impulsada por IA para ayudar a los estudiantes a explorar, planificar y visualizar rutas académicas y opciones de transferencia utilizando datos reales de cursos y universidades.",
             pt: "Desenvolveu uma aplicação web baseada em IA para ajudar estudantes a explorar, planejar e visualizar caminhos acadêmicos extensivos e opções de transferência usando dados reais de cursos e universidades."
         },
-        category: "personal", // or 'school'
+        category: "personal",
         tags: [
             { name: "TypeScript", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
             { name: "React", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
@@ -20,11 +21,12 @@ const projects = [
         ],
         links: [
             { text: "Live Demo", url: "https://mdcgradtrack.netlify.app/" },
-            { text: "View Code", url: "https://github.com/PaulPio/GradTrack/tree/AIAgent" }
+            { text: "View Code", url: "https://github.com/PaulPio/GradTrack" }
         ]
     },
     {
         id: "senior-helper",
+        featured: true,
         title: {
             en: "Senior Helper - AI Companion",
             es: "Senior Helper - Compañero de IA",
@@ -52,48 +54,72 @@ const projects = [
     },
     {
         id: "water-quality",
+        featured: true,
         title: {
-            en: "Water Quality Data Platform",
-            es: "Plataforma de Datos de Calidad del Agua",
-            pt: "Plataforma de Dados de Qualidade da Água"
+            en: "Water Quality Monitoring Dashboard",
+            es: "Tablero de Monitoreo de Calidad del Agua",
+            pt: "Painel de Monitoramento da Qualidade da Água"
         },
         description: {
-            en: "Developed a full-stack team project to deliver an end-to-end water quality data platform, including data ingestion scripts and an interactive dashboard.",
-            es: "Desarrolló un proyecto de equipo full-stack para entregar una plataforma de datos de calidad del agua de extremo a extremo, incluyendo scripts de ingestión de datos y un panel interactivo.",
-            pt: "Desenvolveu um projeto de equipe full-stack para entregar uma plataforma de dados de qualidade da água de ponta a ponta, incluindo scripts de ingestão de dados e um painel interativo."
+            en: "A full-stack web application for monitoring ocean water quality data with interactive visualizations and real-time filtering.",
+            es: "Una aplicación web full-stack para monitorear datos de calidad del agua del océano con visualizaciones interactivas y filtrado en tiempo real.",
+            pt: "Uma aplicação web full-stack para monitorar dados de qualidade da água do oceano com visualizações interativas e filtragem em tempo real."
         },
         category: "school",
         tags: [
             { name: "Python", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
-            { name: "Pandas", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" },
-            { name: "MongoDB", color: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200" },
+            { name: "Flask", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
             { name: "Streamlit", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" },
-            { name: "Flask", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" }
+            { name: "MongoDB", color: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200" },
+            { name: "Pandas", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" }
         ],
         links: [
-            { text: "View Code", url: "https://github.com/PaulPio/FIU-PROJECTS" }
+            { text: "View Code", url: "https://github.com/PaulPio/ClassProjectIR2025" }
         ]
     },
     {
-        id: "placeholder-assignment",
+        id: "fiu-a3",
         title: {
-            en: "Operating Systems Simulation",
-            es: "Simulación de Sistemas Operativos",
-            pt: "Simulação de Sistemas Operacionais"
+            en: "Event Organizer System",
+            es: "Sistema Organizador de Eventos",
+            pt: "Sistema Organizador de Eventos"
         },
         description: {
-            en: "Designed and implemented a simulation of process scheduling algorithms (Round Robin, SJF) in C to analyze CPU efficiency.",
-            es: "Diseñó e implementó una simulación de algoritmos de planificación de procesos (Round Robin, SJF) en C para analizar la eficiencia de la CPU.",
-            pt: "Projetou e implementou uma simulação de algoritmos de agendamento de processos (Round Robin, SJF) em C para analisar a eficiência da CPU."
+            en: "A Java-based command-line event management application enabling users to organize, track, and query events. Features custom Date/DateTime classes, built-in validation logic, robust exception handling, and smart sorting capabilities using Object-Oriented Programming principles.",
+            es: "Una aplicación de gestión de eventos en línea de comandos basada en Java que permite a los usuarios organizar, rastrear y consultar eventos. Cuenta con clases personalizadas de Fecha/Hora, lógica de validación integrada, manejo robusto de excepciones y capacidades de clasificación inteligente utilizando principios de Programación Orientada a Objetos.",
+            pt: "Um aplicativo de gerenciamento de eventos em linha de comando baseado em Java que permite aos usuários organizar, rastrear e consultar eventos. Apresenta classes personalizadas de Data/Hora, lógica de validação integrada, tratamento robusto de exceções e recursos inteligentes de classificação usando princípios de Programação Orientada a Objetos."
         },
         category: "school",
         tags: [
-            { name: "C", color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200" },
-            { name: "Linux", color: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200" },
-            { name: "Algorithms", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" }
+            { name: "Java", color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200" },
+            { name: "OOP", color: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200" },
+            { name: "Data Structures", color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200" },
+            { name: "CLI", color: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200" }
         ],
         links: [
-            { text: "View Code", url: "#" }
+            { text: "View Code", url: "https://github.com/PaulPio/FIUProjects/tree/main/A3" }
+        ]
+    },
+    {
+        id: "fiu-a4",
+        title: {
+            en: "Alphabet Sum Puzzle Solver",
+            es: "Solucionador de Suma Alfabética",
+            pt: "Solucionador de Soma Alfabética"
+        },
+        description: {
+            en: "A recursive backtracking algorithm that solves cryptarithmetic puzzles, where letters represent unique digits and words form valid arithmetic equations. Features constraint satisfaction, leading zero prevention, and efficient solution space pruning.",
+            es: "Un algoritmo de retroceso recursivo que resuelve rompecabezas criptoaritméticos, donde las letras representan dígitos únicos y las palabras forman ecuaciones aritméticas válidas. Cuenta con satisfacción de restricciones, prevención de ceros a la izquierda y poda eficiente del espacio de soluciones.",
+            pt: "Um algoritmo de backtracking recursivo que resolve quebra-cabeças criptoaritméticos, onde letras representam dígitos únicos e palavras formam equações aritméticas válidas. Apresenta satisfação de restrições, prevenção de zeros à esquerda e poda eficiente do espaço de soluções."
+        },
+        category: "school",
+        tags: [
+            { name: "Java", color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200" },
+            { name: "Algorithms", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "Recursion", color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200" }
+        ],
+        links: [
+            { text: "View Code", url: "https://github.com/PaulPio/FIUProjects/tree/main/A4" }
         ]
     }
 ];
@@ -204,7 +230,7 @@ const translations = {
 };
 
 let currentLang = 'en';
-let currentCategory = 'all';
+let currentCategory = 'featured'; // Changed from 'all' to 'featured'
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -265,9 +291,11 @@ function renderProjects() {
 
     container.innerHTML = '';
 
-    const filteredProjects = projects.filter(p =>
-        currentCategory === 'all' || p.category === currentCategory
-    );
+    const filteredProjects = projects.filter(p => {
+        if (currentCategory === 'featured') return p.featured === true;
+        if (currentCategory === 'all') return true;
+        return p.category === currentCategory;
+    });
 
     filteredProjects.forEach(project => {
         const title = project.title[currentLang];
