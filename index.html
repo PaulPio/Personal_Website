@@ -25,47 +25,85 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Vercel Analytics -->
+    <script>
+        window.va = window.va || function () { (window.va.q = window.va.q || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body class="font-['Inter'] bg-slate-50 text-gray-800">
 
     <!-- Header & Navigation -->
-    <header class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-colors duration-300">
+    <header
+        class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-colors duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400 transition-colors">Paul Piotrowski</a>
+            <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400 transition-colors">Paul
+                Piotrowski</a>
 
             <div class="hidden md:flex items-center space-x-6">
-                <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_about">About</a>
+                <a href="#about"
+                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    data-i18n="nav_about">About</a>
 
                 <!-- Projects Dropdown -->
                 <div class="relative group z-50">
-                    <a href="#projects" class="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none py-2">
+                    <a href="#projects"
+                        class="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none py-2">
                         <span data-i18n="nav_projects">Projects</span>
-                        <svg class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform duration-200"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
                     </a>
-                    <div class="absolute left-0 mt-0 w-48 bg-white dark:bg-gray-800 rounded-md shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left z-50 border border-gray-100 dark:border-gray-700">
-                        <a href="#projects" class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400" data-category="featured" data-i18n="filter_featured">Featured Projects</a>
-                        <a href="#projects" class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400" data-category="all" data-i18n="filter_all">All Projects</a>
-                        <a href="#projects" class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400" data-category="personal" data-i18n="filter_personal">Personal Projects</a>
-                        <a href="#projects" class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400" data-category="school" data-i18n="filter_school">School Assignments</a>
+                    <div
+                        class="absolute left-0 mt-0 w-48 bg-white dark:bg-gray-800 rounded-md shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left z-50 border border-gray-100 dark:border-gray-700">
+                        <a href="#projects"
+                            class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400"
+                            data-category="featured" data-i18n="filter_featured">Featured Projects</a>
+                        <a href="#projects"
+                            class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400"
+                            data-category="all" data-i18n="filter_all">All Projects</a>
+                        <a href="#projects"
+                            class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400"
+                            data-category="personal" data-i18n="filter_personal">Personal Projects</a>
+                        <a href="#projects"
+                            class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400"
+                            data-category="school" data-i18n="filter_school">School Assignments</a>
                     </div>
                 </div>
 
-                <a href="#experience" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_experience">Experience</a>
-                <a href="#skills" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_skills">Skills</a>
+                <a href="#experience"
+                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    data-i18n="nav_experience">Experience</a>
+                <a href="#skills"
+                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    data-i18n="nav_skills">Skills</a>
                 <a href="Paul_Piotrowski_Resume.pdf" target="_blank"
-                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" data-i18n="nav_resume">Resume</a>
+                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    data-i18n="nav_resume">Resume</a>
 
                 <!-- Controls -->
                 <div class="flex items-center space-x-3 border-l pl-4 border-gray-300 dark:border-gray-600">
                     <!-- Theme Toggle -->
-                    <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 transition-colors">
-                        <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                        <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 011.414-1.414zM12 10a2 2 0 100 4 2 2 0 000-4z"></path></svg>
+                    <button id="theme-toggle"
+                        class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 transition-colors">
+                        <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 011.414-1.414zM12 10a2 2 0 100 4 2 2 0 000-4z">
+                            </path>
+                        </svg>
                     </button>
 
                     <!-- Language Selector -->
-                    <select id="lang-selector" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="lang-selector"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option value="en">EN</option>
                         <option value="es">ES</option>
                         <option value="pt">PT</option>
@@ -73,7 +111,8 @@
                 </div>
 
                 <a href="mailto:paulrpiotrowski@gmail.com"
-                    class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors" data-i18n="nav_contact">
+                    class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors"
+                    data-i18n="nav_contact">
                     Contact Me
                 </a>
             </div>
@@ -89,19 +128,37 @@
         </nav>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-800 transition-colors duration-300">
-            <a href="#about" class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800" data-i18n="nav_about">About</a>
-            <div class="px-6 py-2 text-gray-600 dark:text-gray-300 font-semibold" data-i18n="nav_projects">Projects</div>
-            <a href="#projects" class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800" data-category="featured" data-i18n="filter_featured">Featured</a>
-            <a href="#projects" class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800" data-category="all" data-i18n="filter_all">All</a>
-            <a href="#projects" class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800" data-category="personal" data-i18n="filter_personal">Personal</a>
-            <a href="#projects" class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800" data-category="school" data-i18n="filter_school">School</a>
-            <a href="#experience" class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800" data-i18n="nav_experience">Experience</a>
-            <a href="#skills" class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800" data-i18n="nav_skills">Skills</a>
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-800 transition-colors duration-300">
+            <a href="#about"
+                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                data-i18n="nav_about">About</a>
+            <div class="px-6 py-2 text-gray-600 dark:text-gray-300 font-semibold" data-i18n="nav_projects">Projects
+            </div>
+            <a href="#projects"
+                class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                data-category="featured" data-i18n="filter_featured">Featured</a>
+            <a href="#projects"
+                class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                data-category="all" data-i18n="filter_all">All</a>
+            <a href="#projects"
+                class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                data-category="personal" data-i18n="filter_personal">Personal</a>
+            <a href="#projects"
+                class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                data-category="school" data-i18n="filter_school">School</a>
+            <a href="#experience"
+                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                data-i18n="nav_experience">Experience</a>
+            <a href="#skills"
+                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                data-i18n="nav_skills">Skills</a>
             <a href="Paul_Piotrowski_Resume.pdf" target="_blank"
-                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800" data-i18n="nav_resume">Resume</a>
+                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                data-i18n="nav_resume">Resume</a>
             <a href="mailto:paulrpiotrowski@gmail.com"
-                class="block px-6 py-3 text-blue-600 font-semibold hover:bg-gray-50 dark:hover:bg-gray-900" data-i18n="nav_contact">Contact Me</a>
+                class="block px-6 py-3 text-blue-600 font-semibold hover:bg-gray-50 dark:hover:bg-gray-900"
+                data-i18n="nav_contact">Contact Me</a>
         </div>
     </header>
 
@@ -112,10 +169,12 @@
         <section id="hero" class="bg-white dark:bg-gray-900 transition-colors duration-300">
             <div class="container mx-auto px-6 py-24 md:py-32 flex flex-col md:flex-row items-center">
                 <div class="md:w-3/5 text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight" data-i18n="hero_greeting">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight"
+                        data-i18n="hero_greeting">
                         Hi, I'm Paul Piotrowski
                     </h1>
-                    <p class="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-semibold mt-4" data-i18n="hero_title">
+                    <p class="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-semibold mt-4"
+                        data-i18n="hero_title">
                         Computer Science Student & AI Engineer
                     </p>
                     <p class="mt-6 text-lg text-gray-700 dark:text-gray-300 max-w-xl" data-i18n="hero_desc">
@@ -126,11 +185,13 @@
                     <div
                         class="mt-10 flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
                         <a href="#projects"
-                            class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors" data-i18n="btn_view_projects">
+                            class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors"
+                            data-i18n="btn_view_projects">
                             View My Projects
                         </a>
                         <a href="https://github.com/PaulPio" target="_blank"
-                            class="bg-gray-800 dark:bg-gray-700 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-900 dark:hover:bg-gray-600 transition-colors" data-i18n="btn_github">
+                            class="bg-gray-800 dark:bg-gray-700 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-900 dark:hover:bg-gray-600 transition-colors"
+                            data-i18n="btn_github">
                             GitHub Profile
                         </a>
                     </div>
@@ -153,7 +214,8 @@
         <section id="about" class="py-20 bg-slate-50 dark:bg-gray-800 transition-colors duration-300">
             <div class="container mx-auto px-6">
                 <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white" data-i18n="section_about">About Me</h2>
+                    <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white" data-i18n="section_about">About Me
+                    </h2>
                     <p class="text-lg text-gray-700 dark:text-gray-300 space-y-4" data-i18n="about_desc_1">
                         I am a Computer Science student at Florida International University (3.67 GPA) with a journey
                         rooted in solving real-world business challenges. My goal has always been to get into tech, and
@@ -172,7 +234,8 @@
         <!-- Projects Section -->
         <section id="projects" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white" data-i18n="section_projects">Featured Projects</h2>
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
+                    data-i18n="section_projects">Featured Projects</h2>
                 <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Projects are loaded via JS -->
                 </div>
@@ -182,18 +245,25 @@
         <!-- Experience Section -->
         <section id="experience" class="py-20 bg-slate-50 dark:bg-gray-800 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white" data-i18n="section_experience">Work Experience</h2>
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
+                    data-i18n="section_experience">Work Experience</h2>
                 <div class="max-w-3xl mx-auto">
-                    <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-i18n="job_title">Sales Supervisor</h3>
-                        <p class="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4" data-i18n="job_company">Stride Rent a Car | Sep 2022 - Present</p>
+                    <div
+                        class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-i18n="job_title">Sales
+                            Supervisor</h3>
+                        <p class="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4" data-i18n="job_company">
+                            Stride Rent a Car | Sep 2022 - Present</p>
                         <ul class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300">
-                            <li data-i18n="job_desc_1">Led and mentored a team of 6 sales associates, fostering a high-performance culture
+                            <li data-i18n="job_desc_1">Led and mentored a team of 6 sales associates, fostering a
+                                high-performance culture
                                 through data-driven coaching.</li>
-                            <li data-i18n="job_desc_2">Spearheaded a customer feedback initiative, analyzing qualitative data to inform
+                            <li data-i18n="job_desc_2">Spearheaded a customer feedback initiative, analyzing qualitative
+                                data to inform
                                 strategic process improvements and elevate customer satisfaction scores from 40% to 75%.
                             </li>
-                            <li data-i18n="job_desc_3">Designed and automated weekly performance reports using advanced Excel (Power Query,
+                            <li data-i18n="job_desc_3">Designed and automated weekly performance reports using advanced
+                                Excel (Power Query,
                                 Pivot Tables) to track KPIs, reducing manual reporting time by 6 hours/week.</li>
                         </ul>
                     </div>
@@ -204,11 +274,13 @@
         <!-- Skills Section -->
         <section id="skills" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white" data-i18n="section_skills">Core Competencies</h2>
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
+                    data-i18n="section_skills">Core Competencies</h2>
                 <div class="max-w-5xl mx-auto">
 
                     <div class="mb-10">
-                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200" data-i18n="skill_data">Data Analysis & Databases</h3>
+                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200"
+                            data-i18n="skill_data">Data Analysis & Databases</h3>
                         <div class="flex flex-wrap justify-center gap-4">
                             <span
                                 class="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 text-base">SQL</span>
@@ -237,7 +309,8 @@
                     </div>
 
                     <div class="mb-10">
-                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200" data-i18n="skill_prog">Programming & Tools</h3>
+                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200"
+                            data-i18n="skill_prog">Programming & Tools</h3>
                         <div class="flex flex-wrap justify-center gap-4">
                             <span
                                 class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 text-base">Python</span>
@@ -260,15 +333,23 @@
                     </div>
 
                     <div>
-                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200" data-i18n="skill_lead">Leadership & Soft Skills</h3>
+                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200"
+                            data-i18n="skill_lead">Leadership & Soft Skills</h3>
                         <div class="flex flex-wrap justify-center gap-4">
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Team Mentorship</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Agile
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Team
+                                Mentorship</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Agile
                                 Methodologies</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Conflict
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Conflict
                                 Resolution</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Decision Making</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Effective
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Decision
+                                Making</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Effective
                                 Onboarding</span>
                         </div>
                     </div>
@@ -277,7 +358,8 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-24 bg-gray-900 dark:bg-black text-white text-center transition-colors duration-300">
+        <section id="contact"
+            class="py-24 bg-gray-900 dark:bg-black text-white text-center transition-colors duration-300">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold mb-4" data-i18n="section_contact">Let's Connect</h2>
                 <p class="text-lg text-gray-300 max-w-xl mx-auto mb-8" data-i18n="contact_desc">
@@ -285,7 +367,8 @@
                     my skills and experience can help your team.
                 </p>
                 <a href="mailto:paulrpiotrowski@gmail.com"
-                    class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors" data-i18n="btn_touch">
+                    class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors"
+                    data-i18n="btn_touch">
                     Get In Touch
                 </a>
                 <div class="flex justify-center space-x-8 mt-10">
