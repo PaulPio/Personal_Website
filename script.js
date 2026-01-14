@@ -25,6 +25,57 @@ const projects = [
         ]
     },
     {
+        id: "plate-spotter",
+        featured: true,
+        title: {
+            en: "PlateSpotter AI",
+            es: "PlateSpotter IA",
+            pt: "PlateSpotter IA"
+        },
+        description: {
+            en: "A Progressive Web App for mechanics and auto repair shops to quickly log vehicle license plates and service details. Features AI-powered camera scanning with Gemini 3.0 Pro Vision, smart manual entry formatting, Google Sheets integration, and offline history.",
+            es: "Una aplicación web progresiva para mecánicos y talleres de reparación de automóviles para registrar rápidamente placas de vehículos y detalles de servicio. Incluye escaneo de cámara impulsado por IA con Gemini 3.0 Pro Vision, formato inteligente de entrada manual, integración con Google Sheets e historial sin conexión.",
+            pt: "Um Progressive Web App para mecânicos e oficinas de reparação de automóveis para registrar rapidamente placas de veículos e detalhes de serviço. Apresenta digitalização de câmera com IA usando Gemini 3.0 Pro Vision, formatação inteligente de entrada manual, integração com Google Sheets e histórico offline."
+        },
+        category: "personal",
+        tags: [
+            { name: "React 19", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "TypeScript", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "Google Gemini AI", color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200" },
+            { name: "Tailwind CSS", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "PWA", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" }
+        ],
+        links: [
+            { text: "Live Demo", url: "https://plate-spotter.vercel.app" },
+            { text: "View Code", url: "https://github.com/PaulPio/plate-spotter" }
+        ]
+    },
+    {
+        id: "prof-summarizer",
+        featured: true,
+        title: {
+            en: "ProfSummarizer",
+            es: "ProfSummarizer",
+            pt: "ProfSummarizer"
+        },
+        description: {
+            en: "AI-powered lecture transcription and summarization tool. Record lectures, get automatic transcriptions, and receive intelligent summaries to help students review course material efficiently.",
+            es: "Herramienta de transcripción y resumen de conferencias impulsada por IA. Graba conferencias, obtén transcripciones automáticas y recibe resúmenes inteligentes para ayudar a los estudiantes a revisar el material del curso de manera eficiente.",
+            pt: "Ferramenta de transcrição e resumo de palestras com IA. Grave palestras, obtenha transcrições automáticas e receba resumos inteligentes para ajudar os alunos a revisar o material do curso de forma eficiente."
+        },
+        category: "personal",
+        tags: [
+            { name: "TypeScript", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "React", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "Google Gemini API", color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200" },
+            { name: "Supabase", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" }
+        ],
+        links: [
+            { text: "Live Demo", url: "https://prof-summarizer.vercel.app/" },
+            { text: "View Code", url: "https://github.com/PaulPio/Prof-Summarizer" }
+        ]
+    },
+    {
         id: "senior-helper",
         featured: true,
         title: {
@@ -121,6 +172,29 @@ const projects = [
         links: [
             { text: "View Code", url: "https://github.com/PaulPio/FIUProjects/tree/main/A4" }
         ]
+    },
+    {
+        id: "data-utility",
+        title: {
+            en: "Data Processing & Validation Utility",
+            es: "Utilidad de Procesamiento y Validación de Datos",
+            pt: "Utilitário de Processamento e Validação de Dados"
+        },
+        description: {
+            en: "A reusable Java utility class to streamline data handling, featuring robust methods for input validation, file I/O, statistical calculations, array manipulation, and sorting algorithms.",
+            es: "Una clase de utilidad Java reutilizable para optimizar el manejo de datos, con métodos robustos para validación de entrada, E/S de archivos, cálculos estadísticos, manipulación de arrays y algoritmos de ordenamiento.",
+            pt: "Uma classe utilitária Java reutilizável para otimizar o manuseio de dados, com métodos robustos para validação de entrada, E/S de arquivos, cálculos estatísticos, manipulação de arrays e algoritmos de ordenação."
+        },
+        category: "school",
+        tags: [
+            { name: "Java", color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200" },
+            { name: "OOP", color: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200" },
+            { name: "Data Structures", color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200" },
+            { name: "File I/O", color: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200" }
+        ],
+        links: [
+            { text: "View Code", url: "https://github.com/PaulPio/FIUProjects" }
+        ]
     }
 ];
 
@@ -138,7 +212,7 @@ const translations = {
         btn_view_projects: "View My Projects",
         btn_github: "GitHub Profile",
         section_about: "About Me",
-        about_desc_1: "I am a Computer Science student at Florida International University (3.67 GPA) with a journey rooted in solving real-world business challenges. My goal has always been to get into tech, and my professional role as a Sales Supervisor has been the key to supporting my education.",
+        about_desc_1: "I am a Computer Science student at Florida International University (3.80 GPA) with a journey rooted in solving real-world business challenges. My goal has always been to get into tech, and my professional role as a Sales Supervisor & Technical Operations Lead has been the key to supporting my education.",
         about_desc_2: "This unique path has given me a powerful blend of skills: I not only understand how to architect a Java algorithm or a Python backend, but I also know how to lead a team and use data to drive real business results, like increasing customer satisfaction by over 80%. I thrive on building, leading, and learning.",
         section_projects: "Featured Projects",
         filter_featured: "Featured Projects",
@@ -146,11 +220,11 @@ const translations = {
         filter_personal: "Personal Projects",
         filter_school: "School Assignments",
         section_experience: "Work Experience",
-        job_title: "Sales Supervisor",
+        job_title: "Sales Supervisor & Technical Operations Lead",
         job_company: "Stride Rent a Car | Sep 2022 - Present",
-        job_desc_1: "Led and mentored a team of 6 sales associates, fostering a high-performance culture through data-driven coaching.",
-        job_desc_2: "Spearheaded a customer feedback initiative, analyzing qualitative data to inform strategic process improvements and elevate customer satisfaction scores from 40% to 75%.",
-        job_desc_3: "Designed and automated weekly performance reports using advanced Excel (Power Query, Pivot Tables) to track KPIs, reducing manual reporting time by 6 hours/week.",
+        job_desc_1: "Designed and deployed a fleet tracking dashboard integrating with third-party rental management API, automating data retrieval for 200+ vehicles and enabling real-time inventory visibility.",
+        job_desc_2: "Led and mentored a team of 6 sales associates, providing ongoing coaching on company procedures and advanced sales techniques to foster a high-performance culture.",
+        job_desc_3: "Engineered automated reporting workflows using advanced Excel (Power Query, VLOOKUP, Pivot Tables) to track team KPIs, reducing manual reporting time by 6 hours/week.",
         section_skills: "Core Competencies",
         skill_data: "Data Analysis & Databases",
         skill_prog: "Programming & Tools",
@@ -158,7 +232,7 @@ const translations = {
         section_contact: "Let's Connect",
         contact_desc: "I'm actively seeking challenging computer science and data internships. I'd love to chat about how my skills and experience can help your team.",
         btn_touch: "Get In Touch",
-        footer_text: "&copy; 2025 Paul Piotrowski. Built with HTML, Tailwind CSS, and passion."
+        footer_text: "&copy; 2026 Paul Piotrowski. Built with HTML, Tailwind CSS, and passion."
     },
     es: {
         nav_about: "Sobre Mí",
@@ -173,7 +247,7 @@ const translations = {
         btn_view_projects: "Ver Mis Proyectos",
         btn_github: "Perfil de GitHub",
         section_about: "Sobre Mí",
-        about_desc_1: "Soy estudiante de Ciencias de la Computación en la Universidad Internacional de Florida (3.67 GPA) con una trayectoria arraigada en la resolución de desafíos empresariales del mundo real. Mi objetivo siempre ha sido entrar en la tecnología, y mi rol profesional como Supervisor de Ventas ha sido clave para apoyar mi educación.",
+        about_desc_1: "Soy estudiante de Ciencias de la Computación en la Universidad Internacional de Florida (3.80 GPA) con una trayectoria arraigada en la resolución de desafíos empresariales del mundo real. Mi objetivo siempre ha sido entrar en la tecnología, y mi rol profesional como Supervisor de Ventas y Líder de Operaciones Técnicas ha sido clave para apoyar mi educación.",
         about_desc_2: "Este camino único me ha dado una mezcla poderosa de habilidades: no solo entiendo cómo arquitectar un algoritmo en Java o un backend en Python, sino que también sé cómo liderar un equipo y usar datos para impulsar resultados empresariales reales, como aumentar la satisfacción del cliente en más del 80%. Prospero construyendo, liderando y aprendiendo.",
         section_projects: "Proyectos Destacados",
         filter_featured: "Proyectos Destacados",
@@ -181,11 +255,11 @@ const translations = {
         filter_personal: "Proyectos Personales",
         filter_school: "Tareas Escolares",
         section_experience: "Experiencia Laboral",
-        job_title: "Supervisor de Ventas",
+        job_title: "Supervisor de Ventas y Líder de Operaciones Técnicas",
         job_company: "Stride Rent a Car | Sep 2022 - Presente",
-        job_desc_1: "Dirigí y asesoré a un equipo de 6 asociados de ventas, fomentando una cultura de alto rendimiento a través del coaching basado en dados.",
-        job_desc_2: "Encabecé una iniciativa de retroalimentación de clientes, analizando datos cualitativos para informar mejoras estratégicas de procesos y elevar los puntajes de satisfacción del cliente del 40% al 75%.",
-        job_desc_3: "Diseñé y automaticé informes semanales de rendimiento utilizando Excel avanzado (Power Query, Tablas Dinámicas) para rastrear KPIs, reduciendo el tiempo de informes manuales en 6 horas/semana.",
+        job_desc_1: "Diseñé e implementé un panel de seguimiento de flota integrado con API de gestión de alquiler de terceros, automatizando la recuperación de datos para más de 200 vehículos.",
+        job_desc_2: "Dirigí y asesoré a un equipo de 6 asociados de ventas, brindando capacitación continua en procedimientos de la empresa y técnicas de ventas avanzadas.",
+        job_desc_3: "Diseñé flujos de trabajo de informes automatizados usando Excel avanzado (Power Query, VLOOKUP, Tablas Dinámicas) para rastrear KPIs, reduciendo el tiempo de informes manuales en 6 horas/semana.",
         section_skills: "Competencias Principales",
         skill_data: "Análisis de Datos y Bases de Datos",
         skill_prog: "Programación y Herramientas",
@@ -193,7 +267,7 @@ const translations = {
         section_contact: "Conectemos",
         contact_desc: "Estoy buscando activamente pasantías desafiantes en ciencias de la computación y datos. Me encantaría charlar sobre cómo mis habilidades y experiencia pueden ayudar a su equipo.",
         btn_touch: "Ponte en Contacto",
-        footer_text: "&copy; 2025 Paul Piotrowski. Construido con HTML, Tailwind CSS y pasión."
+        footer_text: "&copy; 2026 Paul Piotrowski. Construido con HTML, Tailwind CSS y pasión."
     },
     pt: {
         nav_about: "Sobre Mim",
@@ -208,7 +282,7 @@ const translations = {
         btn_view_projects: "Ver Meus Projetos",
         btn_github: "Perfil do GitHub",
         section_about: "Sobre Mim",
-        about_desc_1: "Sou estudante de Ciência da Computação na Florida International University (3.67 GPA) com uma jornada enraizada na resolução de desafios de negócios do mundo real. Meu objetivo sempre foi entrar na tecnologia, e meu papel profissional como Supervisor de Vendas foi fundamental para apoiar minha educação.",
+        about_desc_1: "Sou estudante de Ciência da Computação na Florida International University (3.80 GPA) com uma jornada enraizada na resolução de desafios de negócios do mundo real. Meu objetivo sempre foi entrar na tecnologia, e meu papel profissional como Supervisor de Vendas e Líder de Operações Técnicas foi fundamental para apoiar minha educação.",
         about_desc_2: "Esse caminho único me deu uma mistura poderosa de habilidades: não apenas entendo como arquitetar um algoritmo Java ou um backend Python, mas também sei como liderar uma equipe e usar dados para impulsionar resultados reais de negócios, como aumentar a satisfação do cliente em mais de 80%. Eu prospero construindo, liderando e aprendendo.",
         section_projects: "Projetos em Destaque",
         filter_featured: "Projetos em Destaque",
@@ -216,11 +290,11 @@ const translations = {
         filter_personal: "Projetos Pessoais",
         filter_school: "Trabalhos Escolares",
         section_experience: "Experiência Profissional",
-        job_title: "Supervisor de Vendas",
+        job_title: "Supervisor de Vendas e Líder de Operações Técnicas",
         job_company: "Stride Rent a Car | Set 2022 - Presente",
-        job_desc_1: "Liderei e orientei uma equipe de 6 associados de vendas, promovendo uma cultura de alto desempenho através de coaching baseado em dados.",
-        job_desc_2: "Liderei uma iniciativa de feedback do cliente, analisando dados qualitativos para informar melhorias estratégicas de processos e elevar as pontuações de satisfação do cliente de 40% para 75%.",
-        job_desc_3: "Projetei e automatizei relatórios semanais de desempenho usando Excel avançado (Power Query, Tabelas Dinâmicas) para rastrear KPIs, reduzindo o tempo de relatório manual em 6 horas/semana.",
+        job_desc_1: "Projetei e implementei um painel de rastreamento de frota integrando com API de gestão de aluguel de terceiros, automatizando a recuperação de dados para mais de 200 veículos.",
+        job_desc_2: "Liderei e orientei uma equipe de 6 associados de vendas, promovendo treinamento contínuo em procedimentos da empresa e técnicas avançadas de vendas.",
+        job_desc_3: "Projetei fluxos de trabalho de relatórios automatizados usando Excel avançado (Power Query, VLOOKUP, Tabelas Dinâmicas) para rastrear KPIs, reduzindo o tempo de relatório manual em 6 horas/semana.",
         section_skills: "Principais Competências",
         skill_data: "Análise de Dados e Bancos de Dados",
         skill_prog: "Programação e Ferramentas",
@@ -228,7 +302,7 @@ const translations = {
         section_contact: "Vamos Conectar",
         contact_desc: "Estou buscando ativamente estágios desafiadores em ciência da computação e dados. Adoraria conversar sobre como minhas habilidades e experiência podem ajudar sua equipe.",
         btn_touch: "Entre em Contato",
-        footer_text: "&copy; 2025 Paul Piotrowski. Construído com HTML, Tailwind CSS e paixão."
+        footer_text: "&copy; 2026 Paul Piotrowski. Construído com HTML, Tailwind CSS e paixão."
     }
 };
 
@@ -252,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupEventListeners() {
     // Dark Mode Toggle
     const themeToggleBtn = document.getElementById('theme-toggle');
-    if(themeToggleBtn){
+    if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
             if (document.documentElement.classList.contains('dark')) {
@@ -265,7 +339,7 @@ function setupEventListeners() {
 
     // Language Selector
     const langSelector = document.getElementById('lang-selector');
-    if(langSelector){
+    if (langSelector) {
         langSelector.addEventListener('change', (e) => {
             currentLang = e.target.value;
             updateLanguage();
@@ -281,7 +355,7 @@ function setupEventListeners() {
             renderProjects();
             // Smooth scroll to projects section to ensure user sees the content
             const projectsSection = document.getElementById('projects');
-            if(projectsSection) {
+            if (projectsSection) {
                 projectsSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
@@ -343,7 +417,7 @@ function updateLanguage() {
         const key = element.getAttribute('data-i18n');
         if (t[key]) {
             // Preserve HTML for footer
-            if(key === 'footer_text') {
+            if (key === 'footer_text') {
                 element.innerHTML = t[key];
             } else {
                 element.textContent = t[key];
