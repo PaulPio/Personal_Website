@@ -366,6 +366,20 @@ function renderProjects() {
     const container = document.getElementById('projects-container');
     if (!container) return;
 
+    // Update section heading to reflect the active filter
+    const sectionHeading = document.querySelector('[data-i18n="section_projects"]');
+    if (sectionHeading) {
+        const categoryKeyMap = {
+            featured: 'filter_featured',
+            all: 'filter_all',
+            personal: 'filter_personal',
+            school: 'filter_school'
+        };
+        const t = translations[currentLang];
+        const headingKey = categoryKeyMap[currentCategory] || 'filter_featured';
+        sectionHeading.textContent = t[headingKey];
+    }
+
     container.innerHTML = '';
 
     const filteredProjects = projects.filter(p => {
