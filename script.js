@@ -104,6 +104,32 @@ const projects = [
         ]
     },
     {
+        id: "finance-flow",
+        title: {
+            en: "FinanceFlow",
+            es: "FinanceFlow",
+            pt: "FinanceFlow"
+        },
+        description: {
+            en: "A full-stack personal finance management app with a dashboard for tracking income, expenses, budgets, goals, and investments. Features an AI-powered financial advisor chatbot built with Google Gemini, interactive charts, and secure authentication.",
+            es: "Una aplicación full-stack de gestión de finanzas personales con un panel para rastrear ingresos, gastos, presupuestos, metas e inversiones. Incluye un chatbot de asesor financiero impulsado por IA con Google Gemini, gráficos interactivos y autenticación segura.",
+            pt: "Um aplicativo full-stack de gestão de finanças pessoais com painel para rastrear receitas, despesas, orçamentos, metas e investimentos. Apresenta um chatbot de consultor financeiro com IA usando Google Gemini, gráficos interativos e autenticação segura."
+        },
+        category: "personal",
+        tags: [
+            { name: "React 19", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "TypeScript", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" },
+            { name: "Node.js", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" },
+            { name: "MongoDB", color: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200" },
+            { name: "Google Gemini AI", color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200" },
+            { name: "Tailwind CSS", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" }
+        ],
+        links: [
+            { text: "Live Demo", url: "https://finance-flow-lac.vercel.app" },
+            { text: "View Code", url: "https://github.com/PaulPio/financeFlow" }
+        ]
+    },
+    {
         id: "water-quality",
         featured: true,
         title: {
@@ -365,6 +391,20 @@ function setupEventListeners() {
 function renderProjects() {
     const container = document.getElementById('projects-container');
     if (!container) return;
+
+    // Update section heading to reflect the active filter
+    const sectionHeading = document.querySelector('[data-i18n="section_projects"]');
+    if (sectionHeading) {
+        const categoryKeyMap = {
+            featured: 'filter_featured',
+            all: 'filter_all',
+            personal: 'filter_personal',
+            school: 'filter_school'
+        };
+        const t = translations[currentLang];
+        const headingKey = categoryKeyMap[currentCategory] || 'filter_featured';
+        sectionHeading.textContent = t[headingKey];
+    }
 
     container.innerHTML = '';
 
