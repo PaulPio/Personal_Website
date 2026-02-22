@@ -1,0 +1,8 @@
+.node_modules
+node_modules/*
+package-lock.json
+
+package.json
+
+# Vercel Deployment guide
+deploy_to_vercel.md 
