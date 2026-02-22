@@ -227,6 +227,7 @@ const projects = [
 const translations = {
     en: {
         nav_about: "About",
+        nav_education: "Education",
         nav_projects: "Projects",
         nav_experience: "Experience",
         nav_skills: "Skills",
@@ -240,6 +241,13 @@ const translations = {
         section_about: "About Me",
         about_desc_1: "I am a Computer Science student at Florida International University (3.80 GPA) with a journey rooted in solving real-world business challenges. My goal has always been to get into tech, and my professional role as a Sales Supervisor & Technical Operations Lead has been the key to supporting my education.",
         about_desc_2: "This unique path has given me a powerful blend of skills: I not only understand how to architect a Java algorithm or a Python backend, but I also know how to lead a team and use data to drive real business results, like increasing customer satisfaction by over 80%. I thrive on building, leading, and learning.",
+        section_education: "Education",
+        edu_school: "Florida International University",
+        edu_degree: "B.S. in Computer Science",
+        edu_period: "Expected May 2026",
+        edu_gpa: "GPA: 3.80 / 4.00",
+        edu_coursework_label: "Relevant Coursework",
+        edu_coursework: "Data Structures & Algorithms · Object-Oriented Programming · Database Systems · Software Engineering · Computer Networks · Operating Systems",
         section_projects: "Featured Projects",
         filter_featured: "Featured Projects",
         filter_all: "All Projects",
@@ -252,16 +260,22 @@ const translations = {
         job_desc_2: "Led and mentored a team of 6 sales associates, providing ongoing coaching on company procedures and advanced sales techniques to foster a high-performance culture.",
         job_desc_3: "Engineered automated reporting workflows using advanced Excel (Power Query, VLOOKUP, Pivot Tables) to track team KPIs, reducing manual reporting time by 6 hours/week.",
         section_skills: "Core Competencies",
+        skill_proficiency: "Technical Proficiency",
         skill_data: "Data Analysis & Databases",
         skill_prog: "Programming & Tools",
         skill_lead: "Leadership & Soft Skills",
         section_contact: "Let's Connect",
         contact_desc: "I'm actively seeking challenging computer science and data internships. I'd love to chat about how my skills and experience can help your team.",
+        contact_name: "Your Name",
+        contact_email: "Your Email",
+        contact_message: "Your Message",
+        btn_send: "Send Message",
         btn_touch: "Get In Touch",
         footer_text: "&copy; 2026 Paul Piotrowski. Built with HTML, Tailwind CSS, and passion."
     },
     es: {
         nav_about: "Sobre Mí",
+        nav_education: "Educación",
         nav_projects: "Proyectos",
         nav_experience: "Experiencia",
         nav_skills: "Habilidades",
@@ -275,6 +289,13 @@ const translations = {
         section_about: "Sobre Mí",
         about_desc_1: "Soy estudiante de Ciencias de la Computación en la Universidad Internacional de Florida (3.80 GPA) con una trayectoria arraigada en la resolución de desafíos empresariales del mundo real. Mi objetivo siempre ha sido entrar en la tecnología, y mi rol profesional como Supervisor de Ventas y Líder de Operaciones Técnicas ha sido clave para apoyar mi educación.",
         about_desc_2: "Este camino único me ha dado una mezcla poderosa de habilidades: no solo entiendo cómo arquitectar un algoritmo en Java o un backend en Python, sino que también sé cómo liderar un equipo y usar datos para impulsar resultados empresariales reales, como aumentar la satisfacción del cliente en más del 80%. Prospero construyendo, liderando y aprendiendo.",
+        section_education: "Educación",
+        edu_school: "Florida International University",
+        edu_degree: "B.S. en Ciencias de la Computación",
+        edu_period: "Graduación esperada: Mayo 2026",
+        edu_gpa: "GPA: 3.80 / 4.00",
+        edu_coursework_label: "Cursos Relevantes",
+        edu_coursework: "Estructuras de Datos y Algoritmos · Programación Orientada a Objetos · Sistemas de Bases de Datos · Ingeniería de Software · Redes de Computadoras · Sistemas Operativos",
         section_projects: "Proyectos Destacados",
         filter_featured: "Proyectos Destacados",
         filter_all: "Todos los Proyectos",
@@ -287,16 +308,22 @@ const translations = {
         job_desc_2: "Dirigí y asesoré a un equipo de 6 asociados de ventas, brindando capacitación continua en procedimientos de la empresa y técnicas de ventas avanzadas.",
         job_desc_3: "Diseñé flujos de trabajo de informes automatizados usando Excel avanzado (Power Query, VLOOKUP, Tablas Dinámicas) para rastrear KPIs, reduciendo el tiempo de informes manuales en 6 horas/semana.",
         section_skills: "Competencias Principales",
+        skill_proficiency: "Dominio Técnico",
         skill_data: "Análisis de Datos y Bases de Datos",
         skill_prog: "Programación y Herramientas",
         skill_lead: "Liderazgo y Habilidades Blandas",
         section_contact: "Conectemos",
         contact_desc: "Estoy buscando activamente pasantías desafiantes en ciencias de la computación y datos. Me encantaría charlar sobre cómo mis habilidades y experiencia pueden ayudar a su equipo.",
+        contact_name: "Tu Nombre",
+        contact_email: "Tu Correo Electrónico",
+        contact_message: "Tu Mensaje",
+        btn_send: "Enviar Mensaje",
         btn_touch: "Ponte en Contacto",
         footer_text: "&copy; 2026 Paul Piotrowski. Construido con HTML, Tailwind CSS y pasión."
     },
     pt: {
         nav_about: "Sobre Mim",
+        nav_education: "Educação",
         nav_projects: "Projetos",
         nav_experience: "Experiência",
         nav_skills: "Habilidades",
@@ -310,6 +337,13 @@ const translations = {
         section_about: "Sobre Mim",
         about_desc_1: "Sou estudante de Ciência da Computação na Florida International University (3.80 GPA) com uma jornada enraizada na resolução de desafios de negócios do mundo real. Meu objetivo sempre foi entrar na tecnologia, e meu papel profissional como Supervisor de Vendas e Líder de Operações Técnicas foi fundamental para apoiar minha educação.",
         about_desc_2: "Esse caminho único me deu uma mistura poderosa de habilidades: não apenas entendo como arquitetar um algoritmo Java ou um backend Python, mas também sei como liderar uma equipe e usar dados para impulsionar resultados reais de negócios, como aumentar a satisfação do cliente em mais de 80%. Eu prospero construindo, liderando e aprendendo.",
+        section_education: "Educação",
+        edu_school: "Florida International University",
+        edu_degree: "B.S. em Ciência da Computação",
+        edu_period: "Conclusão prevista: Maio 2026",
+        edu_gpa: "GPA: 3.80 / 4.00",
+        edu_coursework_label: "Disciplinas Relevantes",
+        edu_coursework: "Estruturas de Dados e Algoritmos · Programação Orientada a Objetos · Sistemas de Banco de Dados · Engenharia de Software · Redes de Computadores · Sistemas Operacionais",
         section_projects: "Projetos em Destaque",
         filter_featured: "Projetos em Destaque",
         filter_all: "Todos os Projetos",
@@ -322,18 +356,23 @@ const translations = {
         job_desc_2: "Liderei e orientei uma equipe de 6 associados de vendas, promovendo treinamento contínuo em procedimentos da empresa e técnicas avançadas de vendas.",
         job_desc_3: "Projetei fluxos de trabalho de relatórios automatizados usando Excel avançado (Power Query, VLOOKUP, Tabelas Dinâmicas) para rastrear KPIs, reduzindo o tempo de relatório manual em 6 horas/semana.",
         section_skills: "Principais Competências",
+        skill_proficiency: "Proficiência Técnica",
         skill_data: "Análise de Dados e Bancos de Dados",
         skill_prog: "Programação e Ferramentas",
         skill_lead: "Liderança e Soft Skills",
         section_contact: "Vamos Conectar",
         contact_desc: "Estou buscando ativamente estágios desafiadores em ciência da computação e dados. Adoraria conversar sobre como minhas habilidades e experiência podem ajudar sua equipe.",
+        contact_name: "Seu Nome",
+        contact_email: "Seu E-mail",
+        contact_message: "Sua Mensagem",
+        btn_send: "Enviar Mensagem",
         btn_touch: "Entre em Contato",
         footer_text: "&copy; 2026 Paul Piotrowski. Construído com HTML, Tailwind CSS e paixão."
     }
 };
 
 let currentLang = 'en';
-let currentCategory = 'featured'; // Changed from 'all' to 'featured'
+let currentCategory = 'featured';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -347,6 +386,10 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     updateLanguage();
     setupEventListeners();
+    initScrollAnimations();
+    initBackToTop();
+    initSkillBars();
+    initContactForm();
 });
 
 function setupEventListeners() {
@@ -369,22 +412,44 @@ function setupEventListeners() {
         langSelector.addEventListener('change', (e) => {
             currentLang = e.target.value;
             updateLanguage();
-            renderProjects(); // Re-render projects to update text
+            renderProjects();
         });
     }
 
-    // Category Filters (Desktop Dropdown)
+    // Category Filters — nav dropdown items
     document.querySelectorAll('.project-filter').forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
-            currentCategory = e.target.dataset.category;
+            currentCategory = e.target.dataset.category || e.currentTarget.dataset.category;
             renderProjects();
-            // Smooth scroll to projects section to ensure user sees the content
             const projectsSection = document.getElementById('projects');
             if (projectsSection) {
                 projectsSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
+    });
+
+    // Category Filters — page-level buttons
+    document.querySelectorAll('.project-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentCategory = btn.dataset.category;
+            renderProjects();
+        });
+    });
+}
+
+function updateFilterButtons() {
+    document.querySelectorAll('.project-filter-btn').forEach(btn => {
+        const isActive = btn.dataset.category === currentCategory;
+        btn.classList.toggle('bg-blue-600', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('shadow-md', isActive);
+        btn.classList.toggle('bg-gray-100', !isActive);
+        btn.classList.toggle('dark:bg-gray-700', !isActive);
+        btn.classList.toggle('text-gray-700', !isActive);
+        btn.classList.toggle('dark:text-gray-200', !isActive);
+        btn.classList.toggle('hover:bg-gray-200', !isActive);
+        btn.classList.toggle('dark:hover:bg-gray-600', !isActive);
     });
 }
 
@@ -406,6 +471,9 @@ function renderProjects() {
         sectionHeading.textContent = t[headingKey];
     }
 
+    // Sync filter button active state
+    updateFilterButtons();
+
     container.innerHTML = '';
 
     const filteredProjects = projects.filter(p => {
@@ -421,12 +489,10 @@ function renderProjects() {
         const card = document.createElement('div');
         card.className = "bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02] flex flex-col h-full";
 
-        // Tags HTML
         const tagsHtml = project.tags.map(tag =>
             `<span class="text-xs font-semibold px-3 py-1 rounded-full ${tag.color}">${tag.name}</span>`
         ).join('');
 
-        // Links HTML
         const linksHtml = project.links.map(link =>
             `<a href="${link.url}" target="_blank" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline mr-4">${link.text} &rarr;</a>`
         ).join('');
@@ -452,18 +518,106 @@ function renderProjects() {
 function updateLanguage() {
     const t = translations[currentLang];
 
-    // Update elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (t[key]) {
-            // Preserve HTML for footer
             if (key === 'footer_text') {
                 element.innerHTML = t[key];
+            } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = t[key];
             } else {
                 element.textContent = t[key];
             }
         }
     });
+}
 
-    // Update placeholders if any
+// === Scroll Fade-in Animations ===
+function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+}
+
+// === Back to Top Button ===
+function initBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            btn.classList.add('opacity-100', 'translate-y-0');
+        } else {
+            btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+            btn.classList.remove('opacity-100', 'translate-y-0');
+        }
+    });
+
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// === Skill Bar Animations ===
+function initSkillBars() {
+    const container = document.getElementById('skill-bars');
+    if (!container) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+                    bar.style.width = bar.dataset.width;
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(container);
+}
+
+// === Contact Form (Formspree) ===
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const status = document.getElementById('form-status');
+
+        btn.disabled = true;
+        btn.textContent = '...';
+
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (res.ok) {
+                form.reset();
+                status.textContent = "Message sent! I'll get back to you soon.";
+                status.className = 'mt-4 text-green-400 font-medium';
+            } else {
+                status.textContent = 'Something went wrong. Please try emailing me directly.';
+                status.className = 'mt-4 text-red-400 font-medium';
+            }
+        } catch {
+            status.textContent = 'Something went wrong. Please try emailing me directly.';
+            status.className = 'mt-4 text-red-400 font-medium';
+        }
+
+        btn.disabled = false;
+        const t = translations[currentLang];
+        btn.textContent = t.btn_send || 'Send Message';
+    });
 }
