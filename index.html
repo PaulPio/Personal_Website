@@ -33,6 +33,30 @@
         window.va = window.va || function () { (window.va.q = window.va.q || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+
+    <style>
+        /* Scroll fade-in animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skill bar animation */
+        .skill-bar-fill {
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Back to top button */
+        #back-to-top {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    </style>
 </head>
 
 <body class="font-['Inter'] bg-slate-50 text-gray-800">
@@ -48,6 +72,9 @@
                 <a href="#about"
                     class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     data-i18n="nav_about">About</a>
+                <a href="#education"
+                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    data-i18n="nav_education">Education</a>
 
                 <!-- Projects Dropdown -->
                 <div class="relative group z-50">
@@ -135,6 +162,9 @@
             <a href="#about"
                 class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
                 data-i18n="nav_about">About</a>
+            <a href="#education"
+                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+                data-i18n="nav_education">Education</a>
             <div class="px-6 py-2 text-gray-600 dark:text-gray-300 font-semibold" data-i18n="nav_projects">Projects
             </div>
             <a href="#projects"
@@ -199,14 +229,11 @@
                     </div>
                 </div>
                 <div class="md:w-2/5 mt-10 md:mt-0 flex justify-center">
-                    <!-- Placeholder for a professional photo or a creative graphic -->
-                    <div
-                        class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full shadow-xl flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-white/70" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full shadow-2xl overflow-hidden ring-4 ring-blue-400/30">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQHpvHDui7HVqg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681426052956?e=1773273600&v=beta&t=VphGow_wr71Ra3wVEKepUujrmyBbMWmBcz3Cpa6URNo"
+                            alt="Paul Piotrowski"
+                            class="w-full h-full object-cover"
+                            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center\'><span class=\'text-white text-6xl font-bold\'>PP</span></div>'" />
                     </div>
                 </div>
             </div>
@@ -215,13 +242,13 @@
         <!-- About Me Section -->
         <section id="about" class="py-20 bg-slate-50 dark:bg-gray-800 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center">
+                <div class="max-w-4xl mx-auto text-center fade-in-up">
                     <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white" data-i18n="section_about">About Me
                     </h2>
                     <p class="text-lg text-gray-700 dark:text-gray-300 space-y-4" data-i18n="about_desc_1">
-                        I am a Computer Science student at Florida International University (3.67 GPA) with a journey
+                        I am a Computer Science student at Florida International University (3.80 GPA) with a journey
                         rooted in solving real-world business challenges. My goal has always been to get into tech, and
-                        my professional role as a Sales Supervisor has been the key to supporting my education.
+                        my professional role as a Sales Supervisor & Technical Operations Lead has been the key to supporting my education.
                     </p>
                     <p class="text-lg text-gray-700 dark:text-gray-300 space-y-4 mt-4" data-i18n="about_desc_2">
                         This unique path has given me a powerful blend of skills: I not only understand how to architect
@@ -229,6 +256,65 @@
                         real business results, like increasing customer satisfaction by over 80%. I thrive on building,
                         leading, and learning.
                     </p>
+
+                    <!-- GitHub Stats -->
+                    <div class="mt-12">
+                        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">GitHub Activity</h3>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <!-- Light mode -->
+                            <img class="dark:hidden rounded-lg"
+                                src="https://github-readme-stats.vercel.app/api?username=PaulPio&show_icons=true&theme=default&hide_border=true&bg_color=f8fafc&title_color=2563eb&icon_color=2563eb&text_color=374151"
+                                alt="Paul's GitHub Stats" height="165" />
+                            <img class="dark:hidden rounded-lg"
+                                src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulPio&layout=compact&theme=default&hide_border=true&bg_color=f8fafc&title_color=2563eb&text_color=374151"
+                                alt="Top Languages" height="165" />
+                            <!-- Dark mode -->
+                            <img class="hidden dark:block rounded-lg"
+                                src="https://github-readme-stats.vercel.app/api?username=PaulPio&show_icons=true&theme=dark&hide_border=true&bg_color=1f2937&title_color=60a5fa&icon_color=60a5fa&text_color=d1d5db"
+                                alt="Paul's GitHub Stats" height="165" />
+                            <img class="hidden dark:block rounded-lg"
+                                src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulPio&layout=compact&theme=dark&hide_border=true&bg_color=1f2937&title_color=60a5fa&text_color=d1d5db"
+                                alt="Top Languages" height="165" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white fade-in-up"
+                    data-i18n="section_education">Education</h2>
+                <div class="max-w-3xl mx-auto space-y-6">
+
+                    <!-- FIU Card -->
+                    <div class="bg-slate-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row gap-6 fade-in-up">
+                        <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-start justify-between gap-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-i18n="edu_school">Florida International University</h3>
+                                    <p class="text-blue-600 dark:text-blue-400 font-semibold" data-i18n="edu_degree">B.S. in Computer Science</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-sm font-medium px-3 py-1 rounded-full" data-i18n="edu_period">Expected May 2026</span>
+                                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1 font-medium" data-i18n="edu_gpa">GPA: 3.80 / 4.00</p>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2" data-i18n="edu_coursework_label">Relevant Coursework</p>
+                                <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed" data-i18n="edu_coursework">
+                                    Data Structures &amp; Algorithms · Object-Oriented Programming · Database Systems · Software Engineering · Computer Networks · Operating Systems
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -236,8 +322,17 @@
         <!-- Projects Section -->
         <section id="projects" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
+                <h2 class="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white fade-in-up"
                     data-i18n="section_projects">Featured Projects</h2>
+
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10 fade-in-up">
+                    <button class="project-filter-btn bg-blue-600 text-white shadow-md px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200" data-category="featured" data-i18n-btn="filter_featured">Featured</button>
+                    <button class="project-filter-btn bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200" data-category="all" data-i18n-btn="filter_all">All</button>
+                    <button class="project-filter-btn bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200" data-category="personal" data-i18n-btn="filter_personal">Personal</button>
+                    <button class="project-filter-btn bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200" data-category="school" data-i18n-btn="filter_school">School</button>
+                </div>
+
                 <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Projects are loaded via JS -->
                 </div>
@@ -247,7 +342,7 @@
         <!-- Experience Section -->
         <section id="experience" class="py-20 bg-slate-50 dark:bg-gray-800 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white fade-in-up"
                     data-i18n="section_experience">Work Experience</h2>
                 <div class="max-w-3xl mx-auto">
                     <div
@@ -276,11 +371,73 @@
         <!-- Skills Section -->
         <section id="skills" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white fade-in-up"
                     data-i18n="section_skills">Core Competencies</h2>
                 <div class="max-w-5xl mx-auto">
 
-                    <div class="mb-10">
+                    <!-- Proficiency Bars -->
+                    <div id="skill-bars" class="mb-14 fade-in-up">
+                        <h3 class="text-xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200"
+                            data-i18n="skill_proficiency">Technical Proficiency</h3>
+                        <div class="max-w-2xl mx-auto space-y-5">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Python</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Advanced</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill bg-blue-500 h-2.5 rounded-full" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Java</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Advanced</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill bg-red-500 h-2.5 rounded-full" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">SQL / MySQL</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Advanced</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill bg-green-500 h-2.5 rounded-full" data-width="88%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">TypeScript / JavaScript</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Intermediate</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill bg-yellow-500 h-2.5 rounded-full" data-width="78%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">C++</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Intermediate</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill bg-purple-500 h-2.5 rounded-full" data-width="68%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">React</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Intermediate</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill bg-blue-400 h-2.5 rounded-full" data-width="75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-10 fade-in-up">
                         <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200"
                             data-i18n="skill_data">Data Analysis & Databases</h3>
                         <div class="flex flex-wrap justify-center gap-4">
@@ -310,7 +467,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-10">
+                    <div class="mb-10 fade-in-up">
                         <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200"
                             data-i18n="skill_prog">Programming & Tools</h3>
                         <div class="flex flex-wrap justify-center gap-4">
@@ -341,7 +498,7 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="fade-in-up">
                         <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200"
                             data-i18n="skill_lead">Leadership & Soft Skills</h3>
                         <div class="flex flex-wrap justify-center gap-4">
@@ -368,19 +525,43 @@
 
         <!-- Contact Section -->
         <section id="contact"
-            class="py-24 bg-gray-900 dark:bg-black text-white text-center transition-colors duration-300">
+            class="py-24 bg-gray-900 dark:bg-black text-white transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold mb-4" data-i18n="section_contact">Let's Connect</h2>
-                <p class="text-lg text-gray-300 max-w-xl mx-auto mb-8" data-i18n="contact_desc">
-                    I'm actively seeking challenging computer science and data internships. I'd love to chat about how
-                    my skills and experience can help your team.
-                </p>
-                <a href="mailto:paulrpiotrowski@gmail.com"
-                    class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors"
-                    data-i18n="btn_touch">
-                    Get In Touch
-                </a>
-                <div class="flex justify-center space-x-8 mt-10">
+                <div class="max-w-2xl mx-auto text-center fade-in-up">
+                    <h2 class="text-3xl font-bold mb-4" data-i18n="section_contact">Let's Connect</h2>
+                    <p class="text-lg text-gray-300 mb-10" data-i18n="contact_desc">
+                        I'm actively seeking challenging computer science and data internships. I'd love to chat about how
+                        my skills and experience can help your team.
+                    </p>
+
+                    <!-- Formspree Contact Form -->
+                    <!-- Sign up at formspree.io, create a form, and replace YOUR_FORM_ID below -->
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+                        class="text-left space-y-4">
+                        <input type="text" name="name" required
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
+                            data-i18n="contact_name" placeholder="Your Name" />
+                        <input type="email" name="email" required
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
+                            data-i18n="contact_email" placeholder="Your Email" />
+                        <textarea name="message" rows="5" required
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                            data-i18n="contact_message" placeholder="Your Message"></textarea>
+                        <button type="submit"
+                            class="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors disabled:opacity-60"
+                            data-i18n="btn_send">Send Message</button>
+                    </form>
+                    <p id="form-status" class="mt-4"></p>
+
+                    <!-- Fallback email link -->
+                    <p class="mt-6 text-gray-400 text-sm">
+                        Or email me directly:
+                        <a href="mailto:paulrpiotrowski@gmail.com"
+                            class="text-blue-400 hover:underline">paulrpiotrowski@gmail.com</a>
+                    </p>
+                </div>
+
+                <div class="flex justify-center space-x-8 mt-12">
                     <!-- LinkedIn Icon -->
                     <a href="https://www.linkedin.com/in/paul-pio/" target="_blank"
                         class="text-gray-400 hover:text-white transition-colors">
@@ -408,6 +589,15 @@
             <p data-i18n="footer_text">&copy; 2026 Paul Piotrowski. Built with HTML, Tailwind CSS, and passion.</p>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top"
+        class="fixed bottom-28 right-8 z-50 bg-gray-700 dark:bg-gray-600 text-white p-3 rounded-full shadow-lg hover:bg-gray-600 dark:hover:bg-gray-500 transition-all duration-300 opacity-0 pointer-events-none translate-y-4"
+        aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
 
     <!-- Floating Resume Button -->
     <a href="Paul_Piotrowski_Resume.pdf" download
