@@ -1,8 +1,21 @@
-.node_modules
-node_modules/*
-package-lock.json
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-package.json
+# Operating System files
+.DS_Store
+Thumbs.db
+Desktop.ini
 
-# Vercel Deployment guide
-deploy_to_vercel.md 
+# Node.js (if you add a build step later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
