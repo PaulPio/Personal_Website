@@ -292,23 +292,51 @@
                     <!-- GitHub Stats -->
                     <div class="mt-12">
                         <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">GitHub Activity</h3>
-                        <div class="flex flex-col items-center gap-4">
+                        <div class="flex flex-col items-center gap-6">
                             <!-- Contribution chart - light mode -->
-                            <img class="dark:hidden rounded-lg w-full max-w-2xl"
-                                src="https://ghchart.ssh.surf/2563eb/PaulPio"
+                            <img class="dark:hidden rounded-lg w-full max-w-2xl shadow-md"
+                                src="https://ghchart.rshah.org/16a34a/PaulPio"
                                 alt="Paul's GitHub Contribution Chart" />
                             <!-- Contribution chart - dark mode -->
-                            <img class="hidden dark:block rounded-lg w-full max-w-2xl"
-                                src="https://ghchart.ssh.surf/60a5fa/PaulPio"
+                            <img class="hidden dark:block rounded-lg w-full max-w-2xl shadow-md"
+                                src="https://ghchart.rshah.org/22c55e/PaulPio"
                                 alt="Paul's GitHub Contribution Chart" />
-                            <!-- Language stats -->
-                            <div class="flex flex-wrap justify-center gap-4">
-                                <img class="dark:hidden rounded-lg"
-                                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulPio&layout=compact&hide_border=true&bg_color=f8fafc&title_color=2563eb&text_color=374151"
-                                    alt="Top Languages" height="150" />
-                                <img class="hidden dark:block rounded-lg"
-                                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulPio&layout=compact&hide_border=true&bg_color=1f2937&title_color=60a5fa&text_color=d1d5db"
-                                    alt="Top Languages" height="150" />
+
+                            <!-- GitHub Stats Cards -->
+                            <div class="flex flex-wrap justify-center gap-4 w-full">
+                                <!-- Stats Card - Light Mode -->
+                                <img class="dark:hidden rounded-lg shadow-md" height="195" width="420"
+                                    src="https://github-readme-stats.vercel.app/api?username=PaulPio&show_icons=true&hide_border=true&bg_color=f8fafc&title_color=16a34a&text_color=374151&icon_color=16a34a&rank_icon=github&include_all_commits=true"
+                                    alt="Paul's GitHub Stats"
+                                    onerror="this.style.display='none'" />
+                                <!-- Stats Card - Dark Mode -->
+                                <img class="hidden dark:block rounded-lg shadow-md" height="195" width="420"
+                                    src="https://github-readme-stats.vercel.app/api?username=PaulPio&show_icons=true&hide_border=true&bg_color=1f2937&title_color=22c55e&text_color=d1d5db&icon_color=22c55e&rank_icon=github&include_all_commits=true"
+                                    alt="Paul's GitHub Stats"
+                                    onerror="this.style.display='none'" />
+
+                                <!-- Language stats - Light Mode -->
+                                <img class="dark:hidden rounded-lg shadow-md" height="195" width="330"
+                                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulPio&layout=compact&hide_border=true&bg_color=f8fafc&title_color=16a34a&text_color=374151&langs_count=6"
+                                    alt="Top Languages"
+                                    onerror="this.style.display='none'" />
+                                <!-- Language stats - Dark Mode -->
+                                <img class="hidden dark:block rounded-lg shadow-md" height="195" width="330"
+                                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulPio&layout=compact&hide_border=true&bg_color=1f2937&title_color=22c55e&text_color=d1d5db&langs_count=6"
+                                    alt="Top Languages"
+                                    onerror="this.style.display='none'" />
+                            </div>
+
+                            <!-- GitHub Streak Stats -->
+                            <div class="w-full flex justify-center">
+                                <!-- Streak - Light Mode -->
+                                <img class="dark:hidden rounded-lg shadow-md max-w-lg w-full"
+                                    src="https://streak-stats.demolab.com/?user=PaulPio&hide_border=true&background=f8fafc&ring=16a34a&fire=16a34a&currStreakLabel=16a34a&sideLabels=374151&currStreakNum=374151&dates=374151&sideNums=374151"
+                                    alt="GitHub Streak" />
+                                <!-- Streak - Dark Mode -->
+                                <img class="hidden dark:block rounded-lg shadow-md max-w-lg w-full"
+                                    src="https://streak-stats.demolab.com/?user=PaulPio&hide_border=true&background=1f2937&ring=22c55e&fire=22c55e&currStreakLabel=22c55e&sideLabels=d1d5db&currStreakNum=d1d5db&dates=d1d5db&sideNums=d1d5db"
+                                    alt="GitHub Streak" />
                             </div>
                         </div>
                     </div>
@@ -787,6 +815,15 @@
 
     <!-- Main Script -->
     <script src="script.js"></script>
+
+    <!-- Hide broken images -->
+    <script>
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+            });
+        });
+    </script>
 
 </body>
 

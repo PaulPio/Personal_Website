@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:github-contributions.vercel.app)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl:*)"
+    ]
+  }
+}
