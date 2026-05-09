@@ -1,0 +1,14 @@
+{
+  "name": "paul-piotrowski-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal portfolio website with AI-powered chat, resume tailoring, and code walkthrough features",
+  "scripts": {
+    "dev": "python3 -m http.server 8080"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^3.0.63",
+    "ai": "^6.0.177"
+  }
+}
