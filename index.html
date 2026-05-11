@@ -35,6 +35,14 @@
     <script defer src="/_vercel/insights/script.js"></script>
 
     <style>
+        /* Scroll progress bar */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 4px; z-index: 99999;
+            background: linear-gradient(90deg, #2563eb, #7c3aed, #ec4899);
+            width: 0%; transition: none;
+            pointer-events: none;
+        }
+
         /* Scroll fade-in animations */
         .fade-in-up {
             opacity: 0;
@@ -44,6 +52,161 @@
         .fade-in-up.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Staggered children */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .stagger-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero animated gradient background */
+        .hero-gradient {
+            background: linear-gradient(-45deg, #1e3a5f, #0f172a, #1e1b4b, #0c1222);
+            background-size: 400% 400%;
+            animation: hero-bg-shift 12s ease infinite;
+        }
+        @keyframes hero-bg-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating particles */
+        .hero-particles {
+            position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+        }
+        .hero-particles span {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(96, 165, 250, 0.35);
+            box-shadow: 0 0 6px rgba(96, 165, 250, 0.3);
+            animation: float-particle linear infinite;
+        }
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* Typewriter cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #60a5fa;
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Animated gradient ring around photo */
+        .photo-ring-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .photo-ring-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #2563eb, #7c3aed, #ec4899, #f59e0b, #2563eb);
+            animation: spin-ring 4s linear infinite;
+            z-index: 0;
+        }
+        .photo-ring-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .photo-ring-inner {
+            position: relative;
+            z-index: 2;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        @keyframes spin-ring {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb, #7c3aed, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        /* Glassmorphism project cards */
+        .glass-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(100, 116, 139, 0.3);
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, transparent, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            transition: background 0.4s ease;
+            pointer-events: none;
+        }
+        .glass-card:hover::before {
+            background: linear-gradient(135deg, #2563eb, #7c3aed, #ec4899);
+        }
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
+        }
+        .dark .glass-card:hover {
+            box-shadow: 0 20px 60px rgba(96, 165, 250, 0.1);
+        }
+
+        /* Wave dividers */
+        .wave-divider {
+            position: relative;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+            height: 60px;
+        }
+
+        /* Stat counters */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
         }
 
         /* Skill bar animation */
@@ -56,10 +219,39 @@
         #back-to-top {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
+
+        /* Active nav link */
+        .nav-link-active {
+            color: #2563eb !important;
+        }
+        .dark .nav-link-active {
+            color: #60a5fa !important;
+        }
+
+        /* Magnetic button hover */
+        .magnetic-btn {
+            transition: transform 0.2s ease;
+        }
+
+        /* Enhanced hero text reveal */
+        .hero-text-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: text-reveal 0.8s ease forwards;
+        }
+        .hero-text-reveal:nth-child(2) { animation-delay: 0.15s; }
+        .hero-text-reveal:nth-child(3) { animation-delay: 0.3s; }
+        .hero-text-reveal:nth-child(4) { animation-delay: 0.45s; }
+        @keyframes text-reveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 
 <body class="font-['Inter'] bg-slate-50 text-gray-800">
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
 
     <!-- Header & Navigation -->
     <header
@@ -230,52 +422,63 @@
     <main>
 
         <!-- Hero Section -->
-        <section id="hero" class="bg-white dark:bg-gray-900 transition-colors duration-300">
-            <div class="container mx-auto px-6 py-24 md:py-32 flex flex-col md:flex-row items-center">
+        <section id="hero" class="hero-gradient relative overflow-hidden min-h-[90vh] flex items-center">
+            <!-- Floating particles -->
+            <div class="hero-particles" id="hero-particles"></div>
+            <div class="container mx-auto px-6 py-24 md:py-32 flex flex-col md:flex-row items-center relative z-10">
                 <div class="md:w-3/5 text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight"
-                        data-i18n="hero_greeting">
-                        Hi, I'm Paul Piotrowski
+                    <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight hero-text-reveal"
+                        data-i18n="hero_greeting" id="hero-greeting">
+                        Hi, I'm <span style="background:linear-gradient(135deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Paul Piotrowski</span><span class="typewriter-cursor"></span>
                     </h1>
-                    <p class="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-semibold mt-4"
+                    <p class="text-xl md:text-2xl text-blue-400 font-semibold mt-4 hero-text-reveal"
                         data-i18n="hero_title">
                         Computer Science Student & AI Engineer
                     </p>
-                    <p class="mt-6 text-lg text-gray-700 dark:text-gray-300 max-w-xl" data-i18n="hero_desc">
+                    <p class="mt-6 text-lg text-gray-300 max-w-xl hero-text-reveal" data-i18n="hero_desc">
                         I build data-driven, full-stack applications that bridge the gap between business needs and
                         intelligent tech solutions. I'm passionate about solving complex problems and thrive in
                         fast-paced environments.
                     </p>
                     <div
-                        class="mt-10 flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        class="mt-10 flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4 hero-text-reveal">
                         <a href="#projects"
-                            class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-blue-700 transition-colors"
+                            class="magnetic-btn bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105"
                             data-i18n="btn_view_projects">
                             View My Projects
                         </a>
                         <a href="https://github.com/PaulPio" target="_blank"
-                            class="bg-gray-800 dark:bg-gray-700 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-900 dark:hover:bg-gray-600 transition-colors"
+                            class="magnetic-btn bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300 hover:scale-105"
                             data-i18n="btn_github">
                             GitHub Profile
                         </a>
                     </div>
                 </div>
-                <div class="md:w-2/5 mt-10 md:mt-0 flex justify-center">
-                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full shadow-2xl overflow-hidden ring-4 ring-blue-400/30">
-                        <img src="profile pic.jpg"
-                            alt="Paul Piotrowski"
-                            class="w-full h-full object-cover"
-                            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center\'><span class=\'text-white text-6xl font-bold\'>PP</span></div>'" />
+                <div class="md:w-2/5 mt-10 md:mt-0 flex justify-center hero-text-reveal">
+                    <div class="photo-ring-wrapper w-64 h-64 md:w-80 md:h-80">
+                        <div class="photo-ring-inner w-full h-full shadow-2xl">
+                            <img src="profile pic.jpg"
+                                alt="Paul Piotrowski"
+                                class="w-full h-full object-cover"
+                                onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center\'><span class=\'text-white text-6xl font-bold\'>PP</span></div>'" />
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Wave divider: Hero → About -->
+        <div class="wave-divider bg-slate-50 dark:bg-gray-800">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="fill-[#0f172a]">
+                <path d="M0,0 C360,60 1080,0 1440,50 L1440,0 L0,0 Z"></path>
+            </svg>
+        </div>
+
         <!-- About Me Section -->
         <section id="about" class="py-20 bg-slate-50 dark:bg-gray-800 transition-colors duration-300">
             <div class="container mx-auto px-6">
                 <div class="max-w-4xl mx-auto text-center fade-in-up">
-                    <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white" data-i18n="section_about">About Me
+                    <h2 class="text-3xl font-bold mb-6 gradient-text" data-i18n="section_about">About Me
                     </h2>
                     <p class="text-lg text-gray-700 dark:text-gray-300 space-y-4" data-i18n="about_desc_1">
                         I am a Computer Science student at Florida International University (3.80 GPA) with a journey
@@ -344,10 +547,17 @@
             </div>
         </section>
 
+        <!-- Wave divider: About → Education -->
+        <div class="wave-divider bg-white dark:bg-gray-900">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="fill-slate-50 dark:fill-gray-800">
+                <path d="M0,40 C480,0 960,60 1440,20 L1440,0 L0,0 Z"></path>
+            </svg>
+        </div>
+
         <!-- Education Section -->
         <section id="education" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white fade-in-up"
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text fade-in-up"
                     data-i18n="section_education">Education</h2>
                 <div class="max-w-3xl mx-auto space-y-6">
 
@@ -507,10 +717,17 @@
             </div>
         </section>
 
+        <!-- Wave divider: Education → Projects -->
+        <div class="wave-divider bg-white dark:bg-gray-900">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="fill-white dark:fill-gray-900">
+                <path d="M0,20 C360,60 1080,0 1440,40 L1440,0 L0,0 Z"></path>
+            </svg>
+        </div>
+
         <!-- Projects Section -->
         <section id="projects" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white fade-in-up"
+                <h2 class="text-3xl font-bold text-center mb-6 gradient-text fade-in-up"
                     data-i18n="section_projects">Featured Projects</h2>
 
                 <!-- Filter Buttons -->
@@ -527,11 +744,38 @@
             </div>
         </section>
 
+        <!-- Wave divider: Projects → Experience -->
+        <div class="wave-divider bg-slate-50 dark:bg-gray-800">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="fill-white dark:fill-gray-900">
+                <path d="M0,50 C480,10 960,50 1440,0 L1440,0 L0,0 Z"></path>
+            </svg>
+        </div>
+
         <!-- Experience Section -->
         <section id="experience" class="py-20 bg-slate-50 dark:bg-gray-800 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white fade-in-up"
+                <h2 class="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white fade-in-up"
                     data-i18n="section_experience">Work Experience</h2>
+
+                <!-- Impact Stats -->
+                <div class="flex flex-wrap justify-center gap-8 md:gap-16 mb-12 fade-in-up">
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="90" data-suffix="%">0%</div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Faster Response</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="5000" data-suffix="+" data-separator=",">0</div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Reservations/mo</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="45" data-suffix="h">0</div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Saved/week</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="1200" data-suffix="+" data-separator=",">0</div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Vehicles Managed</p>
+                    </div>
+                </div>
                 <div class="max-w-3xl mx-auto space-y-6">
                     <!-- Stride Role -->
                     <div
@@ -601,7 +845,7 @@
         <!-- Skills Section -->
         <section id="skills" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white fade-in-up"
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text fade-in-up"
                     data-i18n="section_skills">Core Competencies</h2>
                 <div class="max-w-5xl mx-auto">
 

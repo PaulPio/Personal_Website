@@ -444,9 +444,14 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLanguage();
     setupEventListeners();
     initScrollAnimations();
+    initStaggerAnimations();
     initBackToTop();
     initSkillBars();
     initContactForm();
+    initScrollProgress();
+    initHeroParticles();
+    initStatCounters();
+    initActiveNav();
 });
 
 function setupEventListeners() {
@@ -539,25 +544,26 @@ function renderProjects() {
         return p.category === currentCategory;
     });
 
-    filteredProjects.forEach(project => {
+    filteredProjects.forEach((project, index) => {
         const title = project.title[currentLang];
         const description = project.description[currentLang];
 
         const card = document.createElement('div');
-        card.className = "bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02] flex flex-col h-full";
+        card.className = "glass-card flex flex-col h-full stagger-item";
+        card.style.transitionDelay = `${index * 0.08}s`;
 
         const tagsHtml = project.tags.map(tag =>
             `<span class="text-xs font-semibold px-3 py-1 rounded-full ${tag.color}">${tag.name}</span>`
         ).join('');
 
         const linksHtml = project.links.map(link =>
-            `<a href="${link.url}" target="_blank" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline mr-4">${link.text} &rarr;</a>`
+            `<a href="${link.url}" target="_blank" class="inline-flex items-center gap-1 font-semibold text-blue-600 dark:text-blue-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors mr-4">${link.text} <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>`
         ).join('');
 
         card.innerHTML = `
             <div class="p-6 flex flex-col h-full">
                 <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">${title}</h3>
-                <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm flex-grow">
+                <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm flex-grow leading-relaxed">
                     ${description}
                 </p>
                 <div class="flex flex-wrap gap-2 mb-6">
@@ -569,6 +575,12 @@ function renderProjects() {
             </div>
         `;
         container.appendChild(card);
+    });
+
+    requestAnimationFrame(() => {
+        container.querySelectorAll('.stagger-item').forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 80);
+        });
     });
 }
 
@@ -638,6 +650,106 @@ function initSkillBars() {
     }, { threshold: 0.3 });
 
     observer.observe(container);
+}
+
+// === Staggered Animations ===
+function initStaggerAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const items = entry.target.querySelectorAll('.stagger-item');
+                items.forEach((item, i) => {
+                    setTimeout(() => item.classList.add('visible'), i * 80);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('#projects-container, .grid').forEach(el => observer.observe(el));
+}
+
+// === Scroll Progress Bar ===
+function initScrollProgress() {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = docHeight > 0 ? (scrollTop / docHeight * 100) + '%' : '0%';
+    }, { passive: true });
+}
+
+// === Hero Particles ===
+function initHeroParticles() {
+    const container = document.getElementById('hero-particles');
+    if (!container) return;
+    for (let i = 0; i < 30; i++) {
+        const span = document.createElement('span');
+        const size = Math.random() * 8 + 3;
+        span.style.width = size + 'px';
+        span.style.height = size + 'px';
+        span.style.left = Math.random() * 100 + '%';
+        span.style.animationDuration = (Math.random() * 8 + 6) + 's';
+        span.style.animationDelay = (Math.random() * 5) + 's';
+        container.appendChild(span);
+    }
+}
+
+// === Stat Counters ===
+function initStatCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(el => observer.observe(el));
+}
+
+function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const separator = el.dataset.separator || '';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        let current = Math.floor(eased * target);
+        let display = separator ? current.toLocaleString() : current.toString();
+        el.textContent = display + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+}
+
+// === Active Nav Highlighting ===
+function initActiveNav() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav .hidden.md\\:flex a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const top = section.offsetTop - 100;
+            if (window.scrollY >= top) current = section.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('nav-link-active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    }, { passive: true });
 }
 
 // === Contact Form (Formspree) ===
