@@ -5,7 +5,11 @@
   "type": "module",
   "description": "Personal portfolio website with AI-powered chat, resume tailoring, and code walkthrough features",
   "scripts": {
-    "dev": "python3 -m http.server 8080"
+    "dev": "node dev-server.js",
+    "dev:static": "python3 -m http.server 8080"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.77",

@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = 8080;
+const API_ROUTES = new Set(['chat', 'resume', 'walkthrough']);
 
 const MIME_TYPES = {
   '.html': 'text/html',
@@ -20,6 +21,12 @@ const MIME_TYPES = {
 };
 
 async function handleAPI(routeName, req, res) {
+  if (!API_ROUTES.has(routeName)) {
+    res.writeHead(404, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: 'API route not found' }));
+    return;
+  }
+
   const mod = await import(`./api/${routeName}.js`);
   const headers = {};
   req.headers && Object.entries(req.headers).forEach(([k, v]) => { headers[k] = v; });
@@ -48,10 +55,23 @@ async function handleAPI(routeName, req, res) {
 }
 
 const server = http.createServer(async (req, res) => {
+  const rawPath = (req.url || '/').split('?')[0];
+  const lowerRawPath = rawPath.toLowerCase();
+  if (lowerRawPath.includes('/../') || lowerRawPath.startsWith('/..') || lowerRawPath.includes('%2e%2e')) {
+    res.writeHead(403);
+    res.end('Forbidden');
+    return;
+  }
+
   const url = new URL(req.url, `http://localhost:${PORT}`);
 
   if (url.pathname.startsWith('/api/')) {
     const routeName = url.pathname.replace('/api/', '').replace(/\/$/, '');
+    if (!/^[a-z0-9_-]+$/i.test(routeName)) {
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Invalid API route' }));
+      return;
+    }
     try {
       await handleAPI(routeName, req, res);
     } catch (err) {
@@ -62,7 +82,21 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  let filePath = path.join(__dirname, url.pathname === '/' ? 'index.html' : url.pathname);
+  const requestPath = url.pathname === '/' ? '/index.html' : url.pathname;
+  if (requestPath.split('/').some((segment) => segment === '..')) {
+    res.writeHead(403);
+    res.end('Forbidden');
+    return;
+  }
+  const filePath = path.resolve(__dirname, `.${requestPath}`);
+  const rootPrefix = `${__dirname}${path.sep}`;
+
+  if (!filePath.startsWith(rootPrefix)) {
+    res.writeHead(403);
+    res.end('Forbidden');
+    return;
+  }
+
   const ext = path.extname(filePath);
 
   try {

@@ -278,6 +278,10 @@ const translations = {
         filter_personal: "Personal Projects",
         filter_school: "School Assignments",
         section_experience: "Work Experience",
+        stat_faster_response: "Faster Response",
+        stat_reservations_month: "Reservations/mo",
+        stat_saved_week: "Saved/week",
+        stat_vehicles_managed: "Vehicles Managed",
         job_title_stride: "Software Engineer",
         job_company_stride: "Stride Rent a Car | Sep 2022 - Present",
         job_stride_desc_1: "Built and maintain a 6-module internal business dashboard covering Reservations, Claims, Reports, Chargebacks, Florida Renters, and Reviews. The dashboard integrates the Rently and HQ Car Rental APIs with a Supabase PostgreSQL backend and is used every day by the team to manage over 1,200 vehicles and roughly 5,000 reservations per month across a company of 100 employees, saving an estimated 45 hours of manual work per week.",
@@ -337,6 +341,10 @@ const translations = {
         filter_personal: "Proyectos Personales",
         filter_school: "Tareas Escolares",
         section_experience: "Experiencia Laboral",
+        stat_faster_response: "Respuesta más rápida",
+        stat_reservations_month: "Reservas/mes",
+        stat_saved_week: "Ahorradas/semana",
+        stat_vehicles_managed: "Vehículos gestionados",
         job_title_stride: "Ingeniero de Software",
         job_company_stride: "Stride Rent a Car | Sep 2022 - Presente",
         job_stride_desc_1: "Construí y mantengo un panel de control empresarial interno de 6 módulos que cubre Reservas, Reclamos, Reportes, Contracargos, Arrendatarios de Florida y Reseñas. El panel integra las API de Rently y HQ Car Rental con un backend de Supabase PostgreSQL y es utilizado diariamente por el equipo para administrar más de 1,200 vehículos y aproximadamente 5,000 reservas por mes en una empresa de 100 empleados, ahorrando unas 45 horas de trabajo manual por semana.",
@@ -396,6 +404,10 @@ const translations = {
         filter_personal: "Projetos Pessoais",
         filter_school: "Trabalhos Escolares",
         section_experience: "Experiência Profissional",
+        stat_faster_response: "Resposta mais rápida",
+        stat_reservations_month: "Reservas/mês",
+        stat_saved_week: "Economizadas/semana",
+        stat_vehicles_managed: "Veículos gerenciados",
         job_title_stride: "Engenheiro de Software",
         job_company_stride: "Stride Rent a Car | Set 2022 - Presente",
         job_stride_desc_1: "Construí e mantenho um painel de negócios interno de 6 módulos cobrindo Reservas, Reclamações, Relatórios, Estornos, Locatários da Flórida e Avaliações. O painel integra as APIs Rently e HQ Car Rental com um backend Supabase PostgreSQL e é usado todos os dias pela equipe para gerenciar mais de 1.200 veículos e cerca de 5.000 reservas por mês em uma empresa de 100 funcionários, economizando cerca de 45 horas de trabalho manual por semana.",
@@ -557,7 +569,7 @@ function renderProjects() {
         ).join('');
 
         const linksHtml = project.links.map(link =>
-            `<a href="${link.url}" target="_blank" class="inline-flex items-center gap-1 font-semibold text-blue-600 dark:text-blue-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors mr-4">${link.text} <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>`
+            `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-semibold text-blue-600 dark:text-blue-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors mr-4">${link.text} <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>`
         ).join('');
 
         card.innerHTML = `
@@ -577,11 +589,9 @@ function renderProjects() {
         container.appendChild(card);
     });
 
-    requestAnimationFrame(() => {
-        container.querySelectorAll('.stagger-item').forEach((el, i) => {
-            setTimeout(() => el.classList.add('visible'), i * 80);
-        });
-    });
+    if (isNearViewport(container)) {
+        revealStaggerItems(container);
+    }
 }
 
 function updateLanguage() {
@@ -657,16 +667,25 @@ function initStaggerAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const items = entry.target.querySelectorAll('.stagger-item');
-                items.forEach((item, i) => {
-                    setTimeout(() => item.classList.add('visible'), i * 80);
-                });
+                revealStaggerItems(entry.target);
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('#projects-container, .grid').forEach(el => observer.observe(el));
+}
+
+function revealStaggerItems(container) {
+    const items = container.querySelectorAll('.stagger-item');
+    items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('visible'), i * 80);
+    });
+}
+
+function isNearViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
 }
 
 // === Scroll Progress Bar ===

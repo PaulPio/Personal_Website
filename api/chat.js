@@ -9,7 +9,29 @@ export default async function handler(req) {
     return new Response('Method not allowed', { status: 405 });
   }
 
-  const { messages } = await req.json();
+  let body;
+  try {
+    body = await req.json();
+  } catch {
+    return Response.json({ error: 'Invalid JSON body' }, { status: 400 });
+  }
+
+  const { messages } = body ?? {};
+  if (!Array.isArray(messages) || messages.length === 0) {
+    return Response.json({ error: 'messages must be a non-empty array' }, { status: 400 });
+  }
+
+  const sanitizedMessages = messages
+    .filter((message) => message && typeof message === 'object')
+    .map((message) => ({
+      role: message.role,
+      content: message.content,
+    }))
+    .filter((message) => ['user', 'assistant'].includes(message.role) && typeof message.content === 'string' && message.content.trim().length > 0);
+
+  if (sanitizedMessages.length === 0) {
+    return Response.json({ error: 'messages must contain valid user/assistant text messages' }, { status: 400 });
+  }
 
   const result = streamText({
     model: anthropic('claude-sonnet-4-6'),
@@ -26,7 +48,7 @@ You are "Ask Paul AI", a friendly and knowledgeable assistant embedded on Paul's
 - Use markdown formatting for better readability
 - If asked "what can you do?", explain you can answer questions about Paul, tailor his resume to job descriptions, and walk through his project code
 - You can respond in English, Spanish, or Portuguese based on the visitor's language`,
-    messages,
+    messages: sanitizedMessages,
   });
 
   return result.toTextStreamResponse();

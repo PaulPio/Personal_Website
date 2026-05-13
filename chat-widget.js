@@ -356,6 +356,7 @@
 
     updateTheme();
     setupTabListeners();
+    setupCloseListener();
     showWelcome();
 
     const observer = new MutationObserver(() => updateTheme());
@@ -366,7 +367,7 @@
     return `
       <div class="ai-header">
         <div class="ai-header-title"><span class="ai-dot"></span> Ask Paul AI</div>
-        <button class="ai-close-btn" onclick="document.getElementById('ai-widget-panel').classList.remove('open')" aria-label="Close">
+        <button class="ai-close-btn" aria-label="Close">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
       </div>
@@ -392,6 +393,18 @@
     const panel = document.getElementById('ai-widget-panel');
     widgetOpen = !widgetOpen;
     panel.classList.toggle('open', widgetOpen);
+  }
+
+  function closeWidget() {
+    const panel = document.getElementById('ai-widget-panel');
+    if (!panel) return;
+    widgetOpen = false;
+    panel.classList.remove('open');
+  }
+
+  function setupCloseListener() {
+    const closeBtn = document.querySelector('.ai-close-btn');
+    if (closeBtn) closeBtn.addEventListener('click', closeWidget);
   }
 
   function setupTabListeners() {
@@ -530,7 +543,7 @@
       }
     } catch (err) {
       typing.remove();
-      chatMessages.push({ role: 'assistant', content: 'Sorry, I had trouble connecting. Please make sure the site is deployed on Vercel with an OPENAI_API_KEY configured, or try again later.' });
+      chatMessages.push({ role: 'assistant', content: 'Sorry, I had trouble connecting. Please make sure the site is deployed on Vercel with an ANTHROPIC_API_KEY configured, or try again later.' });
       renderChatMessages();
     }
 
@@ -602,7 +615,7 @@
         document.getElementById('ai-body').scrollTop = document.getElementById('ai-body').scrollHeight;
       }
     } catch (err) {
-      resultDiv.innerHTML = '<div class="ai-msg ai-msg-assistant" style="max-width:100%">Sorry, I had trouble analyzing. Please make sure the site is deployed on Vercel with an OPENAI_API_KEY configured.</div>';
+      resultDiv.innerHTML = '<div class="ai-msg ai-msg-assistant" style="max-width:100%">Sorry, I had trouble analyzing. Please make sure the site is deployed on Vercel with an ANTHROPIC_API_KEY configured.</div>';
     }
 
     isStreaming = false;
@@ -699,7 +712,7 @@
         document.getElementById('ai-body').scrollTop = document.getElementById('ai-body').scrollHeight;
       }
     } catch (err) {
-      resultDiv.innerHTML = '<div class="ai-msg ai-msg-assistant" style="max-width:100%">Sorry, I had trouble connecting. Please make sure the site is deployed on Vercel with an OPENAI_API_KEY configured.</div>';
+      resultDiv.innerHTML = '<div class="ai-msg ai-msg-assistant" style="max-width:100%">Sorry, I had trouble connecting. Please make sure the site is deployed on Vercel with an ANTHROPIC_API_KEY configured.</div>';
     }
 
     isStreaming = false;
