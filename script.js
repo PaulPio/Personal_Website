@@ -278,6 +278,10 @@ const translations = {
         filter_personal: "Personal Projects",
         filter_school: "School Assignments",
         section_experience: "Work Experience",
+        stat_faster_response: "Faster Response",
+        stat_reservations_month: "Reservations/mo",
+        stat_saved_week: "Saved/week",
+        stat_vehicles_managed: "Vehicles Managed",
         job_title_stride: "Software Engineer",
         job_company_stride: "Stride Rent a Car | Sep 2022 - Present",
         job_stride_desc_1: "Built and maintain a 6-module internal business dashboard covering Reservations, Claims, Reports, Chargebacks, Florida Renters, and Reviews. The dashboard integrates the Rently and HQ Car Rental APIs with a Supabase PostgreSQL backend and is used every day by the team to manage over 1,200 vehicles and roughly 5,000 reservations per month across a company of 100 employees, saving an estimated 45 hours of manual work per week.",
@@ -337,6 +341,10 @@ const translations = {
         filter_personal: "Proyectos Personales",
         filter_school: "Tareas Escolares",
         section_experience: "Experiencia Laboral",
+        stat_faster_response: "Respuesta más rápida",
+        stat_reservations_month: "Reservas/mes",
+        stat_saved_week: "Ahorradas/semana",
+        stat_vehicles_managed: "Vehículos gestionados",
         job_title_stride: "Ingeniero de Software",
         job_company_stride: "Stride Rent a Car | Sep 2022 - Presente",
         job_stride_desc_1: "Construí y mantengo un panel de control empresarial interno de 6 módulos que cubre Reservas, Reclamos, Reportes, Contracargos, Arrendatarios de Florida y Reseñas. El panel integra las API de Rently y HQ Car Rental con un backend de Supabase PostgreSQL y es utilizado diariamente por el equipo para administrar más de 1,200 vehículos y aproximadamente 5,000 reservas por mes en una empresa de 100 empleados, ahorrando unas 45 horas de trabajo manual por semana.",
@@ -396,6 +404,10 @@ const translations = {
         filter_personal: "Projetos Pessoais",
         filter_school: "Trabalhos Escolares",
         section_experience: "Experiência Profissional",
+        stat_faster_response: "Resposta mais rápida",
+        stat_reservations_month: "Reservas/mês",
+        stat_saved_week: "Economizadas/semana",
+        stat_vehicles_managed: "Veículos gerenciados",
         job_title_stride: "Engenheiro de Software",
         job_company_stride: "Stride Rent a Car | Set 2022 - Presente",
         job_stride_desc_1: "Construí e mantenho um painel de negócios interno de 6 módulos cobrindo Reservas, Reclamações, Relatórios, Estornos, Locatários da Flórida e Avaliações. O painel integra as APIs Rently e HQ Car Rental com um backend Supabase PostgreSQL e é usado todos os dias pela equipe para gerenciar mais de 1.200 veículos e cerca de 5.000 reservas por mês em uma empresa de 100 funcionários, economizando cerca de 45 horas de trabalho manual por semana.",
@@ -444,9 +456,14 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLanguage();
     setupEventListeners();
     initScrollAnimations();
+    initStaggerAnimations();
     initBackToTop();
     initSkillBars();
     initContactForm();
+    initScrollProgress();
+    initHeroParticles();
+    initStatCounters();
+    initActiveNav();
 });
 
 function setupEventListeners() {
@@ -539,25 +556,26 @@ function renderProjects() {
         return p.category === currentCategory;
     });
 
-    filteredProjects.forEach(project => {
+    filteredProjects.forEach((project, index) => {
         const title = project.title[currentLang];
         const description = project.description[currentLang];
 
         const card = document.createElement('div');
-        card.className = "bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02] flex flex-col h-full";
+        card.className = "glass-card flex flex-col h-full stagger-item";
+        card.style.transitionDelay = `${index * 0.08}s`;
 
         const tagsHtml = project.tags.map(tag =>
             `<span class="text-xs font-semibold px-3 py-1 rounded-full ${tag.color}">${tag.name}</span>`
         ).join('');
 
         const linksHtml = project.links.map(link =>
-            `<a href="${link.url}" target="_blank" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline mr-4">${link.text} &rarr;</a>`
+            `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-semibold text-blue-600 dark:text-blue-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors mr-4">${link.text} <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>`
         ).join('');
 
         card.innerHTML = `
             <div class="p-6 flex flex-col h-full">
                 <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">${title}</h3>
-                <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm flex-grow">
+                <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm flex-grow leading-relaxed">
                     ${description}
                 </p>
                 <div class="flex flex-wrap gap-2 mb-6">
@@ -570,6 +588,10 @@ function renderProjects() {
         `;
         container.appendChild(card);
     });
+
+    if (isNearViewport(container)) {
+        revealStaggerItems(container);
+    }
 }
 
 function updateLanguage() {
@@ -638,6 +660,115 @@ function initSkillBars() {
     }, { threshold: 0.3 });
 
     observer.observe(container);
+}
+
+// === Staggered Animations ===
+function initStaggerAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                revealStaggerItems(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('#projects-container, .grid').forEach(el => observer.observe(el));
+}
+
+function revealStaggerItems(container) {
+    const items = container.querySelectorAll('.stagger-item');
+    items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('visible'), i * 80);
+    });
+}
+
+function isNearViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+}
+
+// === Scroll Progress Bar ===
+function initScrollProgress() {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = docHeight > 0 ? (scrollTop / docHeight * 100) + '%' : '0%';
+    }, { passive: true });
+}
+
+// === Hero Particles ===
+function initHeroParticles() {
+    const container = document.getElementById('hero-particles');
+    if (!container) return;
+    for (let i = 0; i < 30; i++) {
+        const span = document.createElement('span');
+        const size = Math.random() * 8 + 3;
+        span.style.width = size + 'px';
+        span.style.height = size + 'px';
+        span.style.left = Math.random() * 100 + '%';
+        span.style.animationDuration = (Math.random() * 8 + 6) + 's';
+        span.style.animationDelay = (Math.random() * 5) + 's';
+        container.appendChild(span);
+    }
+}
+
+// === Stat Counters ===
+function initStatCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(el => observer.observe(el));
+}
+
+function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const separator = el.dataset.separator || '';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        let current = Math.floor(eased * target);
+        let display = separator ? current.toLocaleString() : current.toString();
+        el.textContent = display + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+}
+
+// === Active Nav Highlighting ===
+function initActiveNav() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav .hidden.md\\:flex a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const top = section.offsetTop - 100;
+            if (window.scrollY >= top) current = section.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('nav-link-active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    }, { passive: true });
 }
 
 // === Contact Form (Formspree) ===
