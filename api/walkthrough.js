@@ -1,5 +1,5 @@
 import { streamText } from 'ai';
-import { openai } from '@ai-sdk/openai';
+import { anthropic } from '@ai-sdk/anthropic';
 import { portfolioContext } from './context.js';
 
 export const config = { runtime: 'edge' };
@@ -19,7 +19,7 @@ export default async function handler(req) {
   }
 
   const result = streamText({
-    model: openai('gpt-4o-mini'),
+    model: anthropic('claude-sonnet-4-20250514'),
     system: `${portfolioContext}
 
 ## Your Role
