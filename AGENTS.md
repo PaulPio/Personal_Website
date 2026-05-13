@@ -1,16 +1,16 @@
 ## Cursor Cloud specific instructions
 
-This is a static portfolio site with AI-powered features (vanilla HTML + JS + Tailwind CSS via CDN). The AI features use Vercel serverless edge functions + AI SDK.
+This is a static portfolio site with AI-powered features (vanilla HTML + JS + Tailwind CSS via CDN). The AI features use Vercel serverless edge functions + Anthropic Claude via the Vercel AI SDK.
 
-### Running the site locally
+### Running the site locally (with AI features)
 
 ```bash
-python3 -m http.server 8080
+node dev-server.js
 ```
 
-Then open `http://localhost:8080/` in a browser. The site requires internet access for the Tailwind CSS CDN (`cdn.tailwindcss.com`); without it, all styling is lost.
+This serves static files AND proxies the `/api/*` routes locally. Requires `ANTHROPIC_API_KEY` in the environment. If the key isn't set, the widget renders but shows a graceful error when attempting AI calls.
 
-The AI chat widget will render but API calls will fail in local dev (they require Vercel's serverless runtime + `OPENAI_API_KEY`). This is expected and the widget handles it gracefully.
+For static-only dev (no AI): `python3 -m http.server 8080`
 
 ### Dependencies
 
@@ -18,23 +18,25 @@ The AI chat widget will render but API calls will fail in local dev (they requir
 npm install
 ```
 
-The `package.json` has `ai` and `@ai-sdk/openai` as dependencies, used only by the Vercel edge functions in `/api/`.
+Packages: `ai` (Vercel AI SDK v6) and `@ai-sdk/anthropic`. Used by the edge functions in `/api/`.
 
 ### Linting / Testing
 
-There are no automated tests or lint tools configured. Validation is done visually by opening `index.html` in a browser and manually verifying features (theme toggle, language switcher, project filters, chat widget UI, responsive layout).
+No automated tests or lint tools. Validation is visual — open the site in a browser and verify features (theme toggle, language switcher, project filters, chat widget, animations).
 
-To validate API module syntax: `node -e "import './api/context.js'"` (requires Node 18+).
+To validate API module syntax: `node -e "import './api/context.js'"`
 
 ### Key gotchas
 
-- The file `profile pic.jpg` has a space in its name; always quote the path when referencing it in shell commands.
-- Tailwind config is inline in a `<script>` tag inside `index.html` `<head>`, not in a separate config file.
-- GitHub stats images rely on third-party APIs that are rate-limited; broken images auto-hide via `onerror` handlers.
-- Vercel Analytics script only works when deployed to Vercel; it 404s in local dev (this is expected and non-blocking).
-- AI chat widget (`chat-widget.js`) reads the `projects` array from `script.js` for the Code Walkthrough feature. It must load after `script.js`.
+- The file `profile pic.jpg` has a space in its name; always quote it in shell commands.
+- Tailwind config is inline in a `<script>` tag inside `index.html` `<head>`.
+- AI model is `claude-sonnet-4-6` — if Anthropic deprecates this, check `curl -s https://api.anthropic.com/v1/models -H "x-api-key: $ANTHROPIC_API_KEY" -H "anthropic-version: 2023-06-01"` for current IDs.
+- `dev-server.js` caches imported modules; restart it after changing API route files.
+- `chat-widget.js` reads the `projects` array from `script.js` — it must load after `script.js`.
 - API routes use ES modules (`"type": "module"` in package.json) and Vercel edge runtime.
+- GitHub stats images rely on rate-limited third-party APIs; broken images auto-hide via `onerror`.
+- Vercel Analytics script 404s in local dev (expected).
 
 ### Architecture reference
 
-See `CLAUDE.md` for full architectural details, color scheme, translation system, and modification guides.
+See `CLAUDE.md` for full details on color scheme, translation system, and modification guides.
