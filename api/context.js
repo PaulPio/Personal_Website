@@ -32,13 +32,6 @@ You are an AI assistant on Paul Piotrowski's personal portfolio website. Here is
 - Designed database tables; integrated Mistral AI to normalize/classify/enrich menu data into structured nutritional records
 - Tech: JavaScript, Puppeteer, Playwright, Mistral AI, Database Design
 
-### Intelligence Team Lead / AI Engineer — INIT FIU Build - ReFocus (Spring 2026)
-- Engineered a local-first ML pipeline for real-time distraction detection using Python and OpenCV
-- Optimized computer vision models to run client-side (privacy-first, no video data transmitted)
-- Collaborated with 13-person cross-functional team
-- Developed automated focus scoring from webcam data
-- Tech: Python, OpenCV, MediaPipe, Machine Learning
-
 ## Projects
 
 ### ReFocus (Featured, Personal)
