@@ -340,7 +340,7 @@
       </div>
       <div class="ai-tabs">
         <button class="ai-tab active" data-mode="chat">💬 Chat</button>
-<button class="ai-tab" data-mode="walkthrough">🔍 Code Walkthrough</button>
+        <button class="ai-tab" data-mode="walkthrough">🔍 Code Walkthrough</button>
       </div>
       <div class="ai-body" id="ai-body"></div>
       <div class="ai-footer" id="ai-footer"></div>
