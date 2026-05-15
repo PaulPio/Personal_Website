@@ -297,39 +297,6 @@
         background: #1e3a5f; border-color: #60a5fa; color: #60a5fa;
       }
 
-      .ai-resume-area {
-        width: 100%; min-height: 120px; max-height: 200px;
-        resize: vertical;
-        border: 1px solid;
-        border-radius: 12px;
-        padding: 10px 14px;
-        font-size: 13px;
-        font-family: inherit;
-        outline: none;
-        margin-bottom: 8px;
-      }
-      .ai-panel-light .ai-resume-area {
-        border-color: #d1d5db; background: #fff; color: #1f2937;
-      }
-      .ai-panel-dark .ai-resume-area {
-        border-color: #475569; background: #1e293b; color: #e2e8f0;
-      }
-      .ai-resume-btn {
-        width: 100%;
-        padding: 10px;
-        border-radius: 10px;
-        border: none;
-        background: #7c3aed;
-        color: white;
-        font-size: 13px;
-        font-weight: 600;
-        cursor: pointer;
-        font-family: inherit;
-        transition: background 0.2s;
-      }
-      .ai-resume-btn:hover { background: #6d28d9; }
-      .ai-resume-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
       @media (max-width: 480px) {
         #ai-widget-panel {
           left: 0.5rem;
@@ -373,7 +340,6 @@
       </div>
       <div class="ai-tabs">
         <button class="ai-tab active" data-mode="chat">💬 Chat</button>
-        <button class="ai-tab" data-mode="resume">📄 Resume Tailor</button>
         <button class="ai-tab" data-mode="walkthrough">🔍 Code Walkthrough</button>
       </div>
       <div class="ai-body" id="ai-body"></div>
@@ -421,7 +387,6 @@
 
   function showModeUI() {
     if (currentMode === 'chat') showChatUI();
-    else if (currentMode === 'resume') showResumeUI();
     else if (currentMode === 'walkthrough') showWalkthroughUI();
   }
 
@@ -554,73 +519,6 @@
   function updateSendBtn() {
     const btn = document.getElementById('ai-send-btn');
     if (btn) btn.disabled = isStreaming;
-  }
-
-  function showResumeUI() {
-    const body = document.getElementById('ai-body');
-    const footer = document.getElementById('ai-footer');
-
-    body.innerHTML = `
-      <div class="ai-welcome">
-        <h3>📄 Resume Tailor</h3>
-        <p>Paste a job description below and I'll show how Paul's experience matches.</p>
-      </div>
-      <div id="ai-resume-result"></div>
-    `;
-
-    footer.innerHTML = `
-      <textarea class="ai-resume-area" id="ai-resume-jd" placeholder="Paste the job description here..."></textarea>
-      <button class="ai-resume-btn" id="ai-resume-btn">⚡ Analyze Match</button>
-    `;
-
-    document.getElementById('ai-resume-btn').addEventListener('click', analyzeResume);
-  }
-
-  async function analyzeResume() {
-    const jdInput = document.getElementById('ai-resume-jd');
-    const resultDiv = document.getElementById('ai-resume-result');
-    const btn = document.getElementById('ai-resume-btn');
-    const jd = jdInput.value.trim();
-    if (!jd || isStreaming) return;
-
-    isStreaming = true;
-    btn.disabled = true;
-    btn.textContent = 'Analyzing...';
-    resultDiv.innerHTML = '<div class="ai-typing"><span></span><span></span><span></span></div>';
-
-    try {
-      const res = await fetch('/api/resume', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jobDescription: jd })
-      });
-
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-      resultDiv.innerHTML = '';
-      const msgDiv = document.createElement('div');
-      msgDiv.className = 'ai-msg ai-msg-assistant';
-      msgDiv.style.maxWidth = '100%';
-      resultDiv.appendChild(msgDiv);
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let content = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        content += decoder.decode(value, { stream: true });
-        msgDiv.innerHTML = formatMarkdown(content);
-        document.getElementById('ai-body').scrollTop = document.getElementById('ai-body').scrollHeight;
-      }
-    } catch (err) {
-      resultDiv.innerHTML = '<div class="ai-msg ai-msg-assistant" style="max-width:100%">Sorry, I had trouble analyzing. Please make sure the site is deployed on Vercel with an ANTHROPIC_API_KEY configured.</div>';
-    }
-
-    isStreaming = false;
-    btn.disabled = false;
-    btn.textContent = '⚡ Analyze Match';
   }
 
   function showWalkthroughUI() {
