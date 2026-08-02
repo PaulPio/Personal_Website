@@ -278,6 +278,10 @@ const translations = {
         filter_personal: "Personal Projects",
         filter_school: "School Assignments",
         section_experience: "Work Experience",
+        stat_faster_response: "Faster Response",
+        stat_reservations_month: "Reservations/mo",
+        stat_saved_week: "Saved/week",
+        stat_vehicles_managed: "Vehicles Managed",
         job_title_stride: "Software Engineer",
         job_company_stride: "Stride Rent a Car | Sep 2022 - Present",
         job_stride_desc_1: "Built and maintain a 6-module internal business dashboard covering Reservations, Claims, Reports, Chargebacks, Florida Renters, and Reviews. The dashboard integrates the Rently and HQ Car Rental APIs with a Supabase PostgreSQL backend and is used every day by the team to manage over 1,200 vehicles and roughly 5,000 reservations per month across a company of 100 employees, saving an estimated 45 hours of manual work per week.",
@@ -288,12 +292,6 @@ const translations = {
         job_company_buo: "Buo | Jan 2026 - Apr 2026",
         job_buo_desc_1: "Built the core dining hall data pipeline powering Buo's iOS app (live on the App Store), scraped real-time menu data from multiple college campus dining systems using Puppeteer and Playwright, enabling the app's flagship feature of personalized AI meal plans based on what's available in students' dining halls today.",
         job_buo_desc_2: "Designed and structured database tables to store and serve scraped menu data; integrated Mistral AI to normalize, classify, and enrich raw scraped meal data into structured nutritional records consumed by the app's meal planning engine.",
-        job_title_refocus: "Intelligence Team Lead / AI Engineer",
-        job_company_refocus: "INIT FIU Build - ReFocus | Spring 2026",
-        job_refocus_desc_1: "Engineered a local-first machine learning pipeline for ReFocus, implementing real-time distraction detection (phone usage, off-task behavior) using Python and OpenCV.",
-        job_refocus_desc_2: "Optimized computer vision models to run entirely on the client-side, ensuring a privacy-first architecture where no video data is ever transmitted or stored externally.",
-        job_refocus_desc_3: "Collaborated with a cross-functional team of 13 under INIT FIU Build to integrate AI-driven focus insights with a gamified virtual pet system to improve student productivity.",
-        job_refocus_desc_4: "Developed logic for automated focus scoring, translating raw webcam data into actionable user metrics and progression rewards.",
         section_skills: "Core Competencies",
         skill_proficiency: "Technical Proficiency",
         skill_data: "Data Analysis & Databases",
@@ -337,6 +335,10 @@ const translations = {
         filter_personal: "Proyectos Personales",
         filter_school: "Tareas Escolares",
         section_experience: "Experiencia Laboral",
+        stat_faster_response: "Respuesta más rápida",
+        stat_reservations_month: "Reservas/mes",
+        stat_saved_week: "Ahorradas/semana",
+        stat_vehicles_managed: "Vehículos gestionados",
         job_title_stride: "Ingeniero de Software",
         job_company_stride: "Stride Rent a Car | Sep 2022 - Presente",
         job_stride_desc_1: "Construí y mantengo un panel de control empresarial interno de 6 módulos que cubre Reservas, Reclamos, Reportes, Contracargos, Arrendatarios de Florida y Reseñas. El panel integra las API de Rently y HQ Car Rental con un backend de Supabase PostgreSQL y es utilizado diariamente por el equipo para administrar más de 1,200 vehículos y aproximadamente 5,000 reservas por mes en una empresa de 100 empleados, ahorrando unas 45 horas de trabajo manual por semana.",
@@ -347,12 +349,6 @@ const translations = {
         job_company_buo: "Buo | Ene 2026 - Abr 2026",
         job_buo_desc_1: "Construí el flujo de datos central de los comedores universitarios que impulsa la aplicación de iOS de Buo (disponible en el App Store), extraje datos de menús en tiempo real de múltiples sistemas de comedores de campus universitarios usando Puppeteer y Playwright, habilitando la función principal de la aplicación de planes de comidas personalizados con IA basados en lo que está disponible hoy en los comedores de los estudiantes.",
         job_buo_desc_2: "Diseñé y estructuré tablas de bases de datos para almacenar y servir datos de menús extraídos; integré Mistral AI para normalizar, clasificar y enriquecer los datos brutos de comidas extraídas en registros nutricionales estructurados consumidos por el motor de planificación de comidas de la aplicación.",
-        job_title_refocus: "Líder del Equipo de Inteligencia / Ingeniero de IA",
-        job_company_refocus: "INIT FIU Build - ReFocus | Primavera 2026",
-        job_refocus_desc_1: "Diseñé un flujo de trabajo de aprendizaje automático local para ReFocus, implementando la detección de distracciones en tiempo real (uso del teléfono, comportamiento fuera de la tarea) usando Python y OpenCV.",
-        job_refocus_desc_2: "Optimizé modelos de visión por computadora para que se ejecuten completamente en el lado del cliente, asegurando una arquitectura de privacidad primero donde los datos de video nunca se transmiten ni se almacenan externamente.",
-        job_refocus_desc_3: "Colaboré con un equipo multifuncional de 13 personas bajo INIT FIU Build para integrar conocimientos de enfoque impulsados por IA con un sistema de mascotas virtuales gamificado para mejorar la productividad de los estudiantes.",
-        job_refocus_desc_4: "Desarrollé la lógica para la puntuación de enfoque automatizada, traduciendo datos brutos de la cámara web en métricas de usuario procesables y recompensas de progresión.",
         section_skills: "Competencias Principales",
         skill_proficiency: "Dominio Técnico",
         skill_data: "Análisis de Datos y Bases de Datos",
@@ -396,6 +392,10 @@ const translations = {
         filter_personal: "Projetos Pessoais",
         filter_school: "Trabalhos Escolares",
         section_experience: "Experiência Profissional",
+        stat_faster_response: "Resposta mais rápida",
+        stat_reservations_month: "Reservas/mês",
+        stat_saved_week: "Economizadas/semana",
+        stat_vehicles_managed: "Veículos gerenciados",
         job_title_stride: "Engenheiro de Software",
         job_company_stride: "Stride Rent a Car | Set 2022 - Presente",
         job_stride_desc_1: "Construí e mantenho um painel de negócios interno de 6 módulos cobrindo Reservas, Reclamações, Relatórios, Estornos, Locatários da Flórida e Avaliações. O painel integra as APIs Rently e HQ Car Rental com um backend Supabase PostgreSQL e é usado todos os dias pela equipe para gerenciar mais de 1.200 veículos e cerca de 5.000 reservas por mês em uma empresa de 100 funcionários, economizando cerca de 45 horas de trabalho manual por semana.",
@@ -406,12 +406,6 @@ const translations = {
         job_company_buo: "Buo | Jan 2026 - Abr 2026",
         job_buo_desc_1: "Construí o pipeline de dados central de refeitórios que alimenta o aplicativo iOS da Buo (disponível na App Store), raspei dados de menus em tempo real de vários sistemas de refeitórios de campi universitários usando Puppeteer e Playwright, habilitando o principal recurso do aplicativo de planos de refeições personalizados com IA com base no que está disponível hoje nos refeitórios dos alunos.",
         job_buo_desc_2: "Projetei e estruturei tabelas de banco de dados para armazenar e servir dados de menus raspados; integrei o Mistral AI para normalizar, classificar e enriquecer dados brutos de refeições raspados em registros nutricionais estruturados consumidos pelo mecanismo de planejamento de refeições do aplicativo.",
-        job_title_refocus: "Líder da Equipe de Inteligência / Engenheiro de IA",
-        job_company_refocus: "INIT FIU Build - ReFocus | Primavera 2026",
-        job_refocus_desc_1: "Projetei um pipeline de aprendizado de máquina local para ReFocus, implementando detecção de distração em tempo real (uso do telefone, comportamento fora da tarefa) usando Python e OpenCV.",
-        job_refocus_desc_2: "Otimizei modelos de visão computacional para rodar inteiramente no lado do cliente, garantindo uma arquitetura de privacidade em primeiro lugar, onde nenhum dado de vídeo é transmitido ou armazenado externamente.",
-        job_refocus_desc_3: "Colaborei com uma equipe multifuncional de 13 pessoas sob INIT FIU Build para integrar insights de foco orientados por IA com um sistema de animal de estimação virtual gamificado para melhorar a produtividade dos alunos.",
-        job_refocus_desc_4: "Desenvolvi lógica para pontuação de foco automatizada, traduzindo dados brutos de webcam em métricas de usuário acionáveis e recompensas de progressão.",
         section_skills: "Principais Competências",
         skill_proficiency: "Proficiência Técnica",
         skill_data: "Análise de Dados e Bancos de Dados",
@@ -444,9 +438,14 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLanguage();
     setupEventListeners();
     initScrollAnimations();
+    initStaggerAnimations();
     initBackToTop();
     initSkillBars();
     initContactForm();
+    initScrollProgress();
+    initHeroParticles();
+    initStatCounters();
+    initActiveNav();
 });
 
 function setupEventListeners() {
@@ -539,25 +538,26 @@ function renderProjects() {
         return p.category === currentCategory;
     });
 
-    filteredProjects.forEach(project => {
+    filteredProjects.forEach((project, index) => {
         const title = project.title[currentLang];
         const description = project.description[currentLang];
 
         const card = document.createElement('div');
-        card.className = "bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02] flex flex-col h-full";
+        card.className = "glass-card flex flex-col h-full stagger-item";
+        card.style.transitionDelay = `${index * 0.08}s`;
 
         const tagsHtml = project.tags.map(tag =>
             `<span class="text-xs font-semibold px-3 py-1 rounded-full ${tag.color}">${tag.name}</span>`
         ).join('');
 
         const linksHtml = project.links.map(link =>
-            `<a href="${link.url}" target="_blank" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline mr-4">${link.text} &rarr;</a>`
+            `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-semibold text-blue-600 dark:text-blue-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors mr-4">${link.text} <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>`
         ).join('');
 
         card.innerHTML = `
             <div class="p-6 flex flex-col h-full">
                 <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">${title}</h3>
-                <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm flex-grow">
+                <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm flex-grow leading-relaxed">
                     ${description}
                 </p>
                 <div class="flex flex-wrap gap-2 mb-6">
@@ -570,6 +570,10 @@ function renderProjects() {
         `;
         container.appendChild(card);
     });
+
+    if (isNearViewport(container)) {
+        revealStaggerItems(container);
+    }
 }
 
 function updateLanguage() {
@@ -638,6 +642,115 @@ function initSkillBars() {
     }, { threshold: 0.3 });
 
     observer.observe(container);
+}
+
+// === Staggered Animations ===
+function initStaggerAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                revealStaggerItems(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('#projects-container, .grid').forEach(el => observer.observe(el));
+}
+
+function revealStaggerItems(container) {
+    const items = container.querySelectorAll('.stagger-item');
+    items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('visible'), i * 80);
+    });
+}
+
+function isNearViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+}
+
+// === Scroll Progress Bar ===
+function initScrollProgress() {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = docHeight > 0 ? (scrollTop / docHeight * 100) + '%' : '0%';
+    }, { passive: true });
+}
+
+// === Hero Particles ===
+function initHeroParticles() {
+    const container = document.getElementById('hero-particles');
+    if (!container) return;
+    for (let i = 0; i < 30; i++) {
+        const span = document.createElement('span');
+        const size = Math.random() * 8 + 3;
+        span.style.width = size + 'px';
+        span.style.height = size + 'px';
+        span.style.left = Math.random() * 100 + '%';
+        span.style.animationDuration = (Math.random() * 8 + 6) + 's';
+        span.style.animationDelay = (Math.random() * 5) + 's';
+        container.appendChild(span);
+    }
+}
+
+// === Stat Counters ===
+function initStatCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(el => observer.observe(el));
+}
+
+function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const separator = el.dataset.separator || '';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        let current = Math.floor(eased * target);
+        let display = separator ? current.toLocaleString() : current.toString();
+        el.textContent = display + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+}
+
+// === Active Nav Highlighting ===
+function initActiveNav() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav .hidden.md\\:flex a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const top = section.offsetTop - 100;
+            if (window.scrollY >= top) current = section.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('nav-link-active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    }, { passive: true });
 }
 
 // === Contact Form (Formspree) ===
