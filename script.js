@@ -1,5 +1,49 @@
 const projects = [
     {
+        id: "prof-summarizer",
+        featured: true,
+        image: "assets/thumbs/prof-summarizer.png",
+        year: "2026",
+        title: {
+            en: "ProfSummarizer",
+            es: "ProfSummarizer",
+            pt: "ProfSummarizer"
+        },
+        description: {
+            en: "AI lecture tool used by FIU students to turn recordings into Cornell Notes, flashcards, and quizzes. Serverless Supabase Edge Functions for transcription, summarization, and chat — secured with Google OAuth and PostgreSQL.",
+            es: "Herramienta de IA para clases usada por estudiantes de FIU: convierte grabaciones en notas Cornell, flashcards y quizzes. Backend serverless en Supabase Edge Functions con OAuth de Google y PostgreSQL.",
+            pt: "Ferramenta de IA para aulas usada por alunos da FIU: transforma gravações em notas Cornell, flashcards e quizzes. Backend serverless com Supabase Edge Functions, OAuth Google e PostgreSQL."
+        },
+        category: "personal",
+        tags: ["TypeScript", "React 19", "Supabase", "Gemini", "Vercel"],
+        links: [
+            { text: "Live Demo", url: "https://prof-summarizer.vercel.app/", kind: "demo" },
+            { text: "View Code", url: "https://github.com/PaulPio/Prof-Summarizer", kind: "code" }
+        ]
+    },
+    {
+        id: "resume-fit",
+        featured: true,
+        image: "assets/thumbs/resume-fit.png",
+        year: "2026",
+        title: {
+            en: "ResumeFit",
+            es: "ResumeFit",
+            pt: "ResumeFit"
+        },
+        description: {
+            en: "AI resume health check + ranked internship matching + listing-specific tailoring with Gemma via OpenRouter. Built for 305 SummerCodex — upload a PDF, get evidence-backed fit scores against live internship postings, and download a tailored resume.",
+            es: "Chequeo de salud del CV con IA + ranking de pasantías + adaptación a ofertas con Gemma vía OpenRouter. Sube un PDF, obtén scores con evidencia y descarga un CV adaptado.",
+            pt: "Check de saúde do currículo com IA + ranking de estágios + adaptação a vagas com Gemma via OpenRouter. Envie um PDF, receba scores com evidência e baixe um currículo sob medida."
+        },
+        category: "personal",
+        tags: ["Next.js", "TypeScript", "Gemma", "OpenRouter", "Tailwind"],
+        links: [
+            { text: "Live Demo", url: "https://starter-hackathon-project.vercel.app", kind: "demo" },
+            { text: "View Code", url: "https://github.com/PaulPio/ResumeFit", kind: "code" }
+        ]
+    },
+    {
         id: "plate-spotter",
         featured: true,
         image: "assets/thumbs/plate-spotter.png",
@@ -10,9 +54,9 @@ const projects = [
             pt: "PlateSpotter IA"
         },
         description: {
-            en: "A Progressive Web App for mechanics and auto repair shops to quickly log vehicle license plates and service details. Features AI-powered camera scanning with Gemini Vision, smart manual entry formatting, Google Sheets integration, and offline history.",
-            es: "Una aplicación web progresiva para mecánicos y talleres de reparación de automóviles para registrar rápidamente placas de vehículos y detalles de servicio. Incluye escaneo de cámara impulsado por IA con Gemini Vision, formato inteligente de entrada manual, integración con Google Sheets e historial sin conexión.",
-            pt: "Um Progressive Web App para mecânicos e oficinas de reparação de automóveis para registrar rapidamente placas de veículos e detalhes de serviço. Apresenta digitalização de câmera com IA usando Gemini Vision, formatação inteligente de entrada manual, integração com Google Sheets e histórico offline."
+            en: "Production PWA for auto shops to log license plates with Gemini Vision scanning, Flash Lite text formatting, and Google Sheets sync — cutting repair-order logging time by ~80% across two offices.",
+            es: "PWA en producción para talleres: escaneo de placas con Gemini Vision, formato con Flash Lite y sync a Google Sheets — reduce ~80% el tiempo de registro de órdenes.",
+            pt: "PWA em produção para oficinas: leitura de placas com Gemini Vision, formatação com Flash Lite e sync com Google Sheets — corta ~80% o tempo de registro de ordens."
         },
         category: "personal",
         tags: ["React 19", "TypeScript", "Gemini Vision", "PWA", "Tailwind CSS"],
@@ -22,19 +66,84 @@ const projects = [
         ]
     },
     {
+        id: "freefall",
+        featured: true,
+        image: "assets/thumbs/freefall.png",
+        year: "2026",
+        title: {
+            en: "FreeFall",
+            es: "FreeFall",
+            pt: "FreeFall"
+        },
+        description: {
+            en: "Geometry Dash–styled endless falling game for Sunjam. Desktop host + phone tilt controller over QR/WebRTC (PeerJS), synthesized WebAudio, depth and gem scoring — you only fall faster.",
+            es: "Juego endless de caída estilo Geometry Dash para Sunjam. Host en desktop + control por inclinación del teléfono vía QR/WebRTC (PeerJS), audio sintetizado y puntuación por profundidad.",
+            pt: "Jogo endless de queda estilo Geometry Dash para o Sunjam. Host no desktop + controle por inclinação do celular via QR/WebRTC (PeerJS), áudio sintetizado e pontuação por profundidade."
+        },
+        category: "personal",
+        tags: ["Phaser", "PeerJS", "WebRTC", "WebAudio", "Vite"],
+        links: [
+            { text: "Live Demo", url: "https://frefall.vercel.app", kind: "demo" },
+            { text: "View Code", url: "https://github.com/PaulPio/Frefall", kind: "code" }
+        ]
+    },
+    {
+        id: "iot-lab",
+        featured: true,
+        image: "assets/thumbs/iot.png",
+        year: "2026",
+        title: {
+            en: "ESP32 & Raspberry Pi IoT Lab",
+            es: "Lab IoT ESP32 y Raspberry Pi",
+            pt: "Lab IoT ESP32 e Raspberry Pi"
+        },
+        description: {
+            en: "Personal IoT lab: ESP32 Wi-Fi web servers for LED control and DHT11 temp/humidity, plus a Raspberry Pi Flask dashboard with SQLite history, charts, and remote access via Tailscale.",
+            es: "Lab IoT personal: servidores Wi-Fi en ESP32 para LED y DHT11, más un dashboard Flask en Raspberry Pi con historial SQLite, gráficos y acceso remoto vía Tailscale.",
+            pt: "Lab IoT pessoal: servidores Wi-Fi no ESP32 para LED e DHT11, mais um dashboard Flask no Raspberry Pi com histórico SQLite, gráficos e acesso remoto via Tailscale."
+        },
+        category: "personal",
+        tags: ["ESP32", "Raspberry Pi", "DHT11", "Flask", "SQLite"],
+        links: [
+            { text: "View Code", url: "https://github.com/PaulPio/IOT", kind: "code" }
+        ]
+    },
+    {
+        id: "nous-core",
+        featured: true,
+        image: "assets/thumbs/nous-core.png",
+        year: "2026",
+        title: {
+            en: "OpenRouter Provider (nous-core)",
+            es: "Provider OpenRouter (nous-core)",
+            pt: "Provider OpenRouter (nous-core)"
+        },
+        description: {
+            en: "Open-source contribution to nous-core: certified OpenRouter provider leaf with shared ChatCompletions architecture and model discovery. Passed multi-round maintainer review on auth fallback safety and API key validation.",
+            es: "Contribución open source a nous-core: provider certificado de OpenRouter con arquitectura ChatCompletions compartida y descubrimiento de modelos. Superó varias rondas de review de mantenedores.",
+            pt: "Contribuição open source ao nous-core: provider certificado da OpenRouter com arquitetura ChatCompletions compartilhada e descoberta de modelos. Passou por várias rodadas de review dos maintainers."
+        },
+        category: "personal",
+        tags: ["TypeScript", "Node.js", "OpenRouter", "REST APIs", "LLM Infra"],
+        links: [
+            { text: "Pull Request", url: "https://github.com/orthogonalhq/nous-core/pull/410", kind: "demo" },
+            { text: "View Repo", url: "https://github.com/orthogonalhq/nous-core", kind: "code" }
+        ]
+    },
+    {
         id: "refocus",
         featured: true,
         image: "assets/thumbs/refocus.png",
-        year: "2025",
+        year: "2026",
         title: {
             en: "ReFocus",
             es: "ReFocus",
             pt: "ReFocus"
         },
         description: {
-            en: "AI-Powered Desktop Productivity Coach. As Intelligence Team Lead, I developed the 'brain' of the application, implementing computer vision models that analyze user engagement locally in real-time.",
-            es: "Entrenador de productividad de escritorio impulsado por IA. Como Líder del Equipo de Inteligencia, desarrollé el 'cerebro' de la aplicación, implementando modelos de visión por computadora que analizan la participación del usuario localmente en tiempo real.",
-            pt: "Treinador de Produtividade de Desktop com IA. Como Líder da Equipe de Inteligência, desenvolvi o 'cérebro' do aplicativo, implementando modelos de visão computacional que analisam o engajamento do usuário localmente em tempo real."
+            en: "AI-powered desktop productivity coach. On the Intelligence Team for INIT FIU Build — computer vision models that analyze engagement locally in real time for a privacy-first focus coach.",
+            es: "Coach de productividad de escritorio con IA. En el equipo de Inteligencia de INIT FIU Build — visión por computadora local en tiempo real, privacy-first.",
+            pt: "Coach de produtividade desktop com IA. No time de Inteligência do INIT FIU Build — visão computacional local em tempo real, privacy-first."
         },
         category: "personal",
         tags: ["Python", "OpenCV", "MediaPipe", "NumPy"],
@@ -65,28 +174,6 @@ const projects = [
         ]
     },
     {
-        id: "prof-summarizer",
-        featured: true,
-        image: "assets/thumbs/prof-summarizer.png",
-        year: "2025",
-        title: {
-            en: "ProfSummarizer",
-            es: "ProfSummarizer",
-            pt: "ProfSummarizer"
-        },
-        description: {
-            en: "AI-powered lecture transcription and summarization tool. Record lectures, get automatic transcriptions, and receive intelligent summaries.",
-            es: "Herramienta de transcripción y resumen de conferencias impulsada por IA. Graba conferencias y recibe resúmenes inteligentes.",
-            pt: "Ferramenta de transcrição e resumo de palestras com IA. Grave palestras e receba resumos inteligentes."
-        },
-        category: "personal",
-        tags: ["TypeScript", "React", "Gemini API", "Supabase"],
-        links: [
-            { text: "Live Demo", url: "https://prof-summarizer.vercel.app/", kind: "demo" },
-            { text: "View Code", url: "https://github.com/PaulPio/Prof-Summarizer", kind: "code" }
-        ]
-    },
-    {
         id: "senior-helper",
         featured: true,
         image: "assets/thumbs/senior-helper.png",
@@ -112,7 +199,7 @@ const projects = [
         id: "finance-flow",
         featured: false,
         image: "assets/thumbs/finance-flow.png",
-        year: "2025",
+        year: "2026",
         title: {
             en: "FinanceFlow",
             es: "FinanceFlow",
@@ -227,23 +314,23 @@ const translations = {
         nav_contact_short: "CONTACT",
         nav_resume: "RESUME",
         hero_insert: "INSERT COIN TO CONTINUE",
-        hero_title_pre: "I BUILD SOFTWARE THAT SHIPS TO PROD —",
-        hero_title_highlight: "100 PLAYERS",
-        hero_title_post: "USE IT DAILY.",
-        hero_desc: "Four years running ops for a car rental company. Now I rebuild the stack instead of fighting it — full-stack, AI-powered, shipped to real users.",
+        hero_title_pre: "AI ENGINEER WHO SHIPS —",
+        hero_title_highlight: "REAL SYSTEMS",
+        hero_title_post: "FOR REAL USERS.",
+        hero_desc: "I build production AI apps, vision tools, and agent infrastructure — from lecture copilots to smart-city IoT. Looking for SWE, AI, and Forward Deployed Engineer internships.",
         btn_view_work: "▶ VIEW WORK",
         btn_contact: "CONTACT",
         status_player: "PLAYER",
         status_player_val: "ONLINE",
         status_mode: "MODE",
-        status_mode_val: "OPEN_TO_INTERN",
+        status_mode_val: "SWE_AI_FDE",
         status_map: "MAP",
         status_map_val: "MIAMI_FL",
         status_class: "CLASS",
-        status_class_val: "FULL_STACK",
+        status_class_val: "AI_ENGINEER",
         section_about_label: "ABOUT.ME",
-        about_desc_1: "I am a Computer Science student at Florida International University (3.80 GPA) with a journey rooted in solving real-world business challenges. My goal has always been to get into tech, and my professional role as a Sales Supervisor & Technical Operations Lead has been the key to supporting my education.",
-        about_desc_2: "This unique path has given me a powerful blend of skills: I not only understand how to architect a Java algorithm or a Python backend, but I also know how to lead a team and use data to drive real business results, like increasing customer satisfaction by over 80%. I thrive on building, leading, and learning.",
+        about_desc_1: "I'm an AI engineer based in Miami. I earned an A.S. in Computer Science at Miami Dade College (GPA 4.00, Jan–Dec 2024) and I'm continuing a B.S. in CS at Florida International University (GPA 3.76, expected Apr 2028). I ship production systems that mix full-stack software with LLMs, computer vision, and edge/IoT.",
+        about_desc_2: "I'm bilingual (English/Spanish) with Portuguese, and I'm looking for Software Engineering, AI/ML, and Forward Deployed Engineer internships. Recent work spans ProfSummarizer, PlateSpotter, open-source agent infra (nous-core / OpenRouter), and an AI smart-city kiosk on Raspberry Pi for the City of Coral Gables.",
         section_github: "GITHUB_ACTIVITY",
         section_projects_label: "LOAD_PROJECTS.DAT",
         filter_featured: "FEATURED",
@@ -253,10 +340,15 @@ const translations = {
         link_demo: "▶ PLAY DEMO",
         link_code: "VIEW SOURCE",
         link_details: "DETAILS ▶",
-        section_exp_label: "LEVEL_01: STRIDE_RENT_A_CAR",
-        section_exp_buo_label: "LEVEL_02: BUO",
+        section_exp_coral_label: "LEVEL_01: CITY_OF_CORAL_GABLES",
+        section_exp_label: "LEVEL_02: STRIDE_RENT_A_CAR",
+        section_exp_buo_label: "LEVEL_03: BUO",
+        job_title_coral: "SOFTWARE ENGINEER INTERN",
+        job_period_coral: "MAY — JUN 2026",
+        job_coral_desc_1: "▸ Engineered an AI-powered smart city kiosk proof of concept on a Raspberry Pi 5 in 3 weeks — a functional interactive IoT installation for the city.",
+        job_coral_desc_2: "▸ Built a state-driven Pygame frontend for the AI avatar lifecycle, triggering Gemini Veo-generated video states (Idle, Listening, Speaking) in real time.",
         job_title_stride: "SOFTWARE ENGINEER",
-        job_period_stride: "SEP 2022 — PRESENT",
+        job_period_stride: "DEC 2025 — MAY 2026",
         job_stride_summary: "Sole engineer for a 6-module ops dashboard (reservations, chargebacks, pricing) integrating two rental APIs on Supabase Postgres — used daily to manage 1,200+ vehicles and ~5,000 bookings/month for a 100-person company.",
         job_stride_desc_2: "▸ Cut chargeback response time by 90%, bringing the average from 30 minutes down to under 3 minutes.",
         job_stride_desc_3: "▸ Gave the team access to live fleet availability and reservation data for the first time.",
@@ -272,11 +364,15 @@ const translations = {
         section_skills_label: "INVENTORY.SYS",
         section_edu_label: "ACHIEVEMENTS_UNLOCKED",
         edu_school_short: "FIU — B.S. CS",
-        edu_details: "Expected Aug 2027 · GPA 3.80/4.00",
+        edu_details: "Expected Apr 2028 · GPA 3.76/4.00",
         edu_coursework: "Data Structures & Algorithms · OOP · Database Systems · Software Engineering · Networks · OS",
+        edu_clubs: "Clubs: INIT · Google Developer Group · AAVE · CASHI",
+        edu_mdc_school: "MDC — A.S. COMPUTER SCIENCE",
+        edu_mdc_details: "Jan — Dec 2024 · GPA 4.00/4.00",
+        edu_mdc_desc: "Associate of Science in Computer Science at Miami Dade College — foundation in programming, algorithms, and systems before transferring to FIU.",
         edu_platzi: "🏆 20+ PLATZI CERTS ↗",
         section_contact_label: "SEND_MESSAGE.EXE",
-        contact_desc: "I'm actively seeking challenging computer science and data internships. I'd love to chat about how my skills and experience can help your team.",
+        contact_desc: "I'm actively seeking Software Engineering, AI, and Forward Deployed Engineer internships. Let's talk about how I can ship with your team.",
         contact_name: "Your Name",
         contact_email: "Your Email",
         contact_message: "Your Message",
@@ -294,23 +390,23 @@ const translations = {
         nav_contact_short: "CONTACTO",
         nav_resume: "CV",
         hero_insert: "INSERTA MONEDA PARA CONTINUAR",
-        hero_title_pre: "CONSTRUYO SOFTWARE QUE LLEGA A PROD —",
-        hero_title_highlight: "100 JUGADORES",
-        hero_title_post: "LO USAN A DIARIO.",
-        hero_desc: "Cuatro años operando una empresa de alquiler de autos. Ahora reconstruyo el stack en lugar de pelear contra él — full-stack, con IA, enviado a usuarios reales.",
+        hero_title_pre: "INGENIERO DE IA QUE ENVÍA —",
+        hero_title_highlight: "SISTEMAS REALES",
+        hero_title_post: "A USUARIOS REALES.",
+        hero_desc: "Construyo apps de IA en producción, herramientas de visión e infraestructura de agentes — de copilots de clases a IoT de ciudad inteligente. Busco pasantías SWE, IA y Forward Deployed Engineer.",
         btn_view_work: "▶ VER TRABAJO",
         btn_contact: "CONTACTO",
         status_player: "JUGADOR",
         status_player_val: "EN LÍNEA",
         status_mode: "MODO",
-        status_mode_val: "BUSCA_INTERNSHIP",
+        status_mode_val: "SWE_IA_FDE",
         status_map: "MAPA",
         status_map_val: "MIAMI_FL",
         status_class: "CLASE",
-        status_class_val: "FULL_STACK",
+        status_class_val: "AI_ENGINEER",
         section_about_label: "SOBRE.MI",
-        about_desc_1: "Soy estudiante de Ciencias de la Computación en la Universidad Internacional de Florida (3.80 GPA) con una trayectoria arraigada en la resolución de desafíos empresariales del mundo real. Mi objetivo siempre ha sido entrar en la tecnología, y mi rol profesional como Supervisor de Ventas y Líder de Operaciones Técnicas ha sido clave para apoyar mi educación.",
-        about_desc_2: "Este camino único me ha dado una mezcla poderosa de habilidades: no solo entiendo cómo arquitectar un algoritmo en Java o un backend en Python, sino que también sé cómo liderar un equipo y usar datos para impulsar resultados empresariales reales, como aumentar la satisfacción del cliente en más del 80%. Prospero construyendo, liderando y aprendiendo.",
+        about_desc_1: "Soy ingeniero de IA en Miami. Obtuve el A.S. en Ciencias de la Computación en Miami Dade College (GPA 4.00, ene–dic 2024) y continúo el B.S. en CS en Florida International University (GPA 3.76, esperado abr 2028). Envío sistemas en producción que mezclan full-stack con LLMs, visión e IoT.",
+        about_desc_2: "Soy bilingüe (inglés/español) con portugués, y busco pasantías en Ingeniería de Software, IA/ML y Forward Deployed Engineer. Trabajo reciente: ProfSummarizer, PlateSpotter, infra open source de agentes (nous-core / OpenRouter) y un kiosco de ciudad inteligente con IA en Raspberry Pi para Coral Gables.",
         section_github: "ACTIVIDAD_GITHUB",
         section_projects_label: "CARGAR_PROYECTOS.DAT",
         filter_featured: "DESTACADOS",
@@ -320,10 +416,15 @@ const translations = {
         link_demo: "▶ VER DEMO",
         link_code: "VER CÓDIGO",
         link_details: "DETALLES ▶",
-        section_exp_label: "NIVEL_01: STRIDE_RENT_A_CAR",
-        section_exp_buo_label: "NIVEL_02: BUO",
+        section_exp_coral_label: "NIVEL_01: CITY_OF_CORAL_GABLES",
+        section_exp_label: "NIVEL_02: STRIDE_RENT_A_CAR",
+        section_exp_buo_label: "NIVEL_03: BUO",
+        job_title_coral: "PASANTE DE INGENIERÍA DE SOFTWARE",
+        job_period_coral: "MAY — JUN 2026",
+        job_coral_desc_1: "▸ Diseñé un POC de kiosco de ciudad inteligente con IA en Raspberry Pi 5 en 3 semanas — instalación IoT interactiva funcional.",
+        job_coral_desc_2: "▸ Programé un frontend Pygame con estados para el ciclo de vida del avatar de IA, disparando videos Gemini Veo (Idle, Listening, Speaking) en tiempo real.",
         job_title_stride: "INGENIERO DE SOFTWARE",
-        job_period_stride: "SEP 2022 — PRESENTE",
+        job_period_stride: "DIC 2025 — MAY 2026",
         job_stride_summary: "Único ingeniero de un panel de ops de 6 módulos (reservas, contracargos, precios) integrando dos APIs de alquiler en Supabase Postgres — usado a diario para gestionar 1,200+ vehículos y ~5,000 reservas/mes en una empresa de 100 personas.",
         job_stride_desc_2: "▸ Reduje el tiempo de respuesta de contracargos en un 90%, de 30 minutos a menos de 3.",
         job_stride_desc_3: "▸ Di al equipo acceso a datos de flota y reservas en vivo por primera vez.",
@@ -339,11 +440,15 @@ const translations = {
         section_skills_label: "INVENTARIO.SYS",
         section_edu_label: "LOGROS_DESBLOQUEADOS",
         edu_school_short: "FIU — B.S. CS",
-        edu_details: "Esperado Ago 2027 · GPA 3.80/4.00",
+        edu_details: "Esperado Abr 2028 · GPA 3.76/4.00",
         edu_coursework: "Estructuras de Datos y Algoritmos · POO · Bases de Datos · Ingeniería de Software · Redes · SO",
+        edu_clubs: "Clubes: INIT · Google Developer Group · AAVE · CASHI",
+        edu_mdc_school: "MDC — A.S. CIENCIAS DE LA COMPUTACIÓN",
+        edu_mdc_details: "Ene — Dic 2024 · GPA 4.00/4.00",
+        edu_mdc_desc: "Associate of Science en Ciencias de la Computación en Miami Dade College — base en programación, algoritmos y sistemas antes de transferir a FIU.",
         edu_platzi: "🏆 20+ CERTS PLATZI ↗",
         section_contact_label: "ENVIAR_MENSAJE.EXE",
-        contact_desc: "Busco activamente pasantías desafiantes en ciencias de la computación y datos. Me encantaría charlar sobre cómo mis habilidades pueden ayudar a su equipo.",
+        contact_desc: "Busco activamente pasantías en Ingeniería de Software, IA y Forward Deployed Engineer. Hablemos de cómo puedo aportar a su equipo.",
         contact_name: "Tu Nombre",
         contact_email: "Tu Correo",
         contact_message: "Tu Mensaje",
@@ -361,23 +466,23 @@ const translations = {
         nav_contact_short: "CONTATO",
         nav_resume: "CV",
         hero_insert: "INSIRA MOEDA PARA CONTINUAR",
-        hero_title_pre: "CONSTRUO SOFTWARE QUE VAI PARA PROD —",
-        hero_title_highlight: "100 JOGADORES",
-        hero_title_post: "USAM TODO DIA.",
-        hero_desc: "Quatro anos operando uma empresa de aluguel de carros. Agora reconstruo o stack em vez de lutar contra ele — full-stack, com IA, enviado a usuários reais.",
+        hero_title_pre: "ENGENHEIRO DE IA QUE ENVIA —",
+        hero_title_highlight: "SISTEMAS REAIS",
+        hero_title_post: "PARA USUÁRIOS REAIS.",
+        hero_desc: "Construo apps de IA em produção, ferramentas de visão e infra de agentes — de copilots de aula a IoT de cidade inteligente. Busco estágios SWE, IA e Forward Deployed Engineer.",
         btn_view_work: "▶ VER TRABALHO",
         btn_contact: "CONTATO",
         status_player: "JOGADOR",
         status_player_val: "ONLINE",
         status_mode: "MODO",
-        status_mode_val: "ABERTO_A_ESTAGIO",
+        status_mode_val: "SWE_IA_FDE",
         status_map: "MAPA",
         status_map_val: "MIAMI_FL",
         status_class: "CLASSE",
-        status_class_val: "FULL_STACK",
+        status_class_val: "AI_ENGINEER",
         section_about_label: "SOBRE.MIM",
-        about_desc_1: "Sou estudante de Ciência da Computação na Florida International University (3.80 GPA) com uma jornada enraizada na resolução de desafios de negócios do mundo real. Meu objetivo sempre foi entrar na tecnologia, e meu papel profissional como Supervisor de Vendas e Líder de Operações Técnicas foi fundamental para apoiar minha educação.",
-        about_desc_2: "Esse caminho único me deu uma mistura poderosa de habilidades: não apenas entendo como arquitetar um algoritmo Java ou um backend Python, mas também sei como liderar uma equipe e usar dados para impulsionar resultados reais de negócios, como aumentar a satisfação do cliente em mais de 80%. Eu prospero construindo, liderando e aprendendo.",
+        about_desc_1: "Sou engenheiro de IA em Miami. Concluí o A.S. em Ciência da Computação no Miami Dade College (GPA 4.00, jan–dez 2024) e continuo o B.S. em CS na Florida International University (GPA 3.76, previsto abr 2028). Entrego sistemas em produção que misturam full-stack com LLMs, visão e IoT.",
+        about_desc_2: "Sou bilíngue (inglês/espanhol) com português, e busco estágios em Engenharia de Software, IA/ML e Forward Deployed Engineer. Trabalho recente: ProfSummarizer, PlateSpotter, infra open source de agentes (nous-core / OpenRouter) e um quiosque de cidade inteligente com IA em Raspberry Pi para Coral Gables.",
         section_github: "ATIVIDADE_GITHUB",
         section_projects_label: "CARREGAR_PROJETOS.DAT",
         filter_featured: "DESTAQUE",
@@ -387,10 +492,15 @@ const translations = {
         link_demo: "▶ VER DEMO",
         link_code: "VER CÓDIGO",
         link_details: "DETALHES ▶",
-        section_exp_label: "FASE_01: STRIDE_RENT_A_CAR",
-        section_exp_buo_label: "FASE_02: BUO",
+        section_exp_coral_label: "FASE_01: CITY_OF_CORAL_GABLES",
+        section_exp_label: "FASE_02: STRIDE_RENT_A_CAR",
+        section_exp_buo_label: "FASE_03: BUO",
+        job_title_coral: "ESTAGIÁRIO DE ENGENHARIA DE SOFTWARE",
+        job_period_coral: "MAI — JUN 2026",
+        job_coral_desc_1: "▸ Engenhei um POC de quiosque de cidade inteligente com IA em Raspberry Pi 5 em 3 semanas — instalação IoT interativa funcional.",
+        job_coral_desc_2: "▸ Programei um frontend Pygame com estados para o ciclo de vida do avatar de IA, disparando vídeos Gemini Veo (Idle, Listening, Speaking) em tempo real.",
         job_title_stride: "ENGENHEIRO DE SOFTWARE",
-        job_period_stride: "SET 2022 — PRESENTE",
+        job_period_stride: "DEZ 2025 — MAI 2026",
         job_stride_summary: "Único engenheiro de um painel de ops com 6 módulos (reservas, estornos, preços) integrando duas APIs de aluguel no Supabase Postgres — usado diariamente para gerenciar 1.200+ veículos e ~5.000 reservas/mês em uma empresa de 100 pessoas.",
         job_stride_desc_2: "▸ Reduzi o tempo de resposta a estornos em 90%, de 30 minutos para menos de 3.",
         job_stride_desc_3: "▸ Dei à equipe acesso a dados de frota e reservas ao vivo pela primeira vez.",
@@ -406,11 +516,15 @@ const translations = {
         section_skills_label: "INVENTARIO.SYS",
         section_edu_label: "CONQUISTAS_DESBLOQUEADAS",
         edu_school_short: "FIU — B.S. CS",
-        edu_details: "Previsto Ago 2027 · GPA 3.80/4.00",
+        edu_details: "Previsto Abr 2028 · GPA 3.76/4.00",
         edu_coursework: "Estruturas de Dados e Algoritmos · POO · Bancos de Dados · Engenharia de Software · Redes · SO",
+        edu_clubs: "Clubes: INIT · Google Developer Group · AAVE · CASHI",
+        edu_mdc_school: "MDC — A.S. CIÊNCIA DA COMPUTAÇÃO",
+        edu_mdc_details: "Jan — Dez 2024 · GPA 4.00/4.00",
+        edu_mdc_desc: "Associate of Science em Ciência da Computação no Miami Dade College — base em programação, algoritmos e sistemas antes da transferência para a FIU.",
         edu_platzi: "🏆 20+ CERTS PLATZI ↗",
         section_contact_label: "ENVIAR_MENSAGEM.EXE",
-        contact_desc: "Estou buscando ativamente estágios desafiadores em ciência da computação e dados. Adoraria conversar sobre como minhas habilidades podem ajudar sua equipe.",
+        contact_desc: "Estou buscando ativamente estágios em Engenharia de Software, IA e Forward Deployed Engineer. Vamos conversar sobre como posso entregar com o seu time.",
         contact_name: "Seu Nome",
         contact_email: "Seu E-mail",
         contact_message: "Sua Mensagem",
@@ -436,107 +550,105 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function setupEventListeners() {
-    const langSelector = document.getElementById('lang-selector');
-    if (langSelector) {
-        langSelector.addEventListener('change', (e) => {
-            currentLang = e.target.value;
-            updateLanguage();
+    document.getElementById('lang-selector').addEventListener('change', (e) => {
+        currentLang = e.target.value;
+        updateLanguage();
+        renderProjects();
+    });
+
+    document.querySelectorAll('.project-filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            currentCategory = button.dataset.category;
             renderProjects();
+        });
+    });
+
+    const mobileBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
     }
-
-    document.querySelectorAll('.project-filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            currentCategory = btn.dataset.category;
-            renderProjects();
-        });
-    });
-}
-
-function updateFilterButtons() {
-    document.querySelectorAll('.project-filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.category === currentCategory);
-    });
 }
 
 function getFilteredProjects() {
     return projects.filter(p => {
-        if (currentCategory === 'featured') return p.featured === true;
         if (currentCategory === 'all') return true;
+        if (currentCategory === 'featured') return p.featured === true;
         return p.category === currentCategory;
     });
 }
 
 function thumbHtml(project, heightPx) {
-    const label = (project.title.en || project.id).toUpperCase();
-    const fallback = `[ ${label} ]`;
+    const label = (project.title[currentLang] || project.title.en || '').toUpperCase();
+    const fallback = `<span style="opacity:0.45;">[ ${label} ]</span>`;
     if (project.image) {
         return `<div class="thumb" style="height:${heightPx}px;">
             <img src="${project.image}" alt="${label}" loading="lazy"
-                onerror="this.style.display='none';this.parentElement.textContent='${fallback.replace(/'/g, "\\'")}';" />
+                onerror="this.style.display='none';this.parentElement.innerHTML='${fallback.replace(/'/g, "\\'")}';" />
         </div>`;
     }
     return `<div class="thumb" style="height:${heightPx}px;">${fallback}</div>`;
 }
 
 function tagsHtml(tags, compact) {
-    const cls = compact
-        ? 'tag-chip'
-        : 'tag-chip';
-    const style = compact ? 'font-size:12px;padding:3px 8px;' : '';
-    return tags.map(tag =>
-        `<span class="${cls}" style="${style}">${tag}</span>`
-    ).join('');
+    const cls = compact ? 'tag-chip' : 'tag-chip';
+    const style = compact ? 'font-size:13px;padding:3px 8px;' : '';
+    return tags.map(t => `<span class="${cls}" style="${style}">${t}</span>`).join('');
 }
 
 function linksHtml(project, featured) {
     const t = translations[currentLang];
     return project.links.map((link, i) => {
-        const label = link.kind === 'demo'
-            ? t.link_demo
+        const sep = i > 0 ? '<span style="color:#4a4a63;margin:0 8px;">·</span>' : '';
+        const label = link.kind === 'demo' ? t.link_demo
             : (featured ? t.link_code : t.link_details);
-        const sep = i > 0 ? `<span style="color:#4a4a63;margin:0 10px;">/</span>` : '';
         return `${sep}<a href="${link.url}" target="_blank" rel="noopener noreferrer" style="color:#ffe600;font-size:${featured ? 16 : 15}px;">${label}</a>`;
     }).join('');
 }
 
 function renderFeaturedCard(project) {
-    const title = project.title[currentLang];
-    const description = project.description[currentLang];
+    const t = translations[currentLang];
     return `
-        <div class="arcade-border-lg bg-arcade-panel stagger-item">
+        <div class="arcade-border-lg bg-arcade-panel overflow-hidden stagger-item">
             ${thumbHtml(project, 340)}
-            <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <div class="flex justify-between items-baseline gap-3 flex-wrap">
-                        <h3 class="font-pixel text-[14px] md:text-[16px] text-white m-0">${title}</h3>
-                        <span class="text-[16px] text-arcade-muted">${project.year || ''}</span>
-                    </div>
-                    <p class="text-arcade-soft text-[17px] leading-[1.6] mt-4 mb-0">${description}</p>
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start gap-4 flex-wrap">
+                    <h3 class="font-pixel text-[14px] md:text-[16px] text-white m-0 leading-relaxed">
+                        ${project.title[currentLang] || project.title.en}
+                    </h3>
+                    <span class="text-arcade-muted text-[15px] shrink-0">${project.year}</span>
                 </div>
-                <div>
-                    <div class="flex flex-wrap gap-2 mb-5">
-                        ${tagsHtml(project.tags, false)}
-                    </div>
-                    <div>${linksHtml(project, true)}</div>
+                <p class="text-arcade-soft text-[17px] leading-[1.55] mt-4 mb-5 max-w-[720px]">
+                    ${project.description[currentLang] || project.description.en}
+                </p>
+                <div class="flex flex-wrap gap-2 mb-5">
+                    ${tagsHtml(project.tags, false)}
                 </div>
+                <div>${linksHtml(project, true)}</div>
             </div>
         </div>
     `;
 }
 
 function renderGridCard(project, index) {
-    const title = project.title[currentLang];
-    const description = project.description[currentLang];
     return `
-        <div class="arcade-border bg-arcade-panel stagger-item flex flex-col" style="transition-delay:${index * 0.06}s">
+        <div class="arcade-border bg-arcade-panel overflow-hidden stagger-item" style="transition-delay:${Math.min(index * 60, 360)}ms;">
             ${thumbHtml(project, 160)}
-            <div class="p-[18px] flex flex-col flex-grow">
-                <div class="flex justify-between items-baseline gap-2">
-                    <h4 class="font-pixel text-[11px] text-white m-0 leading-relaxed">${title}</h4>
-                    <span class="text-[14px] text-arcade-muted shrink-0">${project.year || ''}</span>
+            <div class="p-4">
+                <div class="flex justify-between items-start gap-2 mb-2">
+                    <h3 class="font-pixel text-[11px] text-white m-0 leading-relaxed">
+                        ${project.title[currentLang] || project.title.en}
+                    </h3>
+                    <span class="text-arcade-dim text-[13px] shrink-0">${project.year}</span>
                 </div>
-                <p class="text-arcade-soft text-[15px] leading-[1.5] mt-2.5 mb-3.5 flex-grow">${description}</p>
+                <p class="text-arcade-muted text-[15px] leading-[1.45] mb-3.5" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">
+                    ${project.description[currentLang] || project.description.en}
+                </p>
                 <div class="flex flex-wrap gap-1.5 mb-3.5">
                     ${tagsHtml(project.tags, true)}
                 </div>
@@ -554,7 +666,7 @@ function renderProjects() {
     updateFilterButtons();
 
     const filtered = getFilteredProjects();
-    const featured = filtered.find(p => p.id === 'plate-spotter') || filtered.find(p => p.featured) || filtered[0];
+    const featured = filtered.find(p => p.id === 'prof-summarizer') || filtered.find(p => p.featured) || filtered[0];
     const rest = filtered.filter(p => p !== featured);
 
     if (featuredEl) {
@@ -578,8 +690,6 @@ function updateLanguage() {
         if (!t[key]) return;
         if (key === 'footer_text') {
             element.innerHTML = t[key];
-        } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-            element.placeholder = t[key];
         } else {
             element.textContent = t[key];
         }
@@ -589,6 +699,27 @@ function updateLanguage() {
         const key = element.getAttribute('data-i18n-btn');
         if (t[key]) element.textContent = t[key];
     });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (t[key]) element.placeholder = t[key];
+    });
+}
+
+function updateFilterButtons() {
+    document.querySelectorAll('.project-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.category === currentCategory);
+    });
+}
+
+function isNearViewport(el) {
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    return rect.top < window.innerHeight + 80;
+}
+
+function revealStaggerItems(root) {
+    root.querySelectorAll('.stagger-item').forEach(item => item.classList.add('visible'));
 }
 
 function initScrollAnimations() {
@@ -596,29 +727,11 @@ function initScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-}
-
-function initBackToTop() {
-    const btn = document.getElementById('back-to-top');
-    if (!btn) return;
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-            btn.classList.add('opacity-100', 'translate-y-0');
-        } else {
-            btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-            btn.classList.remove('opacity-100', 'translate-y-0');
-        }
-    }, { passive: true });
-
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
 function initStaggerAnimations() {
@@ -626,7 +739,6 @@ function initStaggerAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 revealStaggerItems(entry.target);
-                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.08 });
@@ -637,82 +749,67 @@ function initStaggerAnimations() {
     });
 }
 
-function revealStaggerItems(container) {
-    const items = container.querySelectorAll('.stagger-item');
-    items.forEach((item, i) => {
-        setTimeout(() => item.classList.add('visible'), i * 70);
+function initBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+        btn.style.opacity = window.scrollY > 400 ? '1' : '0';
+        btn.style.pointerEvents = window.scrollY > 400 ? 'auto' : 'none';
     });
-}
-
-function isNearViewport(element) {
-    if (!element) return false;
-    const rect = element.getBoundingClientRect();
-    return rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
 function initScrollProgress() {
     const bar = document.getElementById('scroll-progress');
     if (!bar) return;
     window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.width = docHeight > 0 ? (scrollTop / docHeight * 100) + '%' : '0%';
-    }, { passive: true });
+        const doc = document.documentElement;
+        const max = doc.scrollHeight - doc.clientHeight;
+        bar.style.width = max > 0 ? `${(doc.scrollTop / max) * 100}%` : '0%';
+    });
 }
 
 function initActiveNav() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('header nav a[href^="#"]');
+    const sections = ['hero', 'about', 'work', 'experience', 'skills', 'education', 'contact'];
+    const links = document.querySelectorAll('a.nav-pill[href^="#"]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.id;
+            links.forEach(link => {
+                link.classList.toggle('nav-link-active', link.getAttribute('href') === `#${id}`);
+            });
+        });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
 
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const top = section.offsetTop - 120;
-            if (window.scrollY >= top) current = section.getAttribute('id');
-        });
-        navLinks.forEach(link => {
-            link.classList.remove('nav-link-active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('nav-link-active');
-            }
-        });
-    }, { passive: true });
+    sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+    });
 }
 
 function initContactForm() {
     const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
     if (!form) return;
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const btn = form.querySelector('button[type="submit"]');
-        const status = document.getElementById('form-status');
-
-        btn.disabled = true;
-        btn.textContent = '...';
-
+        if (status) status.textContent = 'Sending...';
         try {
             const res = await fetch(form.action, {
                 method: 'POST',
                 body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
+                headers: { Accept: 'application/json' }
             });
-
             if (res.ok) {
                 form.reset();
-                status.textContent = "Message sent! I'll get back to you soon.";
-                status.className = 'mt-4 text-[16px] text-arcade-green';
+                if (status) status.textContent = 'Message sent. Thanks!';
             } else {
-                status.textContent = 'Something went wrong. Please try emailing me directly.';
-                status.className = 'mt-4 text-[16px] text-arcade-pink';
+                if (status) status.textContent = 'Something went wrong. Try email instead.';
             }
         } catch {
-            status.textContent = 'Something went wrong. Please try emailing me directly.';
-            status.className = 'mt-4 text-[16px] text-arcade-pink';
+            if (status) status.textContent = 'Something went wrong. Try email instead.';
         }
-
-        btn.disabled = false;
-        const t = translations[currentLang];
-        btn.textContent = t.btn_send || '▶ SEND MESSAGE';
     });
 }
