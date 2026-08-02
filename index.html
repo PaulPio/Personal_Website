@@ -5,1096 +5,584 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
-    <title>Paul Piotrowski | Computer Science Student & AI Engineer</title>
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>">
+    <title>Paul Piotrowski — AI Engineer</title>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        pixel: ['"Press Start 2P"', 'monospace'],
+                        arcade: ['VT323', 'monospace'],
                     },
+                    colors: {
+                        arcade: {
+                            bg: '#0a0a14',
+                            panel: '#12121e',
+                            panel2: '#1a1a26',
+                            yellow: '#ffe600',
+                            cyan: '#00e5ff',
+                            pink: '#ff2e88',
+                            green: '#39ff88',
+                            muted: '#9a9ab8',
+                            soft: '#c4c4dd',
+                            dim: '#4a4a63',
+                        }
+                    }
                 }
             }
         }
     </script>
 
-    <!-- Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
-    <!-- Vercel Analytics -->
     <script>
         window.va = window.va || function () { (window.va.q = window.va.q || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
 
     <style>
-        /* Scroll progress bar */
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: #0a0a14;
+            color: #c4c4dd;
+            font-family: 'VT323', monospace;
+        }
+
+        a { text-decoration: none; }
+
         #scroll-progress {
-            position: fixed; top: 0; left: 0; height: 4px; z-index: 99999;
-            background: linear-gradient(90deg, #2563eb, #7c3aed, #ec4899);
-            width: 0%; transition: none;
+            position: fixed;
+            top: 0; left: 0;
+            height: 4px;
+            z-index: 99999;
+            background: linear-gradient(90deg, #ffe600, #ff2e88, #00e5ff);
+            width: 0%;
             pointer-events: none;
         }
 
-        /* Scroll fade-in animations */
+        @keyframes blink-cursor {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        .blink-cursor { animation: blink-cursor 1s steps(1) infinite; }
+
+        .arcade-border {
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0 #000;
+        }
+        .arcade-border-lg {
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0 #000;
+        }
+        .arcade-btn {
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0 #000;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+        .arcade-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000;
+        }
+        .arcade-btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0 0 0 #000;
+        }
+
+        .nav-pill {
+            background: #1a1a26;
+            border: 2px solid #000;
+            color: #00e5ff;
+            font-size: 16px;
+            padding: 6px 14px;
+            font-family: 'VT323', monospace;
+            transition: background 0.15s, color 0.15s;
+        }
+        .nav-pill:hover,
+        .nav-pill.nav-link-active {
+            background: #00e5ff;
+            color: #0a0a14;
+        }
+
+        .section-label {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 14px;
+            color: #ffe600;
+            margin: 0 0 28px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3px;
+            background: #000;
+            border: 3px solid #000;
+        }
+        .stat-cell {
+            background: #12121e;
+            padding: 16px;
+        }
+
+        .thumb {
+            width: 100%;
+            background: #1a1a26;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a4a63;
+            font-family: 'VT323', monospace;
+            font-size: 16px;
+            border-bottom: 3px solid #000;
+            overflow: hidden;
+        }
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tag-chip {
+            background: #1a1a26;
+            border: 2px solid #000;
+            color: #00e5ff;
+            font-size: 14px;
+            padding: 5px 12px;
+            font-family: 'VT323', monospace;
+        }
+
+        .skill-primary {
+            background: #ff2e88;
+            color: #0a0a14;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            padding: 12px 16px;
+            border: 2px solid #000;
+            box-shadow: 3px 3px 0 #000;
+        }
+        .skill-secondary {
+            background: #1a1a26;
+            color: #9a9ab8;
+            font-size: 16px;
+            padding: 12px 16px;
+            border: 2px solid #000;
+            font-family: 'VT323', monospace;
+        }
+
+        .filter-btn {
+            background: #1a1a26;
+            border: 2px solid #000;
+            color: #9a9ab8;
+            font-family: 'VT323', monospace;
+            font-size: 16px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+        }
+        .filter-btn:hover { color: #00e5ff; }
+        .filter-btn.active {
+            background: #ffe600;
+            color: #0a0a14;
+            box-shadow: 3px 3px 0 #000;
+        }
+
         .fade-in-up {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(24px);
+            transition: opacity 0.55s ease-out, transform 0.55s ease-out;
         }
         .fade-in-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Staggered children */
         .stagger-item {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            transform: translateY(20px);
+            transition: opacity 0.45s ease-out, transform 0.45s ease-out;
         }
         .stagger-item.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Hero animated gradient background */
-        .hero-gradient {
-            background: linear-gradient(-45deg, #1e3a5f, #0f172a, #1e1b4b, #0c1222);
-            background-size: 400% 400%;
-            animation: hero-bg-shift 12s ease infinite;
-        }
-        @keyframes hero-bg-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Floating particles */
-        .hero-particles {
-            position: absolute; inset: 0; overflow: hidden; pointer-events: none;
-        }
-        .hero-particles span {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(96, 165, 250, 0.35);
-            box-shadow: 0 0 6px rgba(96, 165, 250, 0.3);
-            animation: float-particle linear infinite;
-        }
-        @keyframes float-particle {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-        }
-
-        /* Typewriter cursor */
-        .typewriter-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1em;
-            background: #60a5fa;
-            margin-left: 4px;
-            animation: blink 1s step-end infinite;
-            vertical-align: text-bottom;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-        /* Animated gradient ring around photo */
-        .photo-ring-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-        .photo-ring-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: -6px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, #2563eb, #7c3aed, #ec4899, #f59e0b, #2563eb);
-            animation: spin-ring 4s linear infinite;
-            z-index: 0;
-        }
-        .photo-ring-wrapper::after {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        .photo-ring-inner {
-            position: relative;
-            z-index: 2;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-        @keyframes spin-ring {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #2563eb, #7c3aed, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .dark .gradient-text {
-            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-
-        /* Glassmorphism project cards */
-        .glass-card {
-            position: relative;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-        }
-        .dark .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            border-color: rgba(100, 116, 139, 0.3);
-        }
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 2px;
-            background: linear-gradient(135deg, transparent, transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            transition: background 0.4s ease;
-            pointer-events: none;
-        }
-        .glass-card:hover::before {
-            background: linear-gradient(135deg, #2563eb, #7c3aed, #ec4899);
-        }
-        .glass-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
-        }
-        .dark .glass-card:hover {
-            box-shadow: 0 20px 60px rgba(96, 165, 250, 0.1);
-        }
-
-        /* Wave dividers */
-        .wave-divider {
-            position: relative;
-            overflow: hidden;
-            line-height: 0;
-        }
-        .wave-divider svg {
-            display: block;
+        .arcade-input {
             width: 100%;
-            height: 60px;
+            background: #1a1a26;
+            border: 3px solid #000;
+            color: #fff;
+            font-family: 'VT323', monospace;
+            font-size: 18px;
+            padding: 12px 16px;
+            outline: none;
+        }
+        .arcade-input:focus {
+            border-color: #00e5ff;
+        }
+        .arcade-input::placeholder { color: #4a4a63; }
+
+        #lang-selector {
+            background: #1a1a26;
+            border: 2px solid #000;
+            color: #00e5ff;
+            font-family: 'VT323', monospace;
+            font-size: 16px;
+            padding: 6px 10px;
         }
 
-        /* Stat counters */
-        .stat-number {
-            font-variant-numeric: tabular-nums;
-        }
-
-        /* Skill bar animation */
-        .skill-bar-fill {
-            width: 0;
-            transition: width 1s ease-in-out;
-        }
-
-        /* Back to top button */
-        #back-to-top {
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        /* Active nav link */
-        .nav-link-active {
-            color: #2563eb !important;
-        }
-        .dark .nav-link-active {
-            color: #60a5fa !important;
-        }
-
-        /* Magnetic button hover */
-        .magnetic-btn {
-            transition: transform 0.2s ease;
-        }
-
-        /* Enhanced hero text reveal */
-        .hero-text-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: text-reveal 0.8s ease forwards;
-        }
-        .hero-text-reveal:nth-child(2) { animation-delay: 0.15s; }
-        .hero-text-reveal:nth-child(3) { animation-delay: 0.3s; }
-        .hero-text-reveal:nth-child(4) { animation-delay: 0.45s; }
-        @keyframes text-reveal {
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .stat-grid { grid-template-columns: repeat(2, 1fr); }
+            .section-label { font-size: 11px; line-height: 1.6; }
+            header .brand { font-size: 11px !important; }
         }
     </style>
 </head>
 
-<body class="font-['Inter'] bg-slate-50 text-gray-800">
+<body class="font-arcade bg-arcade-bg text-arcade-soft">
 
-    <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
 
-    <!-- Header & Navigation -->
-    <header
-        class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-colors duration-300">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400 transition-colors">Paul
-                Piotrowski</a>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 flex flex-wrap justify-between items-center gap-4 px-5 md:px-10 py-5 border-b-[3px] border-black bg-arcade-panel">
+        <a href="#hero" class="brand font-pixel text-[14px] text-arcade-yellow">PAUL_P.EXE</a>
 
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#about"
-                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    data-i18n="nav_about">About</a>
-                <a href="#education"
-                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    data-i18n="nav_education">Education</a>
-
-                <!-- Projects Dropdown -->
-                <div class="relative group z-50">
-                    <a href="#projects"
-                        class="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none py-2">
-                        <span data-i18n="nav_projects">Projects</span>
-                        <svg class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform duration-200"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </a>
-                    <div
-                        class="absolute left-0 mt-0 w-48 bg-white dark:bg-gray-800 rounded-md shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left z-50 border border-gray-100 dark:border-gray-700">
-                        <a href="#projects"
-                            class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400"
-                            data-category="featured" data-i18n="filter_featured">Featured Projects</a>
-                        <a href="#projects"
-                            class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400"
-                            data-category="all" data-i18n="filter_all">All Projects</a>
-                        <a href="#projects"
-                            class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400"
-                            data-category="personal" data-i18n="filter_personal">Personal Projects</a>
-                        <a href="#projects"
-                            class="project-filter block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400"
-                            data-category="school" data-i18n="filter_school">School Assignments</a>
-                    </div>
-                </div>
-
-                <a href="#experience"
-                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    data-i18n="nav_experience">Experience</a>
-                <a href="#skills"
-                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    data-i18n="nav_skills">Skills</a>
-                <a href="Paul_Piotrowski_Resume.pdf" target="_blank"
-                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    data-i18n="nav_resume">Resume</a>
-
-                <!-- Social Links -->
-                <a href="https://www.linkedin.com/in/paul-pio/" target="_blank"
-                    class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    title="LinkedIn">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                </a>
-                <a href="https://github.com/PaulPio" target="_blank"
-                    class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                    title="GitHub">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-
-                <!-- Controls -->
-                <div class="flex items-center space-x-3 border-l pl-4 border-gray-300 dark:border-gray-600">
-                    <!-- Theme Toggle -->
-                    <button id="theme-toggle"
-                        class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 transition-colors">
-                        <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                        </svg>
-                        <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 011.414-1.414zM12 10a2 2 0 100 4 2 2 0 000-4z">
-                            </path>
-                        </svg>
-                    </button>
-
-                    <!-- Language Selector -->
-                    <select id="lang-selector"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="en">EN</option>
-                        <option value="es">ES</option>
-                        <option value="pt">PT</option>
-                    </select>
-                </div>
-
-                <a href="mailto:paulrpiotrowski@gmail.com"
-                    class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors"
-                    data-i18n="nav_contact">
-                    Contact Me
-                </a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-600 dark:text-gray-300">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
-            </button>
+        <nav class="hidden md:flex flex-wrap gap-3 items-center">
+            <a href="#hero" class="nav-pill" data-i18n="nav_home">HOME</a>
+            <a href="#about" class="nav-pill" data-i18n="nav_about">ABOUT</a>
+            <a href="#work" class="nav-pill" data-i18n="nav_work">WORK</a>
+            <a href="#experience" class="nav-pill" data-i18n="nav_exp">EXP</a>
+            <a href="#skills" class="nav-pill" data-i18n="nav_skills">SKILLS</a>
+            <a href="#education" class="nav-pill" data-i18n="nav_edu">EDU</a>
+            <a href="#contact" class="nav-pill" data-i18n="nav_contact_short">CONTACT</a>
         </nav>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="hidden md:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-800 transition-colors duration-300">
-            <a href="#about"
-                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
-                data-i18n="nav_about">About</a>
-            <a href="#education"
-                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
-                data-i18n="nav_education">Education</a>
-            <div class="px-6 py-2 text-gray-600 dark:text-gray-300 font-semibold" data-i18n="nav_projects">Projects
-            </div>
-            <a href="#projects"
-                class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
-                data-category="featured" data-i18n="filter_featured">Featured</a>
-            <a href="#projects"
-                class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
-                data-category="all" data-i18n="filter_all">All</a>
-            <a href="#projects"
-                class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
-                data-category="personal" data-i18n="filter_personal">Personal</a>
-            <a href="#projects"
-                class="project-filter block pl-10 pr-6 py-2 text-sm text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
-                data-category="school" data-i18n="filter_school">School</a>
-            <a href="#experience"
-                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
-                data-i18n="nav_experience">Experience</a>
-            <a href="#skills"
-                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
-                data-i18n="nav_skills">Skills</a>
+        <div class="flex items-center gap-3">
+            <select id="lang-selector" aria-label="Language">
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+                <option value="pt">PT</option>
+            </select>
             <a href="Paul_Piotrowski_Resume.pdf" target="_blank"
-                class="block px-6 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
-                data-i18n="nav_resume">Resume</a>
-            <a href="mailto:paulrpiotrowski@gmail.com"
-                class="block px-6 py-3 text-blue-600 font-semibold hover:bg-gray-50 dark:hover:bg-gray-900"
-                data-i18n="nav_contact">Contact Me</a>
-            <div class="flex items-center gap-5 px-6 py-3 border-t border-gray-100 dark:border-gray-800">
-                <a href="https://www.linkedin.com/in/paul-pio/" target="_blank"
-                    class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2 text-sm font-medium">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/PaulPio" target="_blank"
-                    class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
-                    </svg>
-                    GitHub
+                class="arcade-btn hidden sm:inline-block bg-arcade-yellow text-arcade-bg font-pixel text-[10px] px-4 py-2.5">
+                ▶ <span data-i18n="nav_resume">RESUME</span>
+            </a>
+            <button id="mobile-menu-btn" class="md:hidden nav-pill" aria-label="Menu">☰</button>
+        </div>
+
+        <div id="mobile-menu" class="hidden w-full md:hidden border-t-[3px] border-black pt-4 mt-1">
+            <div class="flex flex-col gap-2">
+                <a href="#hero" class="nav-pill" data-i18n="nav_home">HOME</a>
+                <a href="#about" class="nav-pill" data-i18n="nav_about">ABOUT</a>
+                <a href="#work" class="nav-pill" data-i18n="nav_work">WORK</a>
+                <a href="#experience" class="nav-pill" data-i18n="nav_exp">EXP</a>
+                <a href="#skills" class="nav-pill" data-i18n="nav_skills">SKILLS</a>
+                <a href="#education" class="nav-pill" data-i18n="nav_edu">EDU</a>
+                <a href="#contact" class="nav-pill" data-i18n="nav_contact_short">CONTACT</a>
+                <a href="Paul_Piotrowski_Resume.pdf" target="_blank"
+                    class="arcade-btn bg-arcade-yellow text-arcade-bg font-pixel text-[10px] px-4 py-3 text-center">
+                    ▶ <span data-i18n="nav_resume">RESUME</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-
-        <!-- Hero Section -->
-        <section id="hero" class="hero-gradient relative overflow-hidden min-h-[90vh] flex items-center">
-            <!-- Floating particles -->
-            <div class="hero-particles" id="hero-particles"></div>
-            <div class="container mx-auto px-6 py-24 md:py-32 flex flex-col md:flex-row items-center relative z-10">
-                <div class="md:w-3/5 text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight hero-text-reveal"
-                        data-i18n="hero_greeting" id="hero-greeting">
-                        Hi, I'm <span style="background:linear-gradient(135deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Paul Piotrowski</span><span class="typewriter-cursor"></span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-blue-400 font-semibold mt-4 hero-text-reveal"
-                        data-i18n="hero_title">
-                        Computer Science Student & AI Engineer
-                    </p>
-                    <p class="mt-6 text-lg text-gray-300 max-w-xl hero-text-reveal" data-i18n="hero_desc">
-                        I build data-driven, full-stack applications that bridge the gap between business needs and
-                        intelligent tech solutions. I'm passionate about solving complex problems and thrive in
-                        fast-paced environments.
-                    </p>
-                    <div
-                        class="mt-10 flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4 hero-text-reveal">
-                        <a href="#projects"
-                            class="magnetic-btn bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 hover:scale-105"
-                            data-i18n="btn_view_projects">
-                            View My Projects
-                        </a>
-                        <a href="https://github.com/PaulPio" target="_blank" rel="noopener noreferrer"
-                            class="magnetic-btn bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300 hover:scale-105"
-                            data-i18n="btn_github">
-                            GitHub Profile
-                        </a>
-                    </div>
+        <!-- Hero -->
+        <section id="hero" class="px-5 md:px-10 py-16 md:py-[72px] border-b-[3px] border-black">
+            <p class="text-[18px] text-arcade-cyan m-0 mb-[18px]">
+                &gt; <span data-i18n="hero_insert">INSERT COIN TO CONTINUE</span><span class="blink-cursor">_</span>
+            </p>
+            <h1 class="font-pixel text-[22px] md:text-[30px] leading-[1.6] text-white m-0 max-w-[820px]">
+                <span data-i18n="hero_title_pre">AI ENGINEER WHO SHIPS —</span>
+                <span class="text-arcade-pink" data-i18n="hero_title_highlight">REAL SYSTEMS</span>
+                <span data-i18n="hero_title_post">FOR REAL USERS.</span>
+            </h1>
+            <p class="text-arcade-muted text-[19px] leading-[1.6] mt-[26px] max-w-[640px] m-0" data-i18n="hero_desc">
+                I build production AI apps, vision tools, and agent infrastructure — from lecture copilots to smart-city IoT. Looking for SWE, AI, and Forward Deployed Engineer internships.
+            </p>
+            <div class="flex flex-wrap gap-4 mt-9">
+                <a href="#work"
+                    class="arcade-btn bg-arcade-pink text-white font-pixel text-[11px] px-[22px] py-4"
+                    data-i18n="btn_view_work">▶ VIEW WORK</a>
+                <a href="#contact"
+                    class="arcade-btn bg-arcade-panel text-arcade-cyan font-pixel text-[11px] px-[22px] py-4"
+                    data-i18n="btn_contact">CONTACT</a>
+            </div>
+            <div class="stat-grid mt-[52px] fade-in-up">
+                <div class="stat-cell">
+                    <div class="text-[14px] text-arcade-muted" data-i18n="status_player">PLAYER</div>
+                    <div class="font-pixel text-[12px] text-arcade-green mt-2" data-i18n="status_player_val">ONLINE</div>
                 </div>
-                <div class="md:w-2/5 mt-10 md:mt-0 flex justify-center hero-text-reveal">
-                    <div class="photo-ring-wrapper w-64 h-64 md:w-80 md:h-80">
-                        <div class="photo-ring-inner w-full h-full shadow-2xl">
-                            <img src="profile pic.jpg"
-                                alt="Paul Piotrowski"
-                                class="w-full h-full object-cover"
-                                onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center\'><span class=\'text-white text-6xl font-bold\'>PP</span></div>'" />
-                        </div>
-                    </div>
+                <div class="stat-cell">
+                    <div class="text-[14px] text-arcade-muted" data-i18n="status_mode">MODE</div>
+                    <div class="font-pixel text-[10px] md:text-[12px] text-arcade-yellow mt-2 leading-relaxed" data-i18n="status_mode_val">SWE_AI_FDE</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="text-[14px] text-arcade-muted" data-i18n="status_map">MAP</div>
+                    <div class="font-pixel text-[12px] text-white mt-2" data-i18n="status_map_val">MIAMI_FL</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="text-[14px] text-arcade-muted" data-i18n="status_class">CLASS</div>
+                    <div class="font-pixel text-[10px] md:text-[12px] text-arcade-cyan mt-2" data-i18n="status_class_val">AI_ENGINEER</div>
                 </div>
             </div>
         </section>
 
-        <!-- Wave divider: Hero → About -->
-        <div class="wave-divider bg-slate-50 dark:bg-gray-800">
-            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="fill-[#0f172a]">
-                <path d="M0,0 C360,60 1080,0 1440,50 L1440,0 L0,0 Z"></path>
-            </svg>
-        </div>
+        <!-- About + GitHub -->
+        <section id="about" class="px-5 md:px-10 py-16 border-b-[3px] border-black">
+            <p class="section-label fade-in-up">&gt; <span data-i18n="section_about_label">ABOUT.ME</span></p>
+            <div class="arcade-border-lg bg-arcade-panel p-6 md:p-8 max-w-4xl fade-in-up">
+                <p class="text-[18px] leading-[1.6] text-arcade-soft m-0" data-i18n="about_desc_1">
+                    I'm an AI engineer based in Miami. I earned an A.S. in Computer Science at Miami Dade College (GPA 4.00, Jan–Dec 2024) and I'm continuing a B.S. in CS at Florida International University (GPA 3.76, expected Apr 2028). I ship production systems that mix full-stack software with LLMs, computer vision, and edge/IoT.
+                </p>
+                <p class="text-[18px] leading-[1.6] text-arcade-soft mt-4 mb-0" data-i18n="about_desc_2">
+                    I'm bilingual (English/Spanish) with Portuguese, and I'm looking for Software Engineering, AI/ML, and Forward Deployed Engineer internships. Recent work spans ProfSummarizer, PlateSpotter, open-source agent infra (nous-core / OpenRouter), and an AI smart-city kiosk on Raspberry Pi for the City of Coral Gables.
+                </p>
+            </div>
 
-        <!-- About Me Section -->
-        <section id="about" class="py-20 bg-slate-50 dark:bg-gray-800 transition-colors duration-300">
-            <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center fade-in-up">
-                    <h2 class="text-3xl font-bold mb-6 gradient-text" data-i18n="section_about">About Me
-                    </h2>
-                    <p class="text-lg text-gray-700 dark:text-gray-300 space-y-4" data-i18n="about_desc_1">
-                        I am a Computer Science student at Florida International University (3.80 GPA) with a journey
-                        rooted in solving real-world business challenges. My goal has always been to get into tech, and
-                        my professional role as a Sales Supervisor & Technical Operations Lead has been the key to supporting my education.
+            <div class="mt-12 fade-in-up">
+                <p class="section-label">&gt; <span data-i18n="section_github">GITHUB_ACTIVITY</span></p>
+                <div class="flex flex-col items-center gap-6">
+                    <img class="w-full max-w-2xl arcade-border"
+                        src="https://ghchart.rshah.org/22c55e/PaulPio"
+                        alt="Paul's GitHub Contribution Chart"
+                        onerror="this.style.display='none'" />
+
+                    <div class="flex flex-wrap justify-center gap-4 w-full">
+                        <img class="arcade-border" height="195" width="420"
+                            src="https://github-readme-stats.vercel.app/api?username=PaulPio&show_icons=true&hide_border=true&bg_color=12121e&title_color=39ff88&text_color=c4c4dd&icon_color=00e5ff&rank_icon=github&include_all_commits=true"
+                            alt="Paul's GitHub Stats"
+                            onerror="this.style.display='none'" />
+                        <img class="arcade-border" height="195" width="330"
+                            src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulPio&layout=compact&hide_border=true&bg_color=12121e&title_color=ffe600&text_color=c4c4dd&langs_count=6"
+                            alt="Top Languages"
+                            onerror="this.style.display='none'" />
+                    </div>
+
+                    <img class="arcade-border max-w-lg w-full"
+                        src="https://streak-stats.demolab.com/?user=PaulPio&hide_border=true&background=12121e&ring=39ff88&fire=ff2e88&currStreakLabel=00e5ff&sideLabels=9a9ab8&currStreakNum=c4c4dd&dates=9a9ab8&sideNums=c4c4dd"
+                        alt="GitHub Streak"
+                        onerror="this.style.display='none'" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Work / Projects -->
+        <section id="work" class="px-5 md:px-10 py-16 border-b-[3px] border-black">
+            <p class="section-label fade-in-up">&gt; <span data-i18n="section_projects_label">LOAD_PROJECTS.DAT</span></p>
+
+            <div class="flex flex-wrap gap-3 mb-8 fade-in-up">
+                <button class="project-filter-btn filter-btn" data-category="all" data-i18n-btn="filter_all">ALL</button>
+                <button class="project-filter-btn filter-btn" data-category="featured" data-i18n-btn="filter_featured">FEATURED</button>
+                <button class="project-filter-btn filter-btn" data-category="personal" data-i18n-btn="filter_personal">PERSONAL</button>
+                <button class="project-filter-btn filter-btn" data-category="school" data-i18n-btn="filter_school">SCHOOL</button>
+            </div>
+
+            <div id="featured-project" class="mb-6"></div>
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="px-5 md:px-10 py-16 border-b-[3px] border-black">
+            <p class="section-label fade-in-up">&gt; <span data-i18n="section_exp_coral_label">LEVEL_01: CITY_OF_CORAL_GABLES</span></p>
+
+            <div class="fade-in-up">
+                <div class="flex justify-between items-baseline flex-wrap gap-2">
+                    <h3 class="font-pixel text-[15px] text-white m-0" data-i18n="job_title_coral">SOFTWARE ENGINEER INTERN</h3>
+                    <span class="text-arcade-muted text-[16px]" data-i18n="job_period_coral">MAY — JUN 2026</span>
+                </div>
+                <ul class="mt-5 space-y-3 text-[17px] text-arcade-soft list-none pl-0 max-w-[800px]">
+                    <li data-i18n="job_coral_desc_1">▸ Engineered an AI-powered smart city kiosk proof of concept on a Raspberry Pi 5 in 3 weeks — a functional interactive IoT installation for the city.</li>
+                    <li data-i18n="job_coral_desc_2">▸ Built a state-driven Pygame frontend for the AI avatar lifecycle, triggering Gemini Veo-generated video states (Idle, Listening, Speaking) in real time.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mt-5">
+                    <span class="tag-chip">Python</span>
+                    <span class="tag-chip">Gemini Veo</span>
+                    <span class="tag-chip">Pygame</span>
+                    <span class="tag-chip">OpenCV</span>
+                    <span class="tag-chip">Playwright</span>
+                    <span class="tag-chip">Raspberry Pi</span>
+                </div>
+            </div>
+
+            <div class="mt-14 fade-in-up">
+                <p class="section-label">&gt; <span data-i18n="section_exp_label">LEVEL_02: STRIDE_RENT_A_CAR</span></p>
+                <div class="flex justify-between items-baseline flex-wrap gap-2">
+                    <h3 class="font-pixel text-[15px] text-white m-0" data-i18n="job_title_stride">SOFTWARE ENGINEER</h3>
+                    <span class="text-arcade-muted text-[16px]" data-i18n="job_period_stride">DEC 2025 — MAY 2026</span>
+                </div>
+                <p class="text-arcade-soft text-[18px] leading-[1.6] mt-5 max-w-[800px]" data-i18n="job_stride_summary">
+                    Sole engineer for a 6-module ops dashboard (reservations, chargebacks, pricing) integrating two rental APIs on Supabase Postgres — used daily to manage 1,200+ vehicles and ~5,000 bookings/month for a 100-person company.
+                </p>
+                <div class="stat-grid mt-7">
+                    <div class="stat-cell">
+                        <div class="font-pixel text-[18px] md:text-[20px] text-arcade-green">90%</div>
+                        <div class="text-[13px] text-arcade-muted mt-2" data-i18n="stat_faster_response">FASTER CHARGEBACK RESPONSE</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="font-pixel text-[18px] md:text-[20px] text-arcade-yellow">5,000+</div>
+                        <div class="text-[13px] text-arcade-muted mt-2" data-i18n="stat_reservations_month">RESERVATIONS / MO</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="font-pixel text-[18px] md:text-[20px] text-arcade-cyan">1,200+</div>
+                        <div class="text-[13px] text-arcade-muted mt-2" data-i18n="stat_vehicles_managed">VEHICLES MANAGED</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="font-pixel text-[18px] md:text-[20px] text-arcade-pink">45h</div>
+                        <div class="text-[13px] text-arcade-muted mt-2" data-i18n="stat_saved_week">SAVED / WEEK</div>
+                    </div>
+                </div>
+                <ul class="mt-6 space-y-2 text-[17px] text-arcade-soft list-none pl-0">
+                    <li data-i18n="job_stride_desc_2">▸ Cut chargeback response time by 90%, bringing the average from 30 minutes down to under 3 minutes.</li>
+                    <li data-i18n="job_stride_desc_3">▸ Gave the team access to live fleet availability and reservation data for the first time.</li>
+                    <li data-i18n="job_stride_desc_4">▸ Sole engineer for reservations, pricing, and chargeback workflows — requirement to production.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mt-5">
+                    <span class="tag-chip">React</span>
+                    <span class="tag-chip">TypeScript</span>
+                    <span class="tag-chip">Supabase</span>
+                    <span class="tag-chip">Rently API</span>
+                    <span class="tag-chip">Vercel</span>
+                </div>
+            </div>
+
+            <div class="mt-14 fade-in-up">
+                <p class="section-label">&gt; <span data-i18n="section_exp_buo_label">LEVEL_03: BUO</span></p>
+                <div class="flex justify-between items-baseline flex-wrap gap-2">
+                    <h3 class="font-pixel text-[15px] text-white m-0" data-i18n="job_title_buo">SOFTWARE ENGINEER INTERN</h3>
+                    <span class="text-arcade-muted text-[16px]" data-i18n="job_period_buo">JAN 2026 — APR 2026</span>
+                </div>
+                <ul class="mt-5 space-y-3 text-[17px] text-arcade-soft list-none pl-0 max-w-[800px]">
+                    <li data-i18n="job_buo_desc_1">▸ Built the core dining hall data pipeline powering Buo's iOS app (live on the App Store).</li>
+                    <li data-i18n="job_buo_desc_2">▸ Designed database tables and integrated Mistral AI to normalize scraped meal data.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mt-5">
+                    <span class="tag-chip">JavaScript</span>
+                    <span class="tag-chip">Puppeteer</span>
+                    <span class="tag-chip">Playwright</span>
+                    <span class="tag-chip">Mistral AI</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="px-5 md:px-10 py-16 border-b-[3px] border-black">
+            <p class="section-label fade-in-up">&gt; <span data-i18n="section_skills_label">INVENTORY.SYS</span></p>
+            <div class="flex flex-wrap gap-2.5 fade-in-up">
+                <span class="skill-primary">TYPESCRIPT</span>
+                <span class="skill-primary">PYTHON</span>
+                <span class="skill-primary">REACT 19</span>
+                <span class="skill-primary">NEXT.JS</span>
+                <span class="skill-primary">GEMINI</span>
+                <span class="skill-primary">CLAUDE</span>
+                <span class="skill-secondary">JavaScript</span>
+                <span class="skill-secondary">Java</span>
+                <span class="skill-secondary">C++</span>
+                <span class="skill-secondary">Tailwind CSS</span>
+                <span class="skill-secondary">Vite</span>
+                <span class="skill-secondary">Node.js</span>
+                <span class="skill-secondary">REST APIs</span>
+                <span class="skill-secondary">Supabase</span>
+                <span class="skill-secondary">MongoDB Atlas</span>
+                <span class="skill-secondary">Mistral AI</span>
+                <span class="skill-secondary">Hermes</span>
+                <span class="skill-secondary">GitHub Actions</span>
+                <span class="skill-secondary">Vercel</span>
+                <span class="skill-secondary">Docker</span>
+                <span class="skill-secondary">Puppeteer / Playwright</span>
+                <span class="skill-secondary">Git</span>
+                <span class="skill-secondary">AI Agents</span>
+                <span class="skill-secondary">Computer Vision</span>
+                <span class="skill-secondary">Edge / IoT</span>
+                <span class="skill-secondary">Production Shipping</span>
+                <span class="skill-secondary">Open Source</span>
+                <span class="skill-secondary">Forward Deployed</span>
+                <span class="skill-secondary">Bilingual EN / ES</span>
+                <span class="skill-secondary">Portuguese</span>
+                <span class="skill-secondary">Miami, FL</span>
+                <span class="skill-secondary">Team Leadership</span>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="px-5 md:px-10 py-16 border-b-[3px] border-black">
+            <p class="section-label fade-in-up">&gt; <span data-i18n="section_edu_label">ACHIEVEMENTS_UNLOCKED</span></p>
+
+            <div class="arcade-border bg-arcade-panel p-6 flex flex-wrap justify-between gap-4 fade-in-up">
+                <div>
+                    <h3 class="font-pixel text-[14px] text-white m-0" data-i18n="edu_school_short">FIU — B.S. CS</h3>
+                    <p class="text-arcade-muted text-[16px] mt-2.5 mb-0" data-i18n="edu_details">Expected Apr 2028 · GPA 3.76/4.00</p>
+                    <p class="text-arcade-soft text-[15px] mt-3 mb-0 max-w-xl" data-i18n="edu_coursework">
+                        Data Structures &amp; Algorithms · OOP · Database Systems · Software Engineering · Networks · OS
                     </p>
-                    <p class="text-lg text-gray-700 dark:text-gray-300 space-y-4 mt-4" data-i18n="about_desc_2">
-                        This unique path has given me a powerful blend of skills: I not only understand how to architect
-                        a Java algorithm or a Python backend, but I also know how to lead a team and use data to drive
-                        real business results, like increasing customer satisfaction by over 80%. I thrive on building,
-                        leading, and learning.
-                    </p>
-
-                    <!-- GitHub Stats -->
-                    <div class="mt-12">
-                        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-6">GitHub Activity</h3>
-                        <div class="flex flex-col items-center gap-6">
-                            <!-- Contribution chart - light mode -->
-                            <img class="dark:hidden rounded-lg w-full max-w-2xl shadow-md"
-                                src="https://ghchart.rshah.org/16a34a/PaulPio"
-                                alt="Paul's GitHub Contribution Chart" />
-                            <!-- Contribution chart - dark mode -->
-                            <img class="hidden dark:block rounded-lg w-full max-w-2xl shadow-md"
-                                src="https://ghchart.rshah.org/22c55e/PaulPio"
-                                alt="Paul's GitHub Contribution Chart" />
-
-                            <!-- GitHub Stats Cards -->
-                            <div class="flex flex-wrap justify-center gap-4 w-full">
-                                <!-- Stats Card - Light Mode -->
-                                <img class="dark:hidden rounded-lg shadow-md" height="195" width="420"
-                                    src="https://github-readme-stats.vercel.app/api?username=PaulPio&show_icons=true&hide_border=true&bg_color=f8fafc&title_color=16a34a&text_color=374151&icon_color=16a34a&rank_icon=github&include_all_commits=true"
-                                    alt="Paul's GitHub Stats"
-                                    onerror="this.style.display='none'" />
-                                <!-- Stats Card - Dark Mode -->
-                                <img class="hidden dark:block rounded-lg shadow-md" height="195" width="420"
-                                    src="https://github-readme-stats.vercel.app/api?username=PaulPio&show_icons=true&hide_border=true&bg_color=1f2937&title_color=22c55e&text_color=d1d5db&icon_color=22c55e&rank_icon=github&include_all_commits=true"
-                                    alt="Paul's GitHub Stats"
-                                    onerror="this.style.display='none'" />
-
-                                <!-- Language stats - Light Mode -->
-                                <img class="dark:hidden rounded-lg shadow-md" height="195" width="330"
-                                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulPio&layout=compact&hide_border=true&bg_color=f8fafc&title_color=16a34a&text_color=374151&langs_count=6"
-                                    alt="Top Languages"
-                                    onerror="this.style.display='none'" />
-                                <!-- Language stats - Dark Mode -->
-                                <img class="hidden dark:block rounded-lg shadow-md" height="195" width="330"
-                                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=PaulPio&layout=compact&hide_border=true&bg_color=1f2937&title_color=22c55e&text_color=d1d5db&langs_count=6"
-                                    alt="Top Languages"
-                                    onerror="this.style.display='none'" />
-                            </div>
-
-                            <!-- GitHub Streak Stats -->
-                            <div class="w-full flex justify-center">
-                                <!-- Streak - Light Mode -->
-                                <img class="dark:hidden rounded-lg shadow-md max-w-lg w-full"
-                                    src="https://streak-stats.demolab.com/?user=PaulPio&hide_border=true&background=f8fafc&ring=16a34a&fire=16a34a&currStreakLabel=16a34a&sideLabels=374151&currStreakNum=374151&dates=374151&sideNums=374151"
-                                    alt="GitHub Streak" />
-                                <!-- Streak - Dark Mode -->
-                                <img class="hidden dark:block rounded-lg shadow-md max-w-lg w-full"
-                                    src="https://streak-stats.demolab.com/?user=PaulPio&hide_border=true&background=1f2937&ring=22c55e&fire=22c55e&currStreakLabel=22c55e&sideLabels=d1d5db&currStreakNum=d1d5db&dates=d1d5db&sideNums=d1d5db"
-                                    alt="GitHub Streak" />
-                            </div>
-                        </div>
-                    </div>
+                    <p class="text-arcade-dim text-[15px] mt-2 mb-0" data-i18n="edu_clubs">Clubs: INIT · Google Developer Group · AAVE · CASHI</p>
                 </div>
+                <a href="https://platzi.com/p/paulpio/" target="_blank" rel="noopener noreferrer"
+                    class="text-[16px] text-arcade-cyan self-center hover:text-arcade-yellow"
+                    data-i18n="edu_platzi">🏆 20+ PLATZI CERTS ↗</a>
+            </div>
+
+            <div class="arcade-border bg-arcade-panel p-6 mt-6 fade-in-up">
+                <h3 class="font-pixel text-[14px] text-white m-0" data-i18n="edu_mdc_school">MDC — A.S. COMPUTER SCIENCE</h3>
+                <p class="text-arcade-muted text-[16px] mt-2.5 mb-0" data-i18n="edu_mdc_details">Jan — Dec 2024 · GPA 4.00/4.00</p>
+                <p class="text-arcade-soft text-[15px] mt-3 mb-0 max-w-xl" data-i18n="edu_mdc_desc">
+                    Associate of Science in Computer Science at Miami Dade College — foundation in programming, algorithms, and systems before transferring to FIU.
+                </p>
             </div>
         </section>
 
-        <!-- Wave divider: About → Education -->
-        <div class="wave-divider bg-white dark:bg-gray-900">
-            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="fill-slate-50 dark:fill-gray-800">
-                <path d="M0,40 C480,0 960,60 1440,20 L1440,0 L0,0 Z"></path>
-            </svg>
-        </div>
-
-        <!-- Education Section -->
-        <section id="education" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 gradient-text fade-in-up"
-                    data-i18n="section_education">Education</h2>
-                <div class="max-w-3xl mx-auto space-y-6">
-
-                    <!-- FIU Card -->
-                    <div class="bg-slate-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row gap-6 fade-in-up">
-                        <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex flex-wrap items-start justify-between gap-2">
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-i18n="edu_school">Florida International University</h3>
-                                    <p class="text-blue-600 dark:text-blue-400 font-semibold" data-i18n="edu_degree">B.S. in Computer Science</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-sm font-medium px-3 py-1 rounded-full" data-i18n="edu_period">Expected August 2027</span>
-                                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1 font-medium" data-i18n="edu_gpa">GPA: 3.80 / 4.00</p>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <p class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2" data-i18n="edu_coursework_label">Relevant Coursework</p>
-                                <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed" data-i18n="edu_coursework">
-                                    Data Structures &amp; Algorithms · Object-Oriented Programming · Database Systems · Software Engineering · Computer Networks · Operating Systems
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Certifications -->
-                    <div class="mt-10 fade-in-up">
-                        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Certifications</h3>
-                            <a href="https://platzi.com/p/paulpio/" target="_blank" rel="noopener noreferrer"
-                                class="text-sm font-semibold text-[#98ca3f] hover:underline">View all on Platzi ↗</a>
-                        </div>
-
-                        <!-- Featured Learning Path -->
-                        <div class="mb-6">
-                            <div class="flex items-center gap-4 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border-2 border-amber-400 dark:border-amber-500">
-                                <div class="w-10 h-10 bg-[#98ca3f] rounded-lg flex-shrink-0 flex items-center justify-center shadow">
-                                    <span class="text-white font-black text-sm">P</span>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap items-center gap-2 mb-0.5">
-                                        <p class="text-base font-bold text-gray-900 dark:text-white">Domina Excel</p>
-                                        <span class="text-xs font-bold bg-amber-400 text-amber-900 px-2 py-0.5 rounded-full">Learning Path</span>
-                                    </div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Platzi School of Business · Jun 2024</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Data & Analytics -->
-                        <div class="mb-6">
-                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Data &amp; Analytics</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">SQL Databases</p><p class="text-xs text-gray-500 dark:text-gray-400">Mar 2025</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Essential Business Metrics</p><p class="text-xs text-gray-500 dark:text-gray-400">Aug 2025</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Business Intelligence: Value &amp; Opportunities</p><p class="text-xs text-gray-500 dark:text-gray-400">Jan 2025</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Data Visualization for BI</p><p class="text-xs text-gray-500 dark:text-gray-400">Oct 2024</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Advanced Excel with Macros</p><p class="text-xs text-gray-500 dark:text-gray-400">Jun 2024</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Intermediate Excel for Analysts</p><p class="text-xs text-gray-500 dark:text-gray-400">May 2024</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Excel Basics: Tables &amp; Formulas</p><p class="text-xs text-gray-500 dark:text-gray-400">Apr 2024</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Excel Advanced for Data Analysis</p><p class="text-xs text-gray-500 dark:text-gray-400">Jun 2024</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Intro to Excel: Fundamentals &amp; Formatting</p><p class="text-xs text-gray-500 dark:text-gray-400">Mar 2023</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Excel Basics</p><p class="text-xs text-gray-500 dark:text-gray-400">Jun 2022</p></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Programming & AI -->
-                        <div class="mb-6">
-                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Programming &amp; AI</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Python: Comprehensions, Functions &amp; Error Handling</p><p class="text-xs text-gray-500 dark:text-gray-400">Sep 2024</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Professional Git &amp; GitHub</p><p class="text-xs text-gray-500 dark:text-gray-400">Sep 2024</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Prompt Engineering with ChatGPT</p><p class="text-xs text-gray-500 dark:text-gray-400">Jun 2024</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">ChatGPT with Google Sheets</p><p class="text-xs text-gray-500 dark:text-gray-400">May 2024</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Intro to Terminal &amp; Command Line</p><p class="text-xs text-gray-500 dark:text-gray-400">Mar 2023</p></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Software Engineering -->
-                        <div class="mb-6">
-                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Software Engineering</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Software Engineering Fundamentals</p><p class="text-xs text-gray-500 dark:text-gray-400">Oct 2022</p></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Business & Soft Skills -->
-                        <div>
-                            <p class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Business &amp; Soft Skills</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Behavioral Economics</p><p class="text-xs text-gray-500 dark:text-gray-400">May 2024</p></div>
-                                </div>
-                                <div class="flex items-start gap-3 p-3 bg-slate-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                                    <div class="w-7 h-7 bg-[#98ca3f] rounded flex-shrink-0 flex items-center justify-center"><span class="text-white font-black text-xs">P</span></div>
-                                    <div><p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug">Handling Difficult Customer Conversations</p><p class="text-xs text-gray-500 dark:text-gray-400">Mar 2023</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Wave divider: Education → Projects -->
-        <div class="wave-divider bg-white dark:bg-gray-900">
-            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="fill-white dark:fill-gray-900">
-                <path d="M0,20 C360,60 1080,0 1440,40 L1440,0 L0,0 Z"></path>
-            </svg>
-        </div>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-6 gradient-text fade-in-up"
-                    data-i18n="section_projects">Featured Projects</h2>
-
-                <!-- Filter Buttons -->
-                <div class="flex flex-wrap justify-center gap-3 mb-10 fade-in-up">
-                    <button class="project-filter-btn bg-blue-600 text-white shadow-md px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200" data-category="featured" data-i18n-btn="filter_featured">Featured</button>
-                    <button class="project-filter-btn bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200" data-category="all" data-i18n-btn="filter_all">All</button>
-                    <button class="project-filter-btn bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200" data-category="personal" data-i18n-btn="filter_personal">Personal</button>
-                    <button class="project-filter-btn bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200" data-category="school" data-i18n-btn="filter_school">School</button>
-                </div>
-
-                <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Projects are loaded via JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Wave divider: Projects → Experience -->
-        <div class="wave-divider bg-slate-50 dark:bg-gray-800">
-            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="fill-white dark:fill-gray-900">
-                <path d="M0,50 C480,10 960,50 1440,0 L1440,0 L0,0 Z"></path>
-            </svg>
-        </div>
-
-        <!-- Experience Section -->
-        <section id="experience" class="py-20 bg-slate-50 dark:bg-gray-800 transition-colors duration-300">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white fade-in-up"
-                    data-i18n="section_experience">Work Experience</h2>
-
-                <!-- Impact Stats -->
-                <div class="flex flex-wrap justify-center gap-8 md:gap-16 mb-12 fade-in-up">
-                    <div class="text-center">
-                        <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="90" data-suffix="%">0%</div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1" data-i18n="stat_faster_response">Faster Response</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="5000" data-suffix="+" data-separator=",">0</div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1" data-i18n="stat_reservations_month">Reservations/mo</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="45" data-suffix="h">0</div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1" data-i18n="stat_saved_week">Saved/week</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl md:text-4xl font-bold gradient-text stat-number" data-target="1200" data-suffix="+" data-separator=",">0</div>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1" data-i18n="stat_vehicles_managed">Vehicles Managed</p>
-                    </div>
-                </div>
-                <div class="max-w-3xl mx-auto space-y-6">
-                    <!-- Stride Role -->
-                    <div
-                        class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300 fade-in-up">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-i18n="job_title_stride">Software Engineer</h3>
-                        <p class="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4" data-i18n="job_company_stride">
-                            Stride Rent a Car | Sep 2022 - Present</p>
-                        <ul class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300">
-                            <li data-i18n="job_stride_desc_1">Built and maintain a 6-module internal business dashboard covering Reservations, Claims, Reports, Chargebacks, Florida Renters, and Reviews. The dashboard integrates the Rently and HQ Car Rental APIs with a Supabase PostgreSQL backend and is used every day by the team to manage over 1,200 vehicles and roughly 5,000 reservations per month across a company of 100 employees, saving an estimated 45 hours of manual work per week.</li>
-                            <li data-i18n="job_stride_desc_2">Cut chargeback response time by 90%, bringing the average from 30 minutes down to under 3 minutes. Instead of jumping between disconnected systems, the team now has all reservation, payment, and vehicle data in one place.</li>
-                            <li data-i18n="job_stride_desc_3">Gave the team access to live fleet availability and reservation data for the first time, which improved pricing decisions, sped up customer responses, and reduced the amount of time vehicles sat idle between bookings.</li>
-                            <li data-i18n="job_stride_desc_4">Serve as the sole engineer responsible for reservations, pricing, and chargeback workflows, taking projects from business requirement all the way to production for a company that processes over 5,000 reservations per month.</li>
-                        </ul>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">React</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">TypeScript</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Tailwind CSS</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Supabase</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Rently API</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">HQ Car Rental API</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Vercel</span>
-                        </div>
-                    </div>
-
-                    <!-- Buo Role -->
-                    <div
-                        class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300 fade-in-up">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-i18n="job_title_buo">Software Engineer Intern</h3>
-                        <p class="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4" data-i18n="job_company_buo">
-                            Buo | Jan 2026 - Apr 2026</p>
-                        <ul class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300">
-                            <li data-i18n="job_buo_desc_1">Built the core dining hall data pipeline powering Buo's iOS app (live on the App Store), scraped real-time menu data from multiple college campus dining systems using Puppeteer and Playwright, enabling the app's flagship feature of personalized AI meal plans based on what's available in students' dining halls today.</li>
-                            <li data-i18n="job_buo_desc_2">Designed and structured database tables to store and serve scraped menu data; integrated Mistral AI to normalize, classify, and enrich raw scraped meal data into structured nutritional records consumed by the app's meal planning engine.</li>
-                        </ul>
-                        <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">JavaScript</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Puppeteer</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Playwright</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Mistral AI</span>
-                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">Database Design</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 gradient-text fade-in-up"
-                    data-i18n="section_skills">Core Competencies</h2>
-                <div class="max-w-5xl mx-auto">
-
-                    <!-- Proficiency Bars -->
-                    <div id="skill-bars" class="mb-14 fade-in-up">
-                        <h3 class="text-xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200"
-                            data-i18n="skill_proficiency">Technical Proficiency</h3>
-                        <div class="max-w-2xl mx-auto space-y-5">
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Python</span>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Advanced</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill bg-blue-500 h-2.5 rounded-full" data-width="90%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Java</span>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Advanced</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill bg-red-500 h-2.5 rounded-full" data-width="85%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">SQL / MySQL</span>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Advanced</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill bg-green-500 h-2.5 rounded-full" data-width="88%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">TypeScript / JavaScript</span>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Intermediate</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill bg-yellow-500 h-2.5 rounded-full" data-width="78%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">C++</span>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Intermediate</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill bg-purple-500 h-2.5 rounded-full" data-width="68%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">React</span>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">Intermediate</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill bg-blue-400 h-2.5 rounded-full" data-width="75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-10 fade-in-up">
-                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200"
-                            data-i18n="skill_data">Data Analysis & Databases</h3>
-                        <div class="flex flex-wrap justify-center gap-4">
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 text-base">SQL</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100 text-base">MySQL</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100 text-base">MongoDB</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 text-base">Data
-                                Analysis</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 text-base">Data
-                                Cleaning</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 text-base">Advanced
-                                Excel</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 text-base">Power
-                                Query</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 text-base">Pivot
-                                Tables</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 text-base">Streamlit</span>
-                        </div>
-                    </div>
-
-                    <div class="mb-10 fade-in-up">
-                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200"
-                            data-i18n="skill_prog">Programming & Tools</h3>
-                        <div class="flex flex-wrap justify-center gap-4">
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 text-base">Python</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100 text-base">Java</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100 text-base">C++</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 text-base">TypeScript</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100 text-base">JavaScript</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100 text-base">HTML/CSS</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Git
-                                & GitHub</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Bash</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Linux/Unix</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100 text-base">Vercel</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100 text-base">RESTful
-                                APIs</span>
-                        </div>
-                    </div>
-
-                    <div class="fade-in-up">
-                        <h3 class="text-xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200"
-                            data-i18n="skill_lead">Leadership & Soft Skills</h3>
-                        <div class="flex flex-wrap justify-center gap-4">
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Team
-                                Mentorship</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Agile
-                                Methodologies</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Conflict
-                                Resolution</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Decision
-                                Making</span>
-                            <span
-                                class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 text-base">Effective
-                                Onboarding</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact"
-            class="py-24 bg-gray-900 dark:bg-black text-white transition-colors duration-300">
-            <div class="container mx-auto px-6">
-                <div class="max-w-2xl mx-auto text-center fade-in-up">
-                    <h2 class="text-3xl font-bold mb-4" data-i18n="section_contact">Let's Connect</h2>
-                    <p class="text-lg text-gray-300 mb-10" data-i18n="contact_desc">
-                        I'm actively seeking challenging computer science and data internships. I'd love to chat about how
-                        my skills and experience can help your team.
-                    </p>
-
-                    <!-- Formspree Contact Form -->
-                    <form id="contact-form" action="https://formspree.io/f/mlgwpvrv" method="POST"
-                        class="text-left space-y-4">
-                        <input type="text" name="name" required
-                            class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
-                            data-i18n="contact_name" placeholder="Your Name" />
-                        <input type="email" name="email" required
-                            class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
-                            data-i18n="contact_email" placeholder="Your Email" />
-                        <textarea name="message" rows="5" required
-                            class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors resize-none"
-                            data-i18n="contact_message" placeholder="Your Message"></textarea>
-                        <button type="submit"
-                            class="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors disabled:opacity-60"
-                            data-i18n="btn_send">Send Message</button>
-                    </form>
-                    <p id="form-status" class="mt-4"></p>
-
-                    <!-- Fallback email link -->
-                    <p class="mt-6 text-gray-400 text-sm">
-                        Or email me directly:
-                        <a href="mailto:paulrpiotrowski@gmail.com"
-                            class="text-blue-400 hover:underline">paulrpiotrowski@gmail.com</a>
-                    </p>
-                </div>
-
-                <div class="flex justify-center space-x-8 mt-12">
-                    <!-- LinkedIn Icon -->
-                    <a href="https://www.linkedin.com/in/paul-pio/" target="_blank"
-                        class="text-gray-400 hover:text-white transition-colors">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path
-                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                    </a>
-                    <!-- GitHub Icon -->
-                    <a href="https://github.com/PaulPio" target="_blank" class="text-gray-400 hover:text-white">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd"
-                                d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </a>
+        <!-- Contact -->
+        <section id="contact" class="px-5 md:px-10 py-16">
+            <p class="section-label fade-in-up">&gt; <span data-i18n="section_contact_label">SEND_MESSAGE.EXE</span></p>
+            <div class="max-w-xl fade-in-up">
+                <p class="text-[18px] text-arcade-muted mb-8" data-i18n="contact_desc">
+                    I'm actively seeking Software Engineering, AI, and Forward Deployed Engineer internships. Let's talk about how I can ship with your team.
+                </p>
+                <form id="contact-form" action="https://formspree.io/f/mlgwpvrv" method="POST" class="space-y-4">
+                    <input type="text" name="name" required class="arcade-input" data-i18n="contact_name" placeholder="Your Name" />
+                    <input type="email" name="email" required class="arcade-input" data-i18n="contact_email" placeholder="Your Email" />
+                    <textarea name="message" rows="5" required class="arcade-input resize-none" data-i18n="contact_message" placeholder="Your Message"></textarea>
+                    <button type="submit"
+                        class="arcade-btn bg-arcade-pink text-white font-pixel text-[11px] px-6 py-4 w-full sm:w-auto"
+                        data-i18n="btn_send">▶ SEND MESSAGE</button>
+                </form>
+                <p id="form-status" class="mt-4 text-[16px]"></p>
+                <p class="mt-6 text-arcade-dim text-[16px]">
+                    <span data-i18n="contact_or_email">Or email me directly:</span>
+                    <a href="mailto:paulrpiotrowski@gmail.com" class="text-arcade-cyan hover:text-arcade-yellow">paulrpiotrowski@gmail.com</a>
+                </p>
+                <div class="flex gap-6 mt-8">
+                    <a href="https://www.linkedin.com/in/paul-pio/" target="_blank" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">LINKEDIN</a>
+                    <a href="https://github.com/PaulPio" target="_blank" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">GITHUB</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 dark:bg-black text-gray-400 py-6 transition-colors duration-300">
-        <div class="container mx-auto px-6 text-center">
-            <p data-i18n="footer_text">&copy; 2026 Paul Piotrowski. Built with HTML, Tailwind CSS, and passion.</p>
-        </div>
+    <footer class="border-t-[3px] border-black px-5 md:px-10 py-6 text-arcade-dim text-[16px]">
+        <p class="m-0" data-i18n="footer_text">&copy; 2026 Paul Piotrowski. INSERT COIN TO REPLAY.</p>
     </footer>
 
-    <!-- Back to Top Button -->
     <button id="back-to-top"
-        class="fixed bottom-28 right-8 z-50 bg-gray-700 dark:bg-gray-600 text-white p-3 rounded-full shadow-lg hover:bg-gray-600 dark:hover:bg-gray-500 transition-all duration-300 opacity-0 pointer-events-none translate-y-4"
-        aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-        </svg>
-    </button>
+        class="fixed bottom-8 right-8 z-50 arcade-btn bg-arcade-panel2 text-arcade-cyan font-pixel text-[10px] px-3 py-3 opacity-0 pointer-events-none translate-y-4 transition-all"
+        aria-label="Back to top">▲</button>
 
-    <!-- Floating Resume Button -->
-    <a href="Paul_Piotrowski_Resume.pdf" download
-        class="fixed bottom-8 right-8 z-50 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
-        title="Download Resume">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-        </svg>
-        <span
-            class="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-300 ease-in-out whitespace-nowrap font-semibold">
-            Resume
-        </span>
-    </a>
-
-    <!-- Mobile Menu Script -->
     <script>
         document.getElementById('mobile-menu-btn').addEventListener('click', function () {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
-        // Close menu when a link is clicked
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
     </script>
-
-    <!-- Main Script -->
     <script src="script.js"></script>
-
-    <!-- AI Chat Widget -->
-    <script src="chat-widget.js"></script>
-
-    <!-- Hide broken images -->
-    <script>
-        document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('error', function() {
-                this.style.display = 'none';
-            });
-        });
-    </script>
-
 </body>
 
 </html>
