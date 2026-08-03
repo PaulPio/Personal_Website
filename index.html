@@ -110,6 +110,20 @@
             color: #0a0a14;
         }
 
+        .social-pill {
+            background: #1a1a26;
+            border: 2px solid #000;
+            color: #9a9ab8;
+            font-size: 14px;
+            padding: 6px 10px;
+            font-family: 'VT323', monospace;
+            transition: background 0.15s, color 0.15s;
+        }
+        .social-pill:hover {
+            background: #ffe600;
+            color: #0a0a14;
+        }
+
         .section-label {
             font-family: 'Press Start 2P', monospace;
             font-size: 14px;
@@ -261,7 +275,15 @@
             <a href="#contact" class="nav-pill" data-i18n="nav_contact_short">CONTACT</a>
         </nav>
 
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 flex-wrap justify-end">
+            <div class="hidden sm:flex items-center gap-2">
+                <a href="https://github.com/PaulPio" target="_blank" rel="noopener noreferrer"
+                    class="social-pill" aria-label="GitHub">GITHUB</a>
+                <a href="https://www.linkedin.com/in/paul-pio/" target="_blank" rel="noopener noreferrer"
+                    class="social-pill" aria-label="LinkedIn">LINKEDIN</a>
+                <a href="https://devpost.com/paulrpiotrowski" target="_blank" rel="noopener noreferrer"
+                    class="social-pill" aria-label="Devpost">DEVPOST</a>
+            </div>
             <select id="lang-selector" aria-label="Language">
                 <option value="en">EN</option>
                 <option value="es">ES</option>
@@ -283,6 +305,11 @@
                 <a href="#skills" class="nav-pill" data-i18n="nav_skills">SKILLS</a>
                 <a href="#education" class="nav-pill" data-i18n="nav_edu">EDU</a>
                 <a href="#contact" class="nav-pill" data-i18n="nav_contact_short">CONTACT</a>
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <a href="https://github.com/PaulPio" target="_blank" rel="noopener noreferrer" class="social-pill">GITHUB</a>
+                    <a href="https://www.linkedin.com/in/paul-pio/" target="_blank" rel="noopener noreferrer" class="social-pill">LINKEDIN</a>
+                    <a href="https://devpost.com/paulrpiotrowski" target="_blank" rel="noopener noreferrer" class="social-pill">DEVPOST</a>
+                </div>
                 <a href="Paul_Piotrowski_Resume.pdf" target="_blank"
                     class="arcade-btn bg-arcade-yellow text-arcade-bg font-pixel text-[10px] px-4 py-3 text-center">
                     ▶ <span data-i18n="nav_resume">RESUME</span>
@@ -556,9 +583,10 @@
                     <span data-i18n="contact_or_email">Or email me directly:</span>
                     <a href="mailto:paulrpiotrowski@gmail.com" class="text-arcade-cyan hover:text-arcade-yellow">paulrpiotrowski@gmail.com</a>
                 </p>
-                <div class="flex gap-6 mt-8">
-                    <a href="https://www.linkedin.com/in/paul-pio/" target="_blank" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">LINKEDIN</a>
-                    <a href="https://github.com/PaulPio" target="_blank" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">GITHUB</a>
+                <div class="flex flex-wrap gap-6 mt-8">
+                    <a href="https://github.com/PaulPio" target="_blank" rel="noopener noreferrer" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">GITHUB</a>
+                    <a href="https://www.linkedin.com/in/paul-pio/" target="_blank" rel="noopener noreferrer" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">LINKEDIN</a>
+                    <a href="https://devpost.com/paulrpiotrowski" target="_blank" rel="noopener noreferrer" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">DEVPOST</a>
                 </div>
             </div>
         </section>
