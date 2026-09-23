@@ -37,7 +37,11 @@ There is no build, lint, or automated test pipeline configured in this repo.
 - State: `currentLang`, `currentCategory`
 - Featured hero prefers `id === 'prof-summarizer'`
 
-### 3) Thumbnails
+### 3) Links page `links/index.html`
+- Standalone link-in-bio page at `/links` styled after the LinkStack Stargazer theme (starfield + gradient pill buttons). Own inline CSS/JS; no Tailwind.
+- Buttons carry `data-link` names used for Vercel Web Analytics `link_click` events.
+
+### 4) Thumbnails
 - Deployed sites: use landing-page screenshots in `assets/thumbs/`
 - No live landing page: GitHub repo OG preview is OK
 
