@@ -283,6 +283,7 @@
                     class="social-pill" aria-label="LinkedIn">LINKEDIN</a>
                 <a href="https://devpost.com/paulrpiotrowski" target="_blank" rel="noopener noreferrer"
                     class="social-pill" aria-label="Devpost">DEVPOST</a>
+                <a href="/links" class="social-pill" aria-label="All links">LINKS</a>
             </div>
             <select id="lang-selector" aria-label="Language">
                 <option value="en">EN</option>
@@ -309,6 +310,7 @@
                     <a href="https://github.com/PaulPio" target="_blank" rel="noopener noreferrer" class="social-pill">GITHUB</a>
                     <a href="https://www.linkedin.com/in/paul-pio/" target="_blank" rel="noopener noreferrer" class="social-pill">LINKEDIN</a>
                     <a href="https://devpost.com/paulrpiotrowski" target="_blank" rel="noopener noreferrer" class="social-pill">DEVPOST</a>
+                    <a href="/links" class="social-pill">LINKS</a>
                 </div>
                 <a href="Paul_Piotrowski_Resume.pdf" target="_blank"
                     class="arcade-btn bg-arcade-yellow text-arcade-bg font-pixel text-[10px] px-4 py-3 text-center">
@@ -416,16 +418,39 @@
 
         <!-- Experience -->
         <section id="experience" class="px-5 md:px-10 py-16 border-b-[3px] border-black">
-            <p class="section-label fade-in-up">&gt; <span data-i18n="section_exp_coral_label">LEVEL_01: CITY_OF_CORAL_GABLES</span></p>
+            <p class="section-label fade-in-up">&gt; <span data-i18n="section_exp_fiu_label">LEVEL_01: FIU_RESEARCH</span></p>
 
             <div class="fade-in-up">
+                <div class="flex justify-between items-baseline flex-wrap gap-2">
+                    <h3 class="font-pixel text-[15px] text-white m-0" data-i18n="job_title_fiu">UNDERGRADUATE RESEARCH ASSISTANT</h3>
+                    <span class="text-arcade-muted text-[16px]" data-i18n="job_period_fiu">AUG 2026 — PRESENT</span>
+                </div>
+                <ul class="mt-5 space-y-3 text-[17px] text-arcade-soft list-none pl-0 max-w-[800px]">
+                    <li data-i18n="job_fiu_desc_1">▸ Develop C# and Unity modules for an XR/AR training program built for the FIU Police Department, taking features from requirement through testing and demo on the Apple Vision Pro.</li>
+                    <li data-i18n="job_fiu_desc_2">▸ Created character animations in Unity through the Mixamo MCP pipeline, expanding the trainee scenarios the simulation supports.</li>
+                    <li data-i18n="job_fiu_desc_3">▸ Integrated local LLM calls into the XR/AR simulation so the virtual character reacts to each trainee in real time.</li>
+                    <li data-i18n="job_fiu_desc_4">▸ Wrote Python logging scripts that capture structured training session data and improved the trainer review dashboard.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mt-5">
+                    <span class="tag-chip">C#</span>
+                    <span class="tag-chip">Unity</span>
+                    <span class="tag-chip">Mixamo MCP</span>
+                    <span class="tag-chip">Local LLMs</span>
+                    <span class="tag-chip">Python</span>
+                    <span class="tag-chip">Apple Vision Pro</span>
+                    <span class="tag-chip">XR/AR</span>
+                </div>
+            </div>
+
+            <div class="mt-14 fade-in-up">
+                <p class="section-label">&gt; <span data-i18n="section_exp_coral_label">LEVEL_02: CITY_OF_CORAL_GABLES</span></p>
                 <div class="flex justify-between items-baseline flex-wrap gap-2">
                     <h3 class="font-pixel text-[15px] text-white m-0" data-i18n="job_title_coral">SOFTWARE ENGINEER INTERN</h3>
                     <span class="text-arcade-muted text-[16px]" data-i18n="job_period_coral">MAY — JUN 2026</span>
                 </div>
                 <ul class="mt-5 space-y-3 text-[17px] text-arcade-soft list-none pl-0 max-w-[800px]">
-                    <li data-i18n="job_coral_desc_1">▸ Engineered an AI-powered smart city kiosk proof of concept on a Raspberry Pi 5 in 3 weeks — a functional interactive IoT installation for the city.</li>
-                    <li data-i18n="job_coral_desc_2">▸ Built a state-driven Pygame frontend for the AI avatar lifecycle, triggering Gemini Veo-generated video states (Idle, Listening, Speaking) in real time.</li>
+                    <li data-i18n="job_coral_desc_1">▸ Engineered an AI-powered smart city kiosk proof of concept on a Raspberry Pi 5 in 3 weeks, turning raw hardware into a functional interactive IoT installation for the city.</li>
+                    <li data-i18n="job_coral_desc_2">▸ Programmed a state-driven Pygame frontend to manage the AI avatar's lifecycle, triggering Gemini Veo-generated video states (Idle, Listening, Speaking) in real time.</li>
                 </ul>
                 <div class="flex flex-wrap gap-2 mt-5">
                     <span class="tag-chip">Python</span>
@@ -438,14 +463,11 @@
             </div>
 
             <div class="mt-14 fade-in-up">
-                <p class="section-label">&gt; <span data-i18n="section_exp_label">LEVEL_02: STRIDE_RENT_A_CAR</span></p>
+                <p class="section-label">&gt; <span data-i18n="section_exp_label">LEVEL_03: STRIDE_RENT_A_CAR</span></p>
                 <div class="flex justify-between items-baseline flex-wrap gap-2">
                     <h3 class="font-pixel text-[15px] text-white m-0" data-i18n="job_title_stride">SOFTWARE ENGINEER</h3>
                     <span class="text-arcade-muted text-[16px]" data-i18n="job_period_stride">DEC 2025 — MAY 2026</span>
                 </div>
-                <p class="text-arcade-soft text-[18px] leading-[1.6] mt-5 max-w-[800px]" data-i18n="job_stride_summary">
-                    Sole engineer for a 6-module ops dashboard (reservations, chargebacks, pricing) integrating two rental APIs on Supabase Postgres — used daily to manage 1,200+ vehicles and ~5,000 bookings/month for a 100-person company.
-                </p>
                 <div class="stat-grid mt-7">
                     <div class="stat-cell">
                         <div class="font-pixel text-[18px] md:text-[20px] text-arcade-green">90%</div>
@@ -464,22 +486,39 @@
                         <div class="text-[13px] text-arcade-muted mt-2" data-i18n="stat_saved_week">SAVED / WEEK</div>
                     </div>
                 </div>
-                <ul class="mt-6 space-y-2 text-[17px] text-arcade-soft list-none pl-0">
-                    <li data-i18n="job_stride_desc_2">▸ Cut chargeback response time by 90%, bringing the average from 30 minutes down to under 3 minutes.</li>
-                    <li data-i18n="job_stride_desc_3">▸ Gave the team access to live fleet availability and reservation data for the first time.</li>
-                    <li data-i18n="job_stride_desc_4">▸ Sole engineer for reservations, pricing, and chargeback workflows — requirement to production.</li>
+                <ul class="mt-6 space-y-3 text-[17px] text-arcade-soft list-none pl-0 max-w-[800px]">
+                    <li data-i18n="job_stride_desc_1">▸ Architected a 6-module enterprise dashboard integrating the Rently and HQ Car Rental APIs to manage 1,200+ vehicles and 5,000 monthly reservations, saving 45+ hours of manual work weekly.</li>
+                    <li data-i18n="job_stride_desc_2">▸ Developed DisputeDefender, an AI tool that extracts rental agreement data from PDFs and generates bank-ready rebuttal letters, cutting chargeback response time 90% — from 30 minutes to under 3.</li>
+                    <li data-i18n="job_stride_desc_3">▸ Shipped every feature from requirement to production as the sole engineer across reservations, fleet availability, and chargeback systems.</li>
                 </ul>
                 <div class="flex flex-wrap gap-2 mt-5">
                     <span class="tag-chip">React</span>
                     <span class="tag-chip">TypeScript</span>
+                    <span class="tag-chip">Tailwind CSS</span>
                     <span class="tag-chip">Supabase</span>
                     <span class="tag-chip">Rently API</span>
+                    <span class="tag-chip">HQ Car Rental API</span>
                     <span class="tag-chip">Vercel</span>
+                </div>
+
+                <div class="flex justify-between items-baseline flex-wrap gap-2 mt-10">
+                    <h3 class="font-pixel text-[13px] text-white m-0" data-i18n="job_title_stride_sales">SALES SUPERVISOR</h3>
+                    <span class="text-arcade-muted text-[16px]" data-i18n="job_period_stride_sales">SEP 2022 — DEC 2025</span>
+                </div>
+                <ul class="mt-5 space-y-3 text-[17px] text-arcade-soft list-none pl-0 max-w-[800px]">
+                    <li data-i18n="job_stride_sales_desc_1">▸ Supervised sales staff while processing customer reservations and resolving complaints for a fleet of 1,200+ vehicles.</li>
+                    <li data-i18n="job_stride_sales_desc_2">▸ Coordinated rental car damage claims with insurance companies and wrote chargeback rebuttal letters for banks — the manual process I later automated with DisputeDefender.</li>
+                    <li data-i18n="job_stride_sales_desc_3">▸ Compiled monthly sales and insurance reports in Excel using VLOOKUP, Power Query, pivot tables, and charts.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mt-5">
+                    <span class="tag-chip">Team Leadership</span>
+                    <span class="tag-chip">Customer Service</span>
+                    <span class="tag-chip">Excel</span>
                 </div>
             </div>
 
             <div class="mt-14 fade-in-up">
-                <p class="section-label">&gt; <span data-i18n="section_exp_buo_label">LEVEL_03: BUO</span></p>
+                <p class="section-label">&gt; <span data-i18n="section_exp_buo_label">LEVEL_04: BUO</span></p>
                 <div class="flex justify-between items-baseline flex-wrap gap-2">
                     <h3 class="font-pixel text-[15px] text-white m-0" data-i18n="job_title_buo">SOFTWARE ENGINEER INTERN</h3>
                     <span class="text-arcade-muted text-[16px]" data-i18n="job_period_buo">JAN 2026 — APR 2026</span>
@@ -507,6 +546,7 @@
                 <span class="skill-primary">NEXT.JS</span>
                 <span class="skill-primary">GEMINI</span>
                 <span class="skill-primary">CLAUDE</span>
+                <span class="skill-primary">C# / UNITY</span>
                 <span class="skill-secondary">JavaScript</span>
                 <span class="skill-secondary">Java</span>
                 <span class="skill-secondary">C++</span>
@@ -516,6 +556,7 @@
                 <span class="skill-secondary">REST APIs</span>
                 <span class="skill-secondary">Supabase</span>
                 <span class="skill-secondary">MongoDB Atlas</span>
+                <span class="skill-secondary">Gemma</span>
                 <span class="skill-secondary">Mistral AI</span>
                 <span class="skill-secondary">Hermes</span>
                 <span class="skill-secondary">GitHub Actions</span>
@@ -523,6 +564,10 @@
                 <span class="skill-secondary">Docker</span>
                 <span class="skill-secondary">Puppeteer / Playwright</span>
                 <span class="skill-secondary">Git</span>
+                <span class="skill-secondary">GitLab</span>
+                <span class="skill-secondary">XR / AR (Apple Vision Pro)</span>
+                <span class="skill-secondary">Local LLMs</span>
+                <span class="skill-secondary">Excel (Power Query, Pivot Tables)</span>
                 <span class="skill-secondary">AI Agents</span>
                 <span class="skill-secondary">Computer Vision</span>
                 <span class="skill-secondary">Edge / IoT</span>
@@ -547,7 +592,7 @@
                     <p class="text-arcade-soft text-[15px] mt-3 mb-0 max-w-xl" data-i18n="edu_coursework">
                         Data Structures &amp; Algorithms · OOP · Database Systems · Software Engineering · Networks · OS
                     </p>
-                    <p class="text-arcade-dim text-[15px] mt-2 mb-0" data-i18n="edu_clubs">Clubs: INIT · Google Developer Group · AAVE · CASHI</p>
+                    <p class="text-arcade-dim text-[15px] mt-2 mb-0" data-i18n="edu_clubs">Clubs: INIT · Google Developer Group · SHPE · IEEE · Code Crunch · Panther Robotics · AAVE · CASHI</p>
                 </div>
                 <a href="https://platzi.com/p/paulpio/" target="_blank" rel="noopener noreferrer"
                     class="text-[16px] text-arcade-cyan self-center hover:text-arcade-yellow"
@@ -587,6 +632,8 @@
                     <a href="https://github.com/PaulPio" target="_blank" rel="noopener noreferrer" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">GITHUB</a>
                     <a href="https://www.linkedin.com/in/paul-pio/" target="_blank" rel="noopener noreferrer" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">LINKEDIN</a>
                     <a href="https://devpost.com/paulrpiotrowski" target="_blank" rel="noopener noreferrer" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">DEVPOST</a>
+                    <a href="https://app.joinhandshake.com/profiles/paulpio" target="_blank" rel="noopener noreferrer" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">HANDSHAKE</a>
+                    <a href="/links" class="text-arcade-muted hover:text-arcade-cyan text-[18px]">ALL LINKS ▶</a>
                 </div>
             </div>
         </section>

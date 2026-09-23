@@ -28,6 +28,7 @@ start index.html # Windows
 - **script.js** - All JavaScript (projects data, translations, event handlers, animations)
 - **profile pic.jpg** - Profile photo
 - **Paul_Piotrowski_Resume.pdf** - Downloadable resume
+- **links/index.html** - Link-in-bio page served at `/links` (self-contained, no Tailwind). Recreates the LinkStack "Stargazer" theme (GPLv3, credited in the footer). To add a link, copy an `<a class="button ...">` line, give it a unique `data-link` name and bump its `--delay`.
 
 ### Key Architectural Patterns
 
@@ -92,7 +93,7 @@ All GitHub stat images use URL parameters for colors. To change colors:
 - Uses dark mode class strategy
 
 **Third-Party Services**
-- Vercel Analytics included for page tracking
+- Vercel Web Analytics script included on `/` and `/links` for page views. It only records data once Web Analytics is enabled in the Vercel dashboard (project `personal-website` → Analytics). `/links` also sends `link_click` custom events, which Vercel only stores on the Pro plan
 - Formspree for contact form submissions
 - Multiple GitHub stats services (can be rate-limited)
 
