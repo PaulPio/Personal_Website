@@ -12,26 +12,54 @@
     <meta property="og:url" content="https://paulpio.com/links">
     <meta property="og:image" content="https://paulpio.com/profile%20pic.jpg">
     <meta name="twitter:card" content="summary">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#0a0a14">
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>">
+    <link rel="preload" href="/links/fonts/press-start-2p-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/links/fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-
-    <!-- Vercel Web Analytics: page views for /links (enable it in the Vercel dashboard) -->
+    <!-- Vercel Web Analytics: page views for /links -->
     <script>
         window.va = window.va || function () { (window.va.q = window.va.q || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
 
     <!--
-        Look recreated from the Stargazer theme for LinkStack
-        by JulianPrieber & LinkStack Team (GPLv3): https://github.com/LinkStackOrg/stargazer
-        Starfield based on https://codepen.io/SuneBear/pen/YzVgebG (MIT).
+        Styled with "Arcade", a LinkStack theme by PaulPio (GPLv3):
+        https://github.com/PaulPio/LinkstackArcadeTheme
+        Fonts: Press Start 2P and VT323, SIL Open Font License 1.1 (fonts/OFL.txt).
     -->
     <style>
+        @font-face {
+            font-family: 'Press Start 2P';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/links/fonts/press-start-2p-latin-400-normal.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'VT323';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/links/fonts/vt323-latin-400-normal.woff2') format('woff2');
+        }
+
+        :root {
+            --arcade-bg: #0a0a14;
+            --arcade-panel: #12121e;
+            --arcade-panel2: #1a1a26;
+            --arcade-yellow: #ffe600;
+            --arcade-cyan: #00e5ff;
+            --arcade-pink: #ff2e88;
+            --arcade-green: #39ff88;
+            --arcade-muted: #9a9ab8;
+            --arcade-soft: #c4c4dd;
+            --arcade-dim: #4a4a63;
+            --arcade-pixel: 'Press Start 2P', monospace;
+            --arcade-text: 'VT323', monospace;
+        }
+
         * { box-sizing: border-box; }
 
         html { overflow-x: hidden; }
@@ -39,206 +67,456 @@
         body {
             margin: 0;
             min-height: 100vh;
-            background-color: #000;
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-            line-height: 24px;
-            font-weight: 400;
+            font-size: 22px;
+            line-height: 1.3;
+            font-family: var(--arcade-text);
+            background: var(--arcade-bg);
+            color: var(--arcade-soft);
             text-align: center;
             overflow-x: hidden;
         }
 
-        a { color: #0085ff; text-decoration: none; }
+        a { color: var(--arcade-cyan); text-decoration: none; }
+        a:hover { color: var(--arcade-yellow); }
 
-        /* Starfield */
+        * { scrollbar-width: thin; scrollbar-color: var(--arcade-yellow) var(--arcade-panel); }
+
+        /* Pixel starfield: three layers of square stars scroll down and twinkle */
         .parallax-background {
             position: fixed;
             inset: 0;
-            perspective: 340px;
+            z-index: -1;
             overflow: hidden;
-            z-index: 0;
             pointer-events: none;
         }
-        .object1 {
+        .parallax-background .object1,
+        .parallax-background .object2,
+        .parallax-background .object3 {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 2px;
-            height: 2px;
-            border-radius: 30px;
-            transform-style: preserve-3d;
-            animation: fly 3s linear infinite;
-            box-shadow: 1119px -366px 0 0 #fff, -374px -230px 0 0 #ededed, -929px 274px 0 0 #fcfcfc, 1271px 278px 0 0 #fcfcfc, 918px -48px 0 0 #fff, -1378px -385px 0 0 #ededed, -548px 37px 0 0 #fff, 798px -277px 0 0 #cfcfcf, -598px -21px 0 0 #e3e3e3, -1474px 297px 0 0 #f5f5f5, 1359px -48px 0 0 #d9d9d9, -362px -321px 0 0 #ededed, -122px -376px 0 0 #fcfcfc, 56px -381px 0 0 #d9d9d9, -92px 138px 0 0 #e3e3e3, -1323px 267px 0 0 #c4c4c4, 696px -353px 0 0 #cfcfcf, -1178px 85px 0 0 #e3e3e3, 1074px 153px 0 0 #d9d9d9, 864px -284px 0 0 #fcfcfc, -1313px 197px 0 0 #ededed, -315px -399px 0 0 #ededed, -1087px -91px 0 0 #e3e3e3, 357px 170px 0 0 #d9d9d9, -834px -101px 0 0 #d9d9d9, -642px 206px 0 0 #e3e3e3, 1374px 479px 0 0 #fcfcfc, 995px 170px 0 0 #f5f5f5, 687px 266px 0 0 #ededed, -831px -7px 0 0 #cfcfcf, -395px 467px 0 0 #ededed, 1304px -148px 0 0 #fff, -562px 361px 0 0 #fff, -208px -70px 0 0 #e3e3e3, -1229px -264px 0 0 #d9d9d9, -630px 191px 0 0 #c4c4c4, 120px 425px 0 0 #c4c4c4, -915px -209px 0 0 #f5f5f5, -490px 282px 0 0 #e3e3e3, 894px -42px 0 0 #cfcfcf, -18px -256px 0 0 #f5f5f5, 587px 25px 0 0 #fcfcfc, -1308px 401px 0 0 #fcfcfc, -874px 162px 0 0 #f5f5f5, 1287px -48px 0 0 #fcfcfc, 76px -90px 0 0 #c4c4c4, 667px -223px 0 0 #fff, 1286px 258px 0 0 #fcfcfc, 1292px 426px 0 0 #e3e3e3, 1125px -132px 0 0 #fcfcfc, -298px -35px 0 0 #f5f5f5, 358px -477px 0 0 #e3e3e3, 550px 300px 0 0 #f5f5f5, 579px 454px 0 0 #fcfcfc, 1061px -175px 0 0 #ededed, -874px -98px 0 0 #f5f5f5, 709px 317px 0 0 #fff, 953px -149px 0 0 #c4c4c4, -1421px -366px 0 0 #d9d9d9, -241px -235px 0 0 #fff, -514px 419px 0 0 #fcfcfc, -1150px 269px 0 0 #c4c4c4, -1217px 298px 0 0 #f5f5f5, -975px 195px 0 0 #c4c4c4, 751px -311px 0 0 #e3e3e3, 661px 413px 0 0 #cfcfcf, -633px 471px 0 0 #ededed, 1420px -161px 0 0 #cfcfcf, 1251px 185px 0 0 #d9d9d9, 294px 441px 0 0 #c4c4c4, -1005px -227px 0 0 #ededed, -1238px -134px 0 0 #fff, 909px 87px 0 0 #ededed, 910px -255px 0 0 #fff, -1210px 244px 0 0 #fff, -563px -411px 0 0 #fff, -147px -408px 0 0 #ededed, -360px 205px 0 0 #c4c4c4, -623px 72px 0 0 #f5f5f5, 1462px 477px 0 0 #c4c4c4, -505px 323px 0 0 #c4c4c4, 167px -286px 0 0 #fcfcfc, -1103px 194px 0 0 #cfcfcf, -49px -47px 0 0 #cfcfcf, 412px 404px 0 0 #fff, 1258px 189px 0 0 #fcfcfc, -1252px -68px 0 0 #d9d9d9, -1053px -226px 0 0 #ededed, -721px 69px 0 0 #c4c4c4, -926px -48px 0 0 #f5f5f5, -360px -7px 0 0 #ededed, -1192px -27px 0 0 #fcfcfc, -1293px 187px 0 0 #fff, -1118px 468px 0 0 #ededed, -819px -64px 0 0 #c4c4c4, 471px -262px 0 0 #cfcfcf, -1260px -312px 0 0 #cfcfcf, -1492px -81px 0 0 #e3e3e3, 363px -188px 0 0 #cfcfcf, 1353px 268px 0 0 #c4c4c4, -866px -286px 0 0 #e3e3e3, -609px -421px 0 0 #fff, -216px -422px 0 0 #fff, 892px 8px 0 0 #f5f5f5, -1268px 40px 0 0 #fcfcfc, -739px -410px 0 0 #fcfcfc, 1265px 402px 0 0 #ededed, 153px -358px 0 0 #ededed, 871px 128px 0 0 #fff, 1036px -397px 0 0 #cfcfcf, 1192px 117px 0 0 #d9d9d9, -432px -271px 0 0 #d9d9d9, -523px -209px 0 0 #cfcfcf, -964px 207px 0 0 #e3e3e3, 372px -157px 0 0 #fcfcfc, -1462px -11px 0 0 #fcfcfc, -1200px 70px 0 0 #ededed, 572px -209px 0 0 #f5f5f5, -71px 422px 0 0 #fcfcfc, -500px -102px 0 0 #e3e3e3, -854px -32px 0 0 #e3e3e3, 1005px 346px 0 0 #fff, 1235px 356px 0 0 #e3e3e3, 1217px -374px 0 0 #f5f5f5, -417px -362px 0 0 #fcfcfc, 766px -321px 0 0 #e3e3e3, -346px 139px 0 0 #ededed, 1439px -129px 0 0 #ededed, 1315px 169px 0 0 #e3e3e3, 570px 20px 0 0 #e3e3e3, -1292px -386px 0 0 #cfcfcf, -367px -435px 0 0 #fff, -134px 309px 0 0 #f5f5f5, 1109px -212px 0 0 #f5f5f5, 309px 84px 0 0 #cfcfcf, 797px -471px 0 0 #fcfcfc, -1192px 424px 0 0 #f5f5f5, 734px -444px 0 0 #d9d9d9, 885px 85px 0 0 #f5f5f5, 260px -350px 0 0 #fff, -238px -107px 0 0 #fff, -35px -265px 0 0 #ededed, 1231px -375px 0 0 #d9d9d9, 793px 425px 0 0 #cfcfcf, 1042px 287px 0 0 #f5f5f5, -531px 405px 0 0 #f5f5f5, -775px 422px 0 0 #cfcfcf, -1399px -297px 0 0 #d9d9d9, 186px 341px 0 0 #ededed, -408px -317px 0 0 #fcfcfc, 66px 413px 0 0 #fff, 427px -253px 0 0 #ededed, 385px -122px 0 0 #e3e3e3, -568px -252px 0 0 #fff, 1203px -283px 0 0 #cfcfcf, -156px -195px 0 0 #fcfcfc, -357px -121px 0 0 #cfcfcf, 1283px 383px 0 0 #d9d9d9, -1387px -362px 0 0 #e3e3e3, -769px 114px 0 0 #e3e3e3, -1344px -369px 0 0 #cfcfcf, -85px 266px 0 0 #d9d9d9, 287px 140px 0 0 #fcfcfc, 77px 441px 0 0 #ededed, -457px -435px 0 0 #cfcfcf, -1494px 52px 0 0 #ededed, -9px -39px 0 0 #fcfcfc, 1220px 462px 0 0 #d9d9d9, 1052px -159px 0 0 #fcfcfc, 1448px 441px 0 0 #e3e3e3, 577px -164px 0 0 #cfcfcf, -164px -68px 0 0 #e3e3e3, 770px -350px 0 0 #ededed, 222px 200px 0 0 #cfcfcf, 1274px 286px 0 0 #f5f5f5, 1021px 102px 0 0 #e3e3e3, 163px 81px 0 0 #fff, -256px -187px 0 0 #ededed, 260px 324px 0 0 #d9d9d9, 404px -28px 0 0 #c4c4c4, 1267px -262px 0 0 #c4c4c4, -805px 194px 0 0 #fcfcfc, -338px 47px 0 0 #d9d9d9, -1118px 358px 0 0 #ededed, 1255px -163px 0 0 #ededed, -685px -330px 0 0 #fff, -1311px -230px 0 0 #c4c4c4, 1003px 390px 0 0 #fcfcfc, 365px -56px 0 0 #ededed, 1442px 233px 0 0 #cfcfcf, 524px -71px 0 0 #ededed, -896px 191px 0 0 #fff, -1064px 317px 0 0 #cfcfcf, -604px -300px 0 0 #c4c4c4, -1295px 90px 0 0 #ededed, -1003px -13px 0 0 #f5f5f5, 403px 203px 0 0 #d9d9d9, 312px 147px 0 0 #cfcfcf, 744px -24px 0 0 #f5f5f5, 444px -20px 0 0 #e3e3e3, -488px 380px 0 0 #e3e3e3, 635px 16px 0 0 #ededed, -376px -30px 0 0 #fcfcfc, 1422px -188px 0 0 #ededed, -388px -137px 0 0 #d9d9d9, 712px -398px 0 0 #f5f5f5, -883px -244px 0 0 #cfcfcf, 1342px -324px 0 0 #ededed, -1237px -56px 0 0 #cfcfcf, -145px 75px 0 0 #c4c4c4, 203px -417px 0 0 #ededed, 220px -82px 0 0 #fff, 858px -91px 0 0 #c4c4c4, -1476px -120px 0 0 #e3e3e3, 97px 393px 0 0 #cfcfcf, 704px 285px 0 0 #ededed, 499px -256px 0 0 #e3e3e3, 285px 17px 0 0 #fff, 92px -136px 0 0 #cfcfcf, 1466px -311px 0 0 #c4c4c4, -978px 157px 0 0 #fff, 113px 126px 0 0 #fff, -1157px 178px 0 0 #cfcfcf, -945px 407px 0 0 #c4c4c4, -756px -429px 0 0 #e3e3e3, 52px -145px 0 0 #ededed, 362px -146px 0 0 #d9d9d9, 52px -196px 0 0 #cfcfcf, -467px 374px 0 0 #fcfcfc, 426px -461px 0 0 #fff, -67px -251px 0 0 #fcfcfc, 1169px -439px 0 0 #fff, -488px -276px 0 0 #fff, 1044px -324px 0 0 #ededed, -983px 4px 0 0 #fcfcfc, 810px -257px 0 0 #c4c4c4, 1365px -218px 0 0 #d9d9d9, -813px 140px 0 0 #fcfcfc, -830px -162px 0 0 #fcfcfc, 870px -454px 0 0 #e3e3e3, 858px 213px 0 0 #cfcfcf, 124px 252px 0 0 #ededed, -1189px 126px 0 0 #ededed, -1083px 233px 0 0 #e3e3e3, 1302px 134px 0 0 #fcfcfc, 818px 321px 0 0 #fff, -78px 65px 0 0 #cfcfcf, 1209px -101px 0 0 #fcfcfc, 572px 183px 0 0 #d9d9d9, -1449px 389px 0 0 #cfcfcf, 507px -372px 0 0 #cfcfcf, -17px 170px 0 0 #c4c4c4, 1397px -324px 0 0 #cfcfcf, -779px 271px 0 0 #e3e3e3, 1022px 347px 0 0 #c4c4c4, 404px -34px 0 0 #e3e3e3, -180px 392px 0 0 #ededed, -1146px -195px 0 0 #c4c4c4, -502px 288px 0 0 #c4c4c4, 834px 144px 0 0 #cfcfcf, -123px -451px 0 0 #c4c4c4, -169px -294px 0 0 #c4c4c4, -632px -117px 0 0 #e3e3e3, -106px -194px 0 0 #e3e3e3, 776px -470px 0 0 #ededed, -1150px -233px 0 0 #cfcfcf, 501px 88px 0 0 #ededed, 1328px 7px 0 0 #c4c4c4, 335px 331px 0 0 #fff, -1119px -179px 0 0 #ededed, 156px 228px 0 0 #ededed, -246px 199px 0 0 #d9d9d9, 438px 86px 0 0 #d9d9d9, 242px 283px 0 0 #d9d9d9, -59px 239px 0 0 #c4c4c4, -391px -167px 0 0 #e3e3e3, -556px -357px 0 0 #ededed, -208px -358px 0 0 #f5f5f5, -716px -259px 0 0 #c4c4c4, -368px 261px 0 0 #e3e3e3, -1089px 372px 0 0 #ededed, -287px -248px 0 0 #d9d9d9, -766px -171px 0 0 #fff, 1400px 66px 0 0 #f5f5f5, -377px -434px 0 0 #fff, 766px -181px 0 0 #f5f5f5, 1112px 409px 0 0 #c4c4c4, -1080px 413px 0 0 #fff, 851px -189px 0 0 #c4c4c4, 460px -29px 0 0 #d9d9d9, -745px -428px 0 0 #e3e3e3, 456px -364px 0 0 #fcfcfc, 141px 23px 0 0 #fcfcfc, 863px 164px 0 0 #fff, -879px -328px 0 0 #e3e3e3, -1152px -226px 0 0 #fcfcfc, 785px 302px 0 0 #cfcfcf, 983px 130px 0 0 #ededed, 640px -91px 0 0 #c4c4c4, 313px -176px 0 0 #cfcfcf, -250px 102px 0 0 #fff, 997px 277px 0 0 #fcfcfc, -649px 160px 0 0 #ededed, -417px 196px 0 0 #fcfcfc, -857px -235px 0 0 #f5f5f5, 760px -404px 0 0 #f5f5f5, -1490px -62px 0 0 #c4c4c4, 1323px 128px 0 0 #c4c4c4, -308px -447px 0 0 #ededed, -320px 243px 0 0 #e3e3e3, 1379px 400px 0 0 #c4c4c4, -1209px 223px 0 0 #ededed, -417px 326px 0 0 #ededed, 241px -363px 0 0 #ededed, 1152px -328px 0 0 #e3e3e3, -918px -407px 0 0 #fff, -821px 331px 0 0 #e3e3e3, 937px 286px 0 0 #e3e3e3, 298px -353px 0 0 #c4c4c4, 1320px -169px 0 0 #cfcfcf;
+            top: 0;
+            left: 0;
+            background: transparent;
         }
-        .object1::before,
-        .object1::after {
+        .parallax-background .object1::after,
+        .parallax-background .object2::after,
+        .parallax-background .object3::after {
             content: "";
             position: absolute;
+            top: -100vh;
+            left: 0;
             width: inherit;
             height: inherit;
-            border-radius: inherit;
             box-shadow: inherit;
         }
-        .object1::before { transform: translateZ(-320px); animation: fade1 3s linear infinite; }
-        .object1::after { transform: translateZ(-640px); animation: fade2 3s linear infinite; }
-        @keyframes fly { from { transform: translateZ(0); } to { transform: translateZ(320px); } }
-        @keyframes fade1 { from { opacity: 0.5; } to { opacity: 1; } }
-        @keyframes fade2 { from { opacity: 0; } to { opacity: 0.5; } }
+        .parallax-background .object1 {
+          width: 2px;
+          height: 2px;
+          animation: arcade-starfall 90s linear infinite, arcade-twinkle 2.2s steps(1) infinite;
+          box-shadow:
+            97.5vw 74.1vh #ffffff, 16.9vw 66.3vh #ffe600, 59.4vw 53.3vh #c4c4dd, 73.4vw 46.7vh #c4c4dd,
+            38.5vw 59.7vh #c4c4dd, 29.3vw 79.7vh #c4c4dd, 43.2vw 79.7vh #c4c4dd, 28.8vw 38.9vh #00e5ff,
+            27.2vw 0.7vh #ff2e88, 16.2vw 74.8vh #9a9ab8, 70.4vw 87.7vh #ff2e88, 91.4vw 96.3vh #c4c4dd,
+            74.3vw 40.5vh #9a9ab8, 85.9vw 1.3vh #39ff88, 52.3vw 39.3vh #ffffff, 75.8vw 93.4vh #ffffff,
+            75.2vw 74.2vh #ff2e88, 54.9vw 33.3vh #ffe600, 78.4vw 67.4vh #c4c4dd, 96.6vw 9.3vh #39ff88,
+            15.0vw 94.9vh #c4c4dd, 2.1vw 3.0vh #39ff88, 19.0vw 65.8vh #ffffff, 95.6vw 20.7vh #c4c4dd,
+            65.3vw 5.5vh #9a9ab8, 78.8vw 7.0vh #ffe600, 25.1vw 19.4vh #9a9ab8, 60.5vw 9.0vh #9a9ab8,
+            92.0vw 9.0vh #9a9ab8, 99.4vw 40.6vh #39ff88, 16.5vw 89.4vh #ff2e88, 85.0vw 84.5vh #00e5ff,
+            1.6vw 65.7vh #00e5ff, 60.8vw 75.6vh #c4c4dd, 90.0vw 69.2vh #ff2e88, 18.0vw 66.0vh #ffffff,
+            2.9vw 53.3vh #ffe600, 45.7vw 12.8vh #39ff88, 62.8vw 49.5vh #9a9ab8, 59.8vw 87.1vh #ff2e88,
+            37.3vw 1.8vh #ff2e88, 95.6vw 71.0vh #00e5ff, 61.2vw 93.6vh #ffe600, 57.5vw 18.4vh #9a9ab8,
+            92.5vw 49.5vh #ff2e88, 24.5vw 10.0vh #ffffff, 15.5vw 67.8vh #ffffff, 97.2vw 96.3vh #ff2e88,
+            14.8vw 60.2vh #ffffff, 95.7vw 70.4vh #ff2e88, 63.4vw 81.4vh #00e5ff, 91.4vw 42.8vh #ffe600,
+            82.2vw 98.6vh #ffe600, 37.0vw 23.3vh #39ff88, 92.3vw 55.8vh #c4c4dd, 15.6vw 26.8vh #c4c4dd,
+            17.3vw 1.3vh #c4c4dd, 10.5vw 6.7vh #00e5ff, 0.3vw 43.5vh #c4c4dd, 2.8vw 68.2vh #00e5ff; }
+        .parallax-background .object2 {
+          width: 3px;
+          height: 3px;
+          animation: arcade-starfall 55s linear infinite, arcade-twinkle 3.1s steps(1) infinite .6s;
+          box-shadow:
+            74.9vw 29.6vh #ffe600, 20.7vw 23.0vh #00e5ff, 91.5vw 81.5vh #ffe600, 63.2vw 51.9vh #c4c4dd,
+            87.7vw 70.3vh #c4c4dd, 49.0vw 70.9vh #ffffff, 21.6vw 6.5vh #c4c4dd, 83.4vw 55.2vh #9a9ab8,
+            92.3vw 19.8vh #c4c4dd, 29.2vw 25.4vh #ffffff, 60.9vw 47.1vh #9a9ab8, 15.1vw 57.6vh #9a9ab8,
+            67.5vw 88.4vh #9a9ab8, 72.1vw 89.9vh #39ff88, 63.5vw 66.8vh #c4c4dd, 70.2vw 17.7vh #ffe600,
+            53.0vw 82.6vh #ffe600, 58.0vw 37.7vh #ffffff, 10.3vw 17.8vh #ffe600, 57.3vw 30.7vh #39ff88,
+            79.9vw 70.4vh #ffe600, 67.0vw 44.9vh #ff2e88, 22.8vw 92.5vh #ff2e88, 47.1vw 51.1vh #9a9ab8,
+            38.1vw 78.5vh #c4c4dd, 28.5vw 79.7vh #ff2e88, 6.5vw 98.6vh #9a9ab8, 94.0vw 29.9vh #c4c4dd,
+            57.4vw 32.1vh #ff2e88, 61.9vw 7.9vh #c4c4dd; }
+        .parallax-background .object3 {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: transparent; }
+
+        /* CRT overlay: neon stripe along the top, scanlines and a soft vignette */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            z-index: 10001;
+            pointer-events: none;
+            background: linear-gradient(90deg, var(--arcade-yellow), var(--arcade-pink), var(--arcade-cyan));
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            pointer-events: none;
+            background:
+                repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgba(0, 0, 0, .25) 3px, transparent 4px),
+                radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .5) 100%);
+        }
+
+        /* Score HUD */
+        .arcade-hud {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 6px 18px;
+            padding: 14px 20px 10px;
+            font-family: var(--arcade-pixel);
+            font-size: 10px;
+            line-height: 1.6;
+            text-align: left;
+            color: var(--arcade-muted);
+            background: var(--arcade-panel);
+            border-bottom: 3px solid #000;
+        }
+        .arcade-hud b { font-weight: 400; margin-left: 8px; }
+        .arcade-hud .hud-1up { color: var(--arcade-pink); animation: arcade-blink 1s steps(1) infinite; }
+        .arcade-hud .hud-score b { color: var(--arcade-yellow); }
+        .arcade-hud .hud-hi b { color: var(--arcade-cyan); }
+        .arcade-hud .hud-credit { color: var(--arcade-green); }
+        @media (max-width: 480px) {
+            .arcade-hud .hud-credit { display: none; }
+        }
 
         /* Layout */
         .container {
             position: relative;
-            z-index: 1;
+            width: 100%;
             max-width: 600px;
             margin: 0 auto;
-            padding: 72px 16px 48px;
+            padding: 0 16px 48px;
         }
 
+        /* Share button: a small yellow arcade button */
+        .sharediv {
+            display: flex;
+            justify-content: flex-end;
+            padding: 24px 24px 8px;
+        }
+        .sharebutton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 48px;
+            min-width: 48px;
+            padding: 0 12px;
+            font-family: var(--arcade-pixel);
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--arcade-bg);
+            background-color: var(--arcade-yellow);
+            border: 3px solid #000;
+            border-radius: 0;
+            box-shadow: 4px 4px 0 #000;
+            cursor: pointer;
+        }
+        .sharebutton:hover,
+        .sharebutton:focus-visible { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
+        .sharebutton:focus-visible { outline: 3px dashed #fff; outline-offset: 4px; }
+        .sharebutton:active { transform: translate(4px, 4px); box-shadow: 0 0 0 #000; }
+        .sharebutton .label { display: none; }
+        @media (min-width: 600px) {
+            .sharebutton { width: 150px; }
+            .sharebutton .label { display: inline; }
+        }
+
+        /* Square "player sprite" avatar */
         .rounded-avatar {
             display: block;
-            margin: 0 auto 8px;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+            margin: 8px auto 0;
+            width: 128px;
+            height: 128px;
             object-fit: cover;
-            background-color: #fff;
-            box-shadow: 0 0 0 3px #fff;
+            border-radius: 0;
+            border: 3px solid #000;
+            background-color: var(--arcade-panel2);
+            box-shadow: 0 0 0 3px var(--arcade-yellow), 9px 9px 0 3px #000;
+            image-rendering: pixelated;
         }
-
-        h1 {
-            margin: 16px 0 8px;
-            font-weight: 900;
-            font-size: 34px;
-            line-height: 48px;
-        }
-        @media (min-width: 550px) {
-            h1 { font-size: 56px; line-height: 80px; }
-        }
-
-        .tagline { margin: 0 auto 32px; max-width: 460px; }
-
-        .links { display: flex; flex-direction: column; align-items: center; }
-
-        .group-label {
-            margin: 28px 0 4px;
-            font-size: 14px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #9a9ab8;
-        }
-
-        /* Stargazer pill buttons */
-        .button {
-            display: inline-block;
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-            padding: 12px 32px;
-            margin: 1rem;
-            cursor: pointer;
-            border-radius: 50px;
-            color: #fff;
-            border: 2px double transparent;
-            background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)),
-                radial-gradient(circle at left top, rgb(1, 110, 218), rgb(217, 0, 192));
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-            max-width: 300px;
-            width: 70%;
-            transition: all 0.3s ease;
-        }
-        @media (max-width: 400px) {
-            .button { width: 88%; margin: 0.75rem; }
-        }
-        .button:hover,
-        .button:focus-visible {
-            color: #fff;
-            opacity: 0.85;
-            box-shadow: rgba(111, 76, 255, 0.5) 0 0 20px 0;
-        }
-        .button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-
-        .icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
-            vertical-align: middle;
-            position: relative;
-            top: -2px;
-        }
-
-        /* Animations */
-        .button-entrance {
-            animation: popUp 1s both;
-            animation-delay: calc(var(--delay) / 10);
-        }
-        @keyframes popUp {
-            from { opacity: 0; transform: scale3d(0.3, 0.3, 0.3); }
-            50% { opacity: 1; }
-        }
-        .fadein { animation: fadein 3s both; }
-        @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
-
-        .button-hover {
-            vertical-align: middle;
-            transform: perspective(1px) translateZ(0);
-            transition-duration: 0.9s;
-        }
-        .button-hover:hover,
-        .button-hover:focus-visible,
-        .button-hover:active {
-            transform: scale(1.1);
-            transition-timing-function: cubic-bezier(0.47, 2.7, 0.31, -0.36);
-        }
-
-        /* Share button */
-        .sharebutton {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 2;
-            width: 48px;
-            height: 48px;
+        .avatar-fallback {
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 0;
-            border-radius: 12px;
-            color: #fff;
-            cursor: pointer;
-            background-image: linear-gradient(315deg, rgb(1, 110, 218), rgb(217, 0, 192));
-            transition: opacity 0.2s;
+            font-family: var(--arcade-pixel);
+            font-size: 32px;
+            color: var(--arcade-cyan);
         }
-        .sharebutton:hover { opacity: 0.85; }
 
-        .toastbox {
-            position: fixed;
-            left: 50%;
-            bottom: -80px;
-            width: 280px;
-            margin-left: -140px;
-            padding: 10px;
-            border-radius: 4px;
-            background-color: rgba(0, 0, 0, 0.8);
+        /* Name with the INSERT COIN prompt and a blinking cursor */
+        h1 {
+            margin: 32px 0 22px;
+            font-family: var(--arcade-pixel);
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.7;
             color: #fff;
-            z-index: 3;
-            opacity: 0;
+            text-shadow: 3px 3px 0 var(--arcade-pink);
+        }
+        h1::before {
+            content: "> INSERT COIN TO CONTINUE";
+            display: block;
+            margin-bottom: 12px;
+            font-family: var(--arcade-text);
+            font-size: 22px;
+            line-height: 1;
+            letter-spacing: 1px;
+            color: var(--arcade-cyan);
+            text-shadow: none;
+        }
+        h1::after {
+            content: "_";
+            margin-left: 6px;
+            color: var(--arcade-yellow);
+            text-shadow: none;
+            animation: arcade-blink 1s steps(1) infinite;
+        }
+        @media (min-width: 550px) {
+            h1 { font-size: 28px; text-shadow: 4px 4px 0 var(--arcade-pink); }
+        }
+
+        /* Bio as a game dialog box */
+        .description-parent { margin-bottom: 32px; }
+        .description-parent p {
+            display: inline-block;
+            max-width: 460px;
+            margin: 0 auto;
+            padding: 14px 18px 12px;
+            text-align: left;
+            color: var(--arcade-soft);
+            background: var(--arcade-panel);
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0 #000;
+        }
+        .description-parent p::before { content: "\25B8\00a0"; color: var(--arcade-yellow); }
+
+        .group-label {
+            margin: 18px 0 20px;
+            font-family: var(--arcade-pixel);
+            font-size: 10px;
+            color: var(--arcade-muted);
+        }
+        .group-label span { color: var(--arcade-yellow); }
+
+        /* Neon arcade buttons */
+        .button {
+            --accent: var(--arcade-yellow);
+            position: relative;
+            display: inline-block;
+            width: 320px;
+            max-width: calc(100% - 14px);
+            margin-bottom: 18px;
+            padding: 16px 14px 14px;
+            font-family: var(--arcade-pixel);
+            font-size: 11px;
+            line-height: 1.8;
+            text-align: center;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--arcade-panel);
+            border: 3px solid #000;
+            border-radius: 0;
+            box-shadow: 5px 5px 0 #000;
+            outline: none;
+            transition: transform .08s steps(1), box-shadow .08s steps(1);
+        }
+        /* Rotate the four neon accents down the list */
+        .button-entrance:nth-of-type(4n+1) .button { --accent: var(--arcade-yellow); }
+        .button-entrance:nth-of-type(4n+2) .button { --accent: var(--arcade-cyan); }
+        .button-entrance:nth-of-type(4n+3) .button { --accent: var(--arcade-pink); }
+        .button-entrance:nth-of-type(4n+4) .button { --accent: var(--arcade-green); }
+
+        /* Hover: fill with the accent and press down like an arcade button */
+        .button:hover,
+        .button:focus-visible {
+            color: var(--arcade-bg);
+            background: var(--accent);
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0 #000;
+        }
+        .button:active { transform: translate(5px, 5px); box-shadow: 0 0 0 #000; }
+        .button:focus-visible { outline: 3px dashed #fff; outline-offset: 6px; }
+
+        /* Blinking menu cursor next to the selected button */
+        .button::before {
+            content: "\25B6";
+            position: absolute;
+            top: 50%;
+            left: -34px;
+            margin-top: -9px;
+            font-family: var(--arcade-text);
+            font-size: 22px;
+            line-height: 18px;
+            color: var(--arcade-yellow);
+            text-shadow: 2px 2px 0 #000;
             visibility: hidden;
-            transition: transform 0.3s linear, opacity 0.3s linear, visibility 0.3s;
         }
-        .toastbox.active { transform: translateY(-120px); opacity: 1; visibility: visible; }
+        .button:hover::before,
+        .button:focus-visible::before {
+            visibility: visible;
+            animation: arcade-blink .6s steps(1) infinite;
+        }
 
-        footer { margin-top: 40px; font-size: 16px; }
-        footer a { margin: 0 12px; }
-        .footer-hover { display: inline-block; transition: transform 0.3s ease-out; }
-        .footer-hover:hover { transform: translateY(-4px); }
-        .credit { margin-top: 28px; font-size: 13px; color: #6b6b85; }
-        .credit a { color: #8f8fb0; margin: 0; }
+        /* Icons are flat sprites that follow the text color */
+        .icon {
+            position: relative;
+            top: -2px;
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Footer */
+        footer { margin-top: 30px; }
+        footer a { margin: 0 12px; color: var(--arcade-muted); }
+        footer a:hover,
+        footer a:focus-visible { color: var(--arcade-cyan); }
+        .footer-hover { display: inline-block; transition: transform .1s steps(1); }
+        .footer-hover:hover,
+        .footer-hover:focus-visible { transform: translateY(-4px); }
+        .replay { margin: 18px 0 0; font-size: 20px; letter-spacing: 2px; color: var(--arcade-dim); }
+        .credit { margin: 18px 0 0; font-size: 18px; color: var(--arcade-dim); }
+        .credit a { margin: 0; color: var(--arcade-muted); }
+
+        /* Toast and floating points */
+        .arcade-toast {
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            z-index: 10002;
+            min-width: 240px;
+            padding: 18px 22px 16px;
+            font-family: var(--arcade-pixel);
+            font-size: 12px;
+            line-height: 1.9;
+            text-align: center;
+            white-space: pre-line;
+            color: var(--arcade-yellow);
+            background: var(--arcade-panel);
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0 #000;
+            transform: translate(-50%, -50%);
+            visibility: hidden;
+            opacity: 0;
+        }
+        .arcade-toast.is-visible {
+            visibility: visible;
+            opacity: 1;
+            animation: arcade-toast-in .3s steps(3) both;
+        }
+        .arcade-points {
+            position: fixed;
+            z-index: 10002;
+            pointer-events: none;
+            font-family: var(--arcade-pixel);
+            font-size: 12px;
+            color: var(--arcade-yellow);
+            text-shadow: 2px 2px 0 #000;
+            animation: arcade-points .8s steps(8) forwards;
+        }
+
+        /* Animations: everything moves in steps(), like 8-bit sprites */
+        .button-entrance {
+            animation: arcade-spawn .6s steps(4) both;
+            animation-delay: calc(var(--delay) / 10);
+        }
+        .fadein { animation: arcade-fadein 1s steps(5) both; }
+        .icon-hover:hover .hvr-icon,
+        .icon-hover:focus-visible .hvr-icon { animation: arcade-hop .5s steps(1) 1; }
+
+        @keyframes arcade-spawn {
+            from { opacity: 0; transform: translateY(18px) scale(.6); }
+            to { opacity: 1; transform: none; }
+        }
+        @keyframes arcade-fadein { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes arcade-hop {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-4px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(-2px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes arcade-blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        @keyframes arcade-twinkle {
+            0%, 100% { opacity: 1; }
+            40% { opacity: .45; }
+            70% { opacity: .8; }
+        }
+        @keyframes arcade-starfall {
+            from { transform: translateY(0); }
+            to { transform: translateY(100vh); }
+        }
+        @keyframes arcade-toast-in {
+            from { transform: translate(-50%, -50%) scale(.4); }
+            to { transform: translate(-50%, -50%) scale(1); }
+        }
+        @keyframes arcade-points {
+            from { opacity: 1; transform: translate(-50%, 0); }
+            to { opacity: 0; transform: translate(-50%, -48px); }
+        }
+        @keyframes arcade-rainbow {
+            0% { --accent: #ffe600; }
+            25% { --accent: #00e5ff; }
+            50% { --accent: #ff2e88; }
+            75% { --accent: #39ff88; }
+        }
+        @keyframes arcade-rainbow-shadow {
+            0% { text-shadow: 4px 4px 0 #ff2e88; }
+            25% { text-shadow: 4px 4px 0 #00e5ff; }
+            50% { text-shadow: 4px 4px 0 #39ff88; }
+            75% { text-shadow: 4px 4px 0 #ffe600; }
+        }
+
+        /* Turbo mode (Konami code) */
+        .arcade-turbo .button {
+            animation: arcade-rainbow 1.2s steps(1) infinite;
+            animation-delay: calc(var(--delay, 1s) * -0.3);
+        }
+        .arcade-turbo h1 { animation: arcade-rainbow-shadow 1.2s steps(1) infinite; }
+        .arcade-turbo .parallax-background .object1,
+        .arcade-turbo .parallax-background .object2,
+        .arcade-turbo .parallax-background .object3 { animation-duration: 4s, .4s; }
 
         @media (prefers-reduced-motion: reduce) {
-            .object1, .object1::before, .object1::after,
-            .button-entrance, .fadein { animation: none; }
-.button-hover:hover, .button-hover:focus-visible, .button-hover:active { transform: none; }
+            .button-entrance,
+            .fadein,
+            h1::after,
+            .button:hover::before,
+            .button:focus-visible::before,
+            .icon-hover:hover .hvr-icon,
+            .icon-hover:focus-visible .hvr-icon,
+            .arcade-hud .hud-1up,
+            .arcade-turbo .button,
+            .arcade-turbo h1,
+            .parallax-background .object1,
+            .parallax-background .object2,
+            .parallax-background .object3,
+            .arcade-toast.is-visible,
+            .arcade-points { animation: none; }
+            .arcade-points { display: none; }
         }
     </style>
 </head>
@@ -246,64 +524,166 @@
 <body>
     <div class="parallax-background" aria-hidden="true">
         <div class="object1"></div>
+        <div class="object2"></div>
+        <div class="object3"></div>
     </div>
 
-    <button class="sharebutton" id="share-btn" aria-label="Share this page"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7z"/></svg></button>
-    <div class="toastbox" id="toast" role="status" aria-live="polite"></div>
+    <div class="arcade-hud" aria-hidden="true">
+        <span class="hud-1up">1UP</span>
+        <span class="hud-score">SCORE<b id="arcade-score">000000</b></span>
+        <span class="hud-hi">HI-SCORE<b id="arcade-hiscore">000000</b></span>
+        <span class="hud-credit">CREDIT 01</span>
+    </div>
+    <div id="arcade-toast" class="arcade-toast" role="status" aria-live="polite"></div>
+
+    <div class="sharediv">
+        <button class="sharebutton" id="share-btn" aria-label="Share this page">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7z"/></svg><span class="label">Share</span>
+        </button>
+    </div>
 
     <main class="container fadein">
-        <img class="rounded-avatar" src="/profile%20pic.jpg" alt="Paul Piotrowski" width="150" height="150">
+        <img class="rounded-avatar" src="/profile%20pic.jpg" alt="Paul Piotrowski" width="128" height="128"
+            onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'rounded-avatar avatar-fallback',textContent:'PP'}))">
         <h1>Paul Piotrowski</h1>
-        <p class="tagline">AI Engineer · CS @ FIU · Miami, FL<br>Building real systems for real users.</p>
+        <div class="description-parent">
+            <p>AI Engineer · CS @ FIU · Miami, FL. Pick a link below to press start.</p>
+        </div>
 
-        <nav class="links" aria-label="Links">
-            <a class="button button-entrance button-hover" style="--delay: 100ms" href="/" data-link="portfolio"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Portfolio</a>
-            <a class="button button-entrance button-hover" style="--delay: 200ms" href="/Paul_Piotrowski_Resume.pdf" target="_blank" rel="noopener noreferrer" data-link="resume"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>Resume (PDF)</a>
-            <a class="button button-entrance button-hover" style="--delay: 300ms" href="https://github.com/PaulPio" target="_blank" rel="noopener noreferrer" data-link="github"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a>
-            <a class="button button-entrance button-hover" style="--delay: 400ms" href="https://www.linkedin.com/in/paul-pio/" target="_blank" rel="noopener noreferrer" data-link="linkedin"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
-            <a class="button button-entrance button-hover" style="--delay: 500ms" href="https://app.joinhandshake.com/profiles/paulpio" target="_blank" rel="noopener noreferrer" data-link="handshake"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Handshake</a>
-            <a class="button button-entrance button-hover" style="--delay: 600ms" href="https://devpost.com/paulrpiotrowski" target="_blank" rel="noopener noreferrer" data-link="devpost"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.002 1.61 0 12.004 6.002 22.39h11.996L24 12.004 17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31 0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861.009-2.569-1.096-3.853-3.767-3.853z"/></svg>Devpost</a>
-            <a class="button button-entrance button-hover" style="--delay: 700ms" href="mailto:paulrpiotrowski@gmail.com" data-link="email"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>Email</a>
-
-            <p class="group-label">Featured</p>
-            <a class="button button-entrance button-hover" style="--delay: 800ms" href="https://resume-fit-project.vercel.app" target="_blank" rel="noopener noreferrer" data-link="resumefit"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/></svg>ResumeFit · 1st Place</a>
-            <a class="button button-entrance button-hover" style="--delay: 900ms" href="https://prof-summarizer.vercel.app" target="_blank" rel="noopener noreferrer" data-link="profsummarizer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>ProfSummarizer</a>
+        <nav aria-label="Links">
+            <div class="button-entrance" style="--delay: 100ms"><a class="button icon-hover" href="/" data-link="portfolio"><svg class="icon hvr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Portfolio</a></div>
+            <div class="button-entrance" style="--delay: 200ms"><a class="button icon-hover" href="/Paul_Piotrowski_Resume.pdf" target="_blank" rel="noopener noreferrer" data-link="resume"><svg class="icon hvr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>Resume</a></div>
+            <div class="button-entrance" style="--delay: 300ms"><a class="button icon-hover" href="https://github.com/PaulPio" target="_blank" rel="noopener noreferrer" data-link="github"><svg class="icon hvr-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a></div>
+            <div class="button-entrance" style="--delay: 400ms"><a class="button icon-hover" href="https://www.linkedin.com/in/paul-pio/" target="_blank" rel="noopener noreferrer" data-link="linkedin"><svg class="icon hvr-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a></div>
+            <div class="button-entrance" style="--delay: 500ms"><a class="button icon-hover" href="https://app.joinhandshake.com/profiles/paulpio" target="_blank" rel="noopener noreferrer" data-link="handshake"><svg class="icon hvr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Handshake</a></div>
+            <div class="button-entrance" style="--delay: 600ms"><a class="button icon-hover" href="https://devpost.com/paulrpiotrowski" target="_blank" rel="noopener noreferrer" data-link="devpost"><svg class="icon hvr-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.002 1.61 0 12.004 6.002 22.39h11.996L24 12.004 17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31 0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861.009-2.569-1.096-3.853-3.767-3.853z"/></svg>Devpost</a></div>
+            <div class="button-entrance" style="--delay: 700ms"><a class="button icon-hover" href="mailto:paulrpiotrowski@gmail.com" data-link="email"><svg class="icon hvr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>Email</a></div>
+            <p class="group-label"><span>★</span> FEATURED <span>★</span></p>
+            <div class="button-entrance" style="--delay: 800ms"><a class="button icon-hover" href="https://resume-fit-project.vercel.app" target="_blank" rel="noopener noreferrer" data-link="resumefit"><svg class="icon hvr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/></svg>ResumeFit · 1st Place</a></div>
+            <div class="button-entrance" style="--delay: 900ms"><a class="button icon-hover" href="https://prof-summarizer.vercel.app" target="_blank" rel="noopener noreferrer" data-link="profsummarizer"><svg class="icon hvr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>ProfSummarizer</a></div>
         </nav>
 
         <footer>
             <a class="footer-hover" href="/">Home</a>
             <a class="footer-hover" href="/#work">Projects</a>
             <a class="footer-hover" href="/#contact">Contact</a>
-            <p class="credit">Theme: <a href="https://github.com/LinkStackOrg/stargazer" target="_blank" rel="noopener noreferrer">Stargazer</a> by LinkStack (GPLv3)</p>
+            <p class="replay">INSERT COIN TO REPLAY</p>
+            <p class="credit">Theme: <a href="https://github.com/PaulPio/LinkstackArcadeTheme" target="_blank" rel="noopener noreferrer">Arcade</a> for LinkStack by PaulPio (GPLv3)</p>
         </footer>
     </main>
 
     <script>
-        // Link click tracking. Vercel records custom events on Pro plans; on Hobby the call is a harmless no-op.
-        document.querySelectorAll('[data-link]').forEach(function (a) {
-            a.addEventListener('click', function () {
-                window.va('event', { name: 'link_click', data: { link: a.dataset.link } });
-            });
-        });
+        (function () {
+            var scoreEl = document.getElementById('arcade-score');
+            var hiEl = document.getElementById('arcade-hiscore');
+            var toastEl = document.getElementById('arcade-toast');
+            var score = 0;
+            var hi = 0;
+            var audio = null;
+            var toastTimer = null;
 
-        var toast = document.getElementById('toast');
-        function showToast(msg) {
-            toast.textContent = msg;
-            toast.classList.add('active');
-            setTimeout(function () { toast.classList.remove('active'); }, 2200);
-        }
+            try { hi = parseInt(localStorage.getItem('arcade-hiscore'), 10) || 0; } catch (e) {}
 
-        document.getElementById('share-btn').addEventListener('click', function () {
-            var url = 'https://paulpio.com/links';
-            if (navigator.share) {
-                navigator.share({ title: 'Paul Piotrowski', url: url }).catch(function () {});
-            } else if (navigator.clipboard) {
-                navigator.clipboard.writeText(url).then(function () { showToast('Link copied to clipboard'); },
-                    function () { showToast(url); });
-            } else {
-                showToast(url);
+            function pad(n) { return ('000000' + n).slice(-6); }
+
+            function render() {
+                scoreEl.textContent = pad(score);
+                hiEl.textContent = pad(hi);
             }
-        });
+
+            function addPoints(n, x, y) {
+                score += n;
+                if (score > hi) {
+                    hi = score;
+                    try { localStorage.setItem('arcade-hiscore', String(hi)); } catch (e) {}
+                }
+                render();
+                if (x === undefined) return;
+                var pop = document.createElement('div');
+                pop.className = 'arcade-points';
+                pop.textContent = '+' + n;
+                pop.style.left = x + 'px';
+                pop.style.top = y + 'px';
+                document.body.appendChild(pop);
+                setTimeout(function () { pop.remove(); }, 900);
+            }
+
+            // Short square-wave notes, like an 8-bit console
+            function play(notes, length) {
+                try {
+                    var Ctx = window.AudioContext || window.webkitAudioContext;
+                    if (!Ctx) return;
+                    audio = audio || new Ctx();
+                    if (audio.state === 'suspended') audio.resume();
+                    var t = audio.currentTime;
+                    notes.forEach(function (freq, i) {
+                        var osc = audio.createOscillator();
+                        var gain = audio.createGain();
+                        osc.type = 'square';
+                        osc.frequency.value = freq;
+                        gain.gain.setValueAtTime(0.04, t + i * length);
+                        gain.gain.exponentialRampToValueAtTime(0.0001, t + (i + 1) * length);
+                        osc.connect(gain);
+                        gain.connect(audio.destination);
+                        osc.start(t + i * length);
+                        osc.stop(t + (i + 1) * length);
+                    });
+                } catch (e) {}
+            }
+
+            function toast(text) {
+                toastEl.textContent = text;
+                toastEl.classList.remove('is-visible');
+                void toastEl.offsetWidth;
+                toastEl.classList.add('is-visible');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(function () { toastEl.classList.remove('is-visible'); }, 2200);
+            }
+
+            // +100, a blip and an analytics event for every link.
+            // Vercel stores custom events on Pro plans; on Hobby the call is a harmless no-op.
+            document.querySelectorAll('[data-link]').forEach(function (a) {
+                a.addEventListener('click', function () {
+                    var r = a.getBoundingClientRect();
+                    addPoints(100, r.left + r.width / 2, r.top - 6);
+                    play([880, 1320], 0.07);
+                    window.va('event', { name: 'link_click', data: { link: a.dataset.link } });
+                });
+            });
+
+            // Up Up Down Down Left Right Left Right B A
+            var code = 'arrowup,arrowup,arrowdown,arrowdown,arrowleft,arrowright,arrowleft,arrowright,b,a';
+            var keys = [];
+            document.addEventListener('keydown', function (e) {
+                keys.push((e.key || '').toLowerCase());
+                keys = keys.slice(-10);
+                if (keys.join(',') !== code) return;
+                keys = [];
+                var on = document.body.classList.toggle('arcade-turbo');
+                if (on) {
+                    toast('CHEAT ACTIVATED\nTURBO MODE');
+                    addPoints(3000);
+                    play([523, 659, 784, 1047], 0.09);
+                } else {
+                    toast('TURBO MODE OFF');
+                    play([784, 523], 0.09);
+                }
+            });
+
+            document.getElementById('share-btn').addEventListener('click', function () {
+                var url = 'https://paulpio.com/links';
+                if (navigator.share) {
+                    navigator.share({ title: 'Paul Piotrowski', url: url }).catch(function () {});
+                } else if (navigator.clipboard) {
+                    navigator.clipboard.writeText(url).then(function () { toast('LINK COPIED'); },
+                        function () { toast(url); });
+                } else {
+                    toast(url);
+                }
+            });
+
+            render();
+        })();
     </script>
 </body>
 
