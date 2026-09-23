@@ -28,7 +28,7 @@ start index.html # Windows
 - **script.js** - All JavaScript (projects data, translations, event handlers, animations)
 - **profile pic.jpg** - Profile photo
 - **Paul_Piotrowski_Resume.pdf** - Downloadable resume
-- **links/index.html** - Link-in-bio page served at `/links` (self-contained, no Tailwind). Recreates the LinkStack "Stargazer" theme (GPLv3, credited in the footer). To add a link, copy an `<a class="button ...">` line, give it a unique `data-link` name and bump its `--delay`.
+- **links/index.html** - Link-in-bio page served at `/links` (self-contained, no Tailwind). Uses Paul's own LinkStack theme "Arcade" (https://github.com/PaulPio/LinkstackArcadeTheme, GPLv3): pixel starfield, CRT scanlines, neon buttons, score HUD, 8-bit click sound and a Konami-code turbo mode. Fonts are self-hosted in `links/fonts/` (OFL). To add a link, copy a `<div class="button-entrance">` line, give its `<a>` a unique `data-link` name and bump its `--delay`.
 
 ### Key Architectural Patterns
 

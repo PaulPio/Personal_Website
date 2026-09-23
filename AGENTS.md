@@ -38,7 +38,7 @@ There is no build, lint, or automated test pipeline configured in this repo.
 - Featured hero prefers `id === 'prof-summarizer'`
 
 ### 3) Links page `links/index.html`
-- Standalone link-in-bio page at `/links` styled after the LinkStack Stargazer theme (starfield + gradient pill buttons). Own inline CSS/JS; no Tailwind.
+- Standalone link-in-bio page at `/links` using the "Arcade" LinkStack theme (https://github.com/PaulPio/LinkstackArcadeTheme). Own inline CSS/JS and self-hosted pixel fonts in `links/fonts/`; no Tailwind.
 - Buttons carry `data-link` names used for Vercel Web Analytics `link_click` events.
 
 ### 4) Thumbnails
