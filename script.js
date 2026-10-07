@@ -1,5 +1,26 @@
 const projects = [
     {
+        id: "utilities",
+        featured: true,
+        image: "assets/thumbs/utilities.png",
+        year: "2026",
+        title: {
+            en: "UtiliTies",
+            es: "UtiliTies",
+            pt: "UtiliTies"
+        },
+        description: {
+            en: "🏆 2nd place in the Gridlock Challenge at ShellHacks 2026 — Florida's largest hackathon, 1,400+ attendees. Maps 250+ real utility projects across the region and runs a multi-agent Gemini + Jev pipeline that surfaces cost-saving and cooperation opportunities between utilities.",
+            es: "🏆 2do lugar en el Gridlock Challenge de ShellHacks 2026 — el hackathon más grande de Florida, con 1,400+ asistentes. Mapea 250+ proyectos reales de servicios públicos y corre un pipeline multiagente con Gemini y Jev que detecta oportunidades de ahorro y cooperación entre empresas.",
+            pt: "🏆 2º lugar no Gridlock Challenge do ShellHacks 2026 — o maior hackathon da Flórida, com 1.400+ participantes. Mapeia 250+ projetos reais de utilidades e roda um pipeline multiagente com Gemini e Jev que identifica oportunidades de economia e cooperação entre concessionárias."
+        },
+        category: "personal",
+        tags: ["Python", "FastAPI", "Gemini", "Jev", "Next.js", "PostgreSQL", "MapLibre"],
+        links: [
+            { text: "View Code", url: "https://github.com/AlexWS12/shellhacks26", kind: "code" }
+        ]
+    },
+    {
         id: "prof-summarizer",
         featured: true,
         image: "assets/thumbs/prof-summarizer.png",
@@ -311,6 +332,7 @@ const translations = {
         nav_exp: "EXP",
         nav_skills: "SKILLS",
         nav_edu: "EDU",
+        nav_extra: "EXTRA",
         nav_contact_short: "CONTACT",
         nav_resume: "RESUME",
         hero_insert: "INSERT COIN TO CONTINUE",
@@ -329,8 +351,8 @@ const translations = {
         status_class: "CLASS",
         status_class_val: "AI_ENGINEER",
         section_about_label: "ABOUT.ME",
-        about_desc_1: "I'm an AI engineer based in Miami. I earned an A.S. in Computer Science at Miami Dade College (GPA 4.00, Jan–Dec 2024) and I'm continuing a B.S. in CS at Florida International University (GPA 3.76, expected Apr 2028). I ship production systems that mix full-stack software with LLMs, computer vision, and edge/IoT.",
-        about_desc_2: "I'm bilingual (English/Spanish) with Portuguese, and I'm looking for Software Engineering, AI/ML, and Forward Deployed Engineer internships. Right now I'm an undergraduate research assistant at FIU building XR/AR police training on the Apple Vision Pro. Recent work spans ResumeFit (1st place, 305 SummerCodex), ProfSummarizer, open-source agent infra (nous-core / OpenRouter), and an AI smart-city kiosk for the City of Coral Gables.",
+        about_desc_1: "I'm an AI engineer in Miami and a CS student at FIU (GPA 3.76, B.S. expected Apr 2028), after finishing my A.A. at Miami Dade College with a 4.00. I build production systems that combine full-stack software with LLMs, computer vision, and IoT.",
+        about_desc_2: "I'm looking for Software Engineering, AI/ML, and Forward Deployed Engineer internships. Recent wins include 2nd place at ShellHacks 2026 (UtiliTies) and 1st place at 305 SummerCodex (ResumeFit).",
         section_github: "GITHUB_ACTIVITY",
         section_projects_label: "LOAD_PROJECTS.DAT",
         filter_featured: "FEATURED",
@@ -377,11 +399,16 @@ const translations = {
         edu_school_short: "FIU — B.S. CS",
         edu_details: "Expected Apr 2028 · GPA 3.76/4.00",
         edu_coursework: "Data Structures & Algorithms · OOP · Database Systems · Software Engineering · Networks · OS",
-        edu_clubs: "Clubs: INIT · Google Developer Group · SHPE · IEEE · Code Crunch · Panther Robotics · AAVE · CASHI",
-        edu_mdc_school: "MDC — A.S. COMPUTER SCIENCE",
+        edu_mdc_school: "MDC — A.A. COMPUTER SCIENCE",
         edu_mdc_details: "Jan — Dec 2024 · GPA 4.00/4.00",
-        edu_mdc_desc: "Associate of Science in Computer Science at Miami Dade College — foundation in programming, algorithms, and systems before transferring to FIU.",
+        edu_mdc_desc: "Associate of Arts in Computer Science at Miami Dade College — foundation in programming, algorithms, and systems before transferring to FIU.",
         edu_platzi: "🏆 20+ PLATZI CERTS ↗",
+        section_extra_label: "BONUS_STAGE: EXTRACURRICULAR",
+        extra_title_ambassador: "RESEARCH AMBASSADOR",
+        extra_period_ambassador: "SEP 2026 — PRESENT",
+        extra_org_ambassador: "Florida International University · Miami, FL",
+        extra_ambassador_desc_1: "▸ Help FIU students discover and pursue undergraduate research opportunities across campus.",
+        section_clubs_label: "CLUBS_AND_ORGS",
         section_contact_label: "SEND_MESSAGE.EXE",
         contact_desc: "I'm actively seeking Software Engineering, AI, and Forward Deployed Engineer internships. Let's talk about how I can ship with your team.",
         contact_name: "Your Name",
@@ -398,6 +425,7 @@ const translations = {
         nav_exp: "EXP",
         nav_skills: "SKILLS",
         nav_edu: "EDU",
+        nav_extra: "EXTRA",
         nav_contact_short: "CONTACTO",
         nav_resume: "CV",
         hero_insert: "INSERTA MONEDA PARA CONTINUAR",
@@ -416,8 +444,8 @@ const translations = {
         status_class: "CLASE",
         status_class_val: "AI_ENGINEER",
         section_about_label: "SOBRE.MI",
-        about_desc_1: "Soy ingeniero de IA en Miami. Obtuve el A.S. en Ciencias de la Computación en Miami Dade College (GPA 4.00, ene–dic 2024) y continúo el B.S. en CS en Florida International University (GPA 3.76, esperado abr 2028). Envío sistemas en producción que mezclan full-stack con LLMs, visión e IoT.",
-        about_desc_2: "Soy bilingüe (inglés/español) con portugués, y busco pasantías en Ingeniería de Software, IA/ML y Forward Deployed Engineer. Actualmente soy asistente de investigación en FIU construyendo entrenamiento policial XR/AR en el Apple Vision Pro. Trabajo reciente: ResumeFit (1er lugar, 305 SummerCodex), ProfSummarizer, infra open source de agentes (nous-core / OpenRouter) y un kiosco de ciudad inteligente con IA para Coral Gables.",
+        about_desc_1: "Soy ingeniero de IA en Miami y estudiante de CS en FIU (GPA 3.76, B.S. esperado abr 2028), tras terminar mi A.A. en Miami Dade College con 4.00. Construyo sistemas en producción que combinan full-stack con LLMs, visión por computadora e IoT.",
+        about_desc_2: "Busco prácticas en Ingeniería de Software, IA/ML y Forward Deployed Engineer. Entre mis logros recientes están el 2.º lugar en ShellHacks 2026 (UtiliTies) y el 1.er lugar en 305 SummerCodex (ResumeFit).",
         section_github: "ACTIVIDAD_GITHUB",
         section_projects_label: "CARGAR_PROYECTOS.DAT",
         filter_featured: "DESTACADOS",
@@ -464,11 +492,16 @@ const translations = {
         edu_school_short: "FIU — B.S. CS",
         edu_details: "Esperado Abr 2028 · GPA 3.76/4.00",
         edu_coursework: "Estructuras de Datos y Algoritmos · POO · Bases de Datos · Ingeniería de Software · Redes · SO",
-        edu_clubs: "Clubes: INIT · Google Developer Group · SHPE · IEEE · Code Crunch · Panther Robotics · AAVE · CASHI",
-        edu_mdc_school: "MDC — A.S. CIENCIAS DE LA COMPUTACIÓN",
+        edu_mdc_school: "MDC — A.A. CIENCIAS DE LA COMPUTACIÓN",
         edu_mdc_details: "Ene — Dic 2024 · GPA 4.00/4.00",
-        edu_mdc_desc: "Associate of Science en Ciencias de la Computación en Miami Dade College — base en programación, algoritmos y sistemas antes de transferir a FIU.",
+        edu_mdc_desc: "Associate of Arts en Ciencias de la Computación en Miami Dade College — base en programación, algoritmos y sistemas antes de transferir a FIU.",
         edu_platzi: "🏆 20+ CERTS PLATZI ↗",
+        section_extra_label: "NIVEL_BONUS: EXTRACURRICULARES",
+        extra_title_ambassador: "EMBAJADOR DE INVESTIGACIÓN",
+        extra_period_ambassador: "SEP 2026 — PRESENTE",
+        extra_org_ambassador: "Florida International University · Miami, FL",
+        extra_ambassador_desc_1: "▸ Ayudo a estudiantes de FIU a descubrir y conseguir oportunidades de investigación de pregrado en todo el campus.",
+        section_clubs_label: "CLUBES_Y_ORGS",
         section_contact_label: "ENVIAR_MENSAJE.EXE",
         contact_desc: "Busco activamente pasantías en Ingeniería de Software, IA y Forward Deployed Engineer. Hablemos de cómo puedo aportar a su equipo.",
         contact_name: "Tu Nombre",
@@ -485,6 +518,7 @@ const translations = {
         nav_exp: "EXP",
         nav_skills: "SKILLS",
         nav_edu: "EDU",
+        nav_extra: "EXTRA",
         nav_contact_short: "CONTATO",
         nav_resume: "CV",
         hero_insert: "INSIRA MOEDA PARA CONTINUAR",
@@ -503,8 +537,8 @@ const translations = {
         status_class: "CLASSE",
         status_class_val: "AI_ENGINEER",
         section_about_label: "SOBRE.MIM",
-        about_desc_1: "Sou engenheiro de IA em Miami. Concluí o A.S. em Ciência da Computação no Miami Dade College (GPA 4.00, jan–dez 2024) e continuo o B.S. em CS na Florida International University (GPA 3.76, previsto abr 2028). Entrego sistemas em produção que misturam full-stack com LLMs, visão e IoT.",
-        about_desc_2: "Sou bilíngue (inglês/espanhol) com português, e busco estágios em Engenharia de Software, IA/ML e Forward Deployed Engineer. Atualmente sou assistente de pesquisa na FIU construindo treinamento policial XR/AR no Apple Vision Pro. Trabalho recente: ResumeFit (1º lugar, 305 SummerCodex), ProfSummarizer, infra open source de agentes (nous-core / OpenRouter) e um quiosque de cidade inteligente com IA para Coral Gables.",
+        about_desc_1: "Sou engenheiro de IA em Miami e aluno de CS na FIU (GPA 3.76, B.S. previsto abr 2028), após concluir meu A.A. no Miami Dade College com 4.00. Construo sistemas em produção que combinam full-stack com LLMs, visão computacional e IoT.",
+        about_desc_2: "Busco estágios em Engenharia de Software, IA/ML e Forward Deployed Engineer. Entre as conquistas recentes estão o 2º lugar no ShellHacks 2026 (UtiliTies) e o 1º lugar no 305 SummerCodex (ResumeFit).",
         section_github: "ATIVIDADE_GITHUB",
         section_projects_label: "CARREGAR_PROJETOS.DAT",
         filter_featured: "DESTAQUE",
@@ -551,11 +585,16 @@ const translations = {
         edu_school_short: "FIU — B.S. CS",
         edu_details: "Previsto Abr 2028 · GPA 3.76/4.00",
         edu_coursework: "Estruturas de Dados e Algoritmos · POO · Bancos de Dados · Engenharia de Software · Redes · SO",
-        edu_clubs: "Clubes: INIT · Google Developer Group · SHPE · IEEE · Code Crunch · Panther Robotics · AAVE · CASHI",
-        edu_mdc_school: "MDC — A.S. CIÊNCIA DA COMPUTAÇÃO",
+        edu_mdc_school: "MDC — A.A. CIÊNCIA DA COMPUTAÇÃO",
         edu_mdc_details: "Jan — Dez 2024 · GPA 4.00/4.00",
-        edu_mdc_desc: "Associate of Science em Ciência da Computação no Miami Dade College — base em programação, algoritmos e sistemas antes da transferência para a FIU.",
+        edu_mdc_desc: "Associate of Arts em Ciência da Computação no Miami Dade College — base em programação, algoritmos e sistemas antes da transferência para a FIU.",
         edu_platzi: "🏆 20+ CERTS PLATZI ↗",
+        section_extra_label: "FASE_BONUS: EXTRACURRICULARES",
+        extra_title_ambassador: "EMBAIXADOR DE PESQUISA",
+        extra_period_ambassador: "SET 2026 — PRESENTE",
+        extra_org_ambassador: "Florida International University · Miami, FL",
+        extra_ambassador_desc_1: "▸ Ajudo estudantes da FIU a descobrir e conquistar oportunidades de pesquisa de graduação pelo campus.",
+        section_clubs_label: "CLUBES_E_ORGS",
         section_contact_label: "ENVIAR_MENSAGEM.EXE",
         contact_desc: "Estou buscando ativamente estágios em Engenharia de Software, IA e Forward Deployed Engineer. Vamos conversar sobre como posso entregar com o seu time.",
         contact_name: "Seu Nome",
@@ -620,9 +659,14 @@ function thumbHtml(project, heightPx) {
     const label = (project.title[currentLang] || project.title.en || '').toUpperCase();
     const fallback = `<span style="opacity:0.45;">[ ${label} ]</span>`;
     if (project.image) {
+        // The handler is a double-quoted HTML attribute wrapping a single-quoted
+        // JS string, so the fallback's own quotes have to survive both layers:
+        // escape ' for the JS string, then " for the attribute.
+        const onError = `this.style.display='none';this.parentElement.innerHTML='${fallback.replace(/'/g, "\\'")}';`
+            .replace(/&/g, '&amp;').replace(/"/g, '&quot;');
         return `<div class="thumb" style="height:${heightPx}px;">
             <img src="${project.image}" alt="${label}" loading="lazy"
-                onerror="this.style.display='none';this.parentElement.innerHTML='${fallback.replace(/'/g, "\\'")}';" />
+                onerror="${onError}" />
         </div>`;
     }
     return `<div class="thumb" style="height:${heightPx}px;">${fallback}</div>`;
@@ -803,7 +847,7 @@ function initScrollProgress() {
 }
 
 function initActiveNav() {
-    const sections = ['hero', 'about', 'work', 'experience', 'skills', 'education', 'contact'];
+    const sections = ['hero', 'about', 'work', 'experience', 'skills', 'education', 'extra', 'contact'];
     const links = document.querySelectorAll('a.nav-pill[href^="#"]');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
