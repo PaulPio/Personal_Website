@@ -786,7 +786,7 @@ function renderProjects() {
     updateFilterButtons();
 
     const filtered = getFilteredProjects();
-    const featured = filtered.find(p => p.id === 'prof-summarizer') || filtered.find(p => p.featured) || filtered[0];
+    const featured = filtered.find(p => p.id === 'utilities') || filtered.find(p => p.featured) || filtered[0];
     const rest = filtered.filter(p => p !== featured);
 
     if (featuredEl) {
