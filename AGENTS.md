@@ -35,7 +35,7 @@ There is no build, lint, or automated test pipeline configured in this repo.
 - `projects[]`: project content, categories, tags, `image` thumbs under `assets/thumbs/`, outbound links
 - `translations`: EN / ES / PT UI copy
 - State: `currentLang`, `currentCategory`
-- Featured hero prefers `id === 'prof-summarizer'`
+- Featured hero prefers `id === 'utilities'`
 
 ### 3) Links page `links/index.html`
 - Standalone link-in-bio page at `/links` using the "Arcade" LinkStack theme (https://github.com/PaulPio/LinkstackArcadeTheme). Own inline CSS/JS and self-hosted pixel fonts in `links/fonts/`; no Tailwind.
