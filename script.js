@@ -1,5 +1,27 @@
 const projects = [
     {
+        id: "handoff",
+        featured: true,
+        image: "assets/thumbs/handoff.png",
+        year: "2026",
+        title: {
+            en: "Handoff",
+            es: "Handoff",
+            pt: "Handoff"
+        },
+        description: {
+            en: "Built for KnightHacks IX (UCF) with a 4-person team — a control studio for a six-servo robotic smart glove. I built the AI features: a chat + voice assistant that turns requests like “make a peace sign” into confirm-before-move gestures, and Gemini Live real-time voice + camera sessions that mirror your hand. Deployed the FastAPI backend on Railway and the React frontend on Vercel.",
+            es: "Desarrollado para KnightHacks IX (UCF) en un equipo de 4 — un estudio de control para un guante robótico inteligente de seis servos. Construí las funciones de IA: un asistente de chat + voz que convierte pedidos como “haz el signo de paz” en gestos que se confirman antes de moverse, y sesiones en tiempo real con Gemini Live (voz + cámara) que imitan tu mano. Desplegué el backend FastAPI en Railway y el frontend React en Vercel.",
+            pt: "Desenvolvido para o KnightHacks IX (UCF) em uma equipe de 4 — um estúdio de controle para uma luva robótica inteligente de seis servos. Construí as funções de IA: um assistente de chat + voz que transforma pedidos como “faça o sinal de paz” em gestos confirmados antes de mover, e sessões em tempo real com Gemini Live (voz + câmera) que imitam sua mão. Fiz o deploy do backend FastAPI no Railway e do frontend React no Vercel."
+        },
+        category: "personal",
+        tags: ["Python", "FastAPI", "React", "TypeScript", "Gemini Live", "Railway", "Vercel"],
+        links: [
+            { text: "Live Demo", url: "https://givemeahand.fit", kind: "demo" },
+            { text: "View Code", url: "https://github.com/yusufdirdis/handoff---SmartGlove", kind: "code" }
+        ]
+    },
+    {
         id: "utilities",
         featured: true,
         image: "assets/thumbs/utilities.png",
