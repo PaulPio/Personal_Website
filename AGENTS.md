@@ -42,13 +42,16 @@ There is no build, lint, or automated test pipeline configured in this repo.
 - Buttons carry `data-link` names used for Vercel Web Analytics `link_click` events.
 
 ### 4) Thumbnails
+- Every thumbnail renders as a 16:9 "CRT screen" (`.thumb` in `index.html`: scanlines, vignette, zoom on hover/focus). Crop new images to 16:9 (ideally ≥1200×675) so nothing important is cut; anything else is `object-fit: cover`, anchored to the top.
 - Deployed sites: use landing-page screenshots in `assets/thumbs/`
 - No live landing page: GitHub repo OG preview is OK
+- No screenshot at all: omit `image` and the card renders a pixel title card (title + first 3 tags). Pick its neon color with `accent: "yellow" | "cyan" | "pink" | "green"`. The same title card replaces any image that fails to load.
+- The featured card shows the screenshot beside the text from 1280px up and stacked below that.
 
 ## Change guidance
 ### Adding or editing projects
 - Modify `projects[]` in `script.js` with complete `en` / `es` / `pt` title + description.
-- Add or update `assets/thumbs/<id>.png` and set `image`.
+- Add or update `assets/thumbs/<id>.png` (16:9) and set `image`, or omit `image` to get a title card (see Thumbnails).
 - Categories: `personal` | `school`; featured hero uses `featured: true` + preferred id.
 
 ### Updating translated UI copy

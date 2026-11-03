@@ -284,7 +284,7 @@ const projects = [
     {
         id: "fiu-a3",
         featured: false,
-        image: "assets/thumbs/fiu-a3.png",
+        accent: "pink",
         year: "2024",
         title: {
             en: "Event Organizer System",
@@ -305,7 +305,7 @@ const projects = [
     {
         id: "fiu-a4",
         featured: false,
-        image: "assets/thumbs/fiu-a4.png",
+        accent: "cyan",
         year: "2024",
         title: {
             en: "Alphabet Sum Puzzle Solver",
@@ -326,7 +326,7 @@ const projects = [
     {
         id: "data-utility",
         featured: false,
-        image: "assets/thumbs/data-utility.png",
+        accent: "green",
         year: "2024",
         title: {
             en: "Data Processing Utility",
@@ -384,6 +384,7 @@ const translations = {
         link_demo: "▶ PLAY DEMO",
         link_code: "VIEW SOURCE",
         link_details: "DETAILS ▶",
+        thumb_alt: "{title} preview",
         section_exp_coral_label: "LEVEL_02: CITY_OF_CORAL_GABLES",
         section_exp_label: "LEVEL_03: STRIDE_RENT_A_CAR",
         section_exp_buo_label: "LEVEL_04: BUO",
@@ -484,6 +485,7 @@ const translations = {
         link_demo: "▶ VER DEMO",
         link_code: "VER CÓDIGO",
         link_details: "DETALLES ▶",
+        thumb_alt: "Vista previa de {title}",
         section_exp_coral_label: "NIVEL_02: CITY_OF_CORAL_GABLES",
         section_exp_label: "NIVEL_03: STRIDE_RENT_A_CAR",
         section_exp_buo_label: "NIVEL_04: BUO",
@@ -584,6 +586,7 @@ const translations = {
         link_demo: "▶ VER DEMO",
         link_code: "VER CÓDIGO",
         link_details: "DETALHES ▶",
+        thumb_alt: "Prévia de {title}",
         section_exp_coral_label: "FASE_02: CITY_OF_CORAL_GABLES",
         section_exp_label: "FASE_03: STRIDE_RENT_A_CAR",
         section_exp_buo_label: "FASE_04: BUO",
@@ -698,21 +701,57 @@ function getFilteredProjects() {
     });
 }
 
-function thumbHtml(project, heightPx) {
-    const label = (project.title[currentLang] || project.title.en || '').toUpperCase();
-    const fallback = `<span style="opacity:0.45;">[ ${label} ]</span>`;
-    if (project.image) {
-        // The handler is a double-quoted HTML attribute wrapping a single-quoted
-        // JS string, so the fallback's own quotes have to survive both layers:
-        // escape ' for the JS string, then " for the attribute.
-        const onError = `this.style.display='none';this.parentElement.innerHTML='${fallback.replace(/'/g, "\\'")}';`
-            .replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-        return `<div class="thumb" style="height:${heightPx}px;">
-            <img src="${project.image}" alt="${label}" loading="lazy"
-                onerror="${onError}" />
+// Neon accents for title-card thumbnails. A project picks one with
+// `accent: "pink"`; without it, one is derived from the project id.
+const THUMB_ACCENTS = {
+    yellow: { color: '#ffe600', glow: 'rgba(255, 230, 0, 0.14)' },
+    cyan: { color: '#00e5ff', glow: 'rgba(0, 229, 255, 0.14)' },
+    pink: { color: '#ff2e88', glow: 'rgba(255, 46, 136, 0.16)' },
+    green: { color: '#39ff88', glow: 'rgba(57, 255, 136, 0.14)' }
+};
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function thumbAccent(project) {
+    if (THUMB_ACCENTS[project.accent]) return THUMB_ACCENTS[project.accent];
+    const accents = Object.values(THUMB_ACCENTS);
+    let hash = 0;
+    for (const ch of project.id) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
+    return accents[hash % accents.length];
+}
+
+// variant is 'featured' or 'grid'. Projects without `image` (or whose image
+// fails to load) get a pixel title card instead of a screenshot.
+function thumbHtml(project, variant, forceTitleCard = false) {
+    const title = project.title[currentLang] || project.title.en;
+    if (project.image && !forceTitleCard) {
+        const alt = translations[currentLang].thumb_alt.replace('{title}', () => title);
+        return `<div class="thumb thumb-${variant}">
+            <img src="${escapeHtml(project.image)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async"
+                data-project="${escapeHtml(project.id)}" data-variant="${variant}"
+                onerror="thumbFallback(this)" />
         </div>`;
     }
-    return `<div class="thumb" style="height:${heightPx}px;">${fallback}</div>`;
+    const accent = thumbAccent(project);
+    const tags = project.tags.slice(0, 3).map(escapeHtml).join(' · ');
+    return `<div class="thumb thumb-${variant} thumb-card" style="--accent:${accent.color};--accent-glow:${accent.glow};" aria-hidden="true">
+        <span class="thumb-card-title">${escapeHtml(title)}</span>
+        <span class="thumb-card-tags">&gt; ${tags}</span>
+    </div>`;
+}
+
+// onerror handler for thumbnail images: swap the broken screenshot for the title card.
+function thumbFallback(img) {
+    img.onerror = null;
+    const thumb = img.closest('.thumb');
+    const project = projects.find(p => p.id === img.dataset.project);
+    if (thumb && project) {
+        thumb.outerHTML = thumbHtml(project, img.dataset.variant, true);
+    }
 }
 
 function tagsHtml(tags, compact) {
@@ -734,9 +773,9 @@ function linksHtml(project, featured) {
 function renderFeaturedCard(project) {
     const t = translations[currentLang];
     return `
-        <div class="arcade-border-lg bg-arcade-panel overflow-hidden stagger-item">
-            ${thumbHtml(project, 340)}
-            <div class="p-6 md:p-8">
+        <div class="project-card featured-card arcade-border-lg bg-arcade-panel overflow-hidden stagger-item">
+            ${thumbHtml(project, 'featured')}
+            <div class="featured-body p-6 md:p-8">
                 <div class="flex justify-between items-start gap-4 flex-wrap">
                     <h3 class="font-pixel text-[14px] md:text-[16px] text-white m-0 leading-relaxed">
                         ${project.title[currentLang] || project.title.en}
@@ -757,8 +796,8 @@ function renderFeaturedCard(project) {
 
 function renderGridCard(project, index) {
     return `
-        <div class="arcade-border bg-arcade-panel overflow-hidden stagger-item" style="transition-delay:${Math.min(index * 60, 360)}ms;">
-            ${thumbHtml(project, 160)}
+        <div class="project-card arcade-border bg-arcade-panel overflow-hidden stagger-item" style="transition-delay:${Math.min(index * 60, 360)}ms;">
+            ${thumbHtml(project, 'grid')}
             <div class="p-4">
                 <div class="flex justify-between items-start gap-2 mb-2">
                     <h3 class="font-pixel text-[11px] text-white m-0 leading-relaxed">
