@@ -66,8 +66,9 @@ start index.html # Windows
 ### Adding a New Project
 1. Add project object to `projects` array in script.js
 2. Include all required fields: id, title (EN/ES/PT), description (EN/ES/PT), category, tags, links
-3. Set `featured: true` if it should appear in Featured Projects filter
-4. Projects auto-render on page load
+3. Thumbnail: set `image` to a 16:9 screenshot in `assets/thumbs/`, or omit it to get a pixel title card (optional `accent`: `yellow` | `cyan` | `pink` | `green`). See Thumbnails in AGENTS.md
+4. Set `featured: true` if it should appear in Featured Projects filter
+5. Projects auto-render on page load
 
 ### Updating GitHub Stats Colors
 All GitHub stat images use URL parameters for colors. To change colors:
