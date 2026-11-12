@@ -1,5 +1,27 @@
 const projects = [
     {
+        id: "sortarm",
+        featured: true,
+        accent: "green",
+        year: "2026",
+        title: {
+            en: "SortArm",
+            es: "SortArm",
+            pt: "SortArm"
+        },
+        description: {
+            en: "🏆 Winner of MLH Best Use of Tiger Data at SharkByte 2026. Built with a 4-person team: a 3D-printed SO-101 robot arm that sorts waste with Gemini vision and logs every sort to Tiger Data (PostgreSQL). I wrote the arm controller's HOME, SORT and STOP commands — with a race-proof STOP and a gripper that holds carried items — and opened it to the public through Tailscale Funnel, so anyone can watch the arm and press STOP from a link.",
+            es: "🏆 Ganador de MLH Best Use of Tiger Data en SharkByte 2026. Hecho en un equipo de 4: un brazo robótico SO-101 impreso en 3D que clasifica residuos con la visión de Gemini y registra cada clasificación en Tiger Data (PostgreSQL). Escribí los comandos HOME, SORT y STOP del controlador del brazo — con un STOP a prueba de condiciones de carrera y una pinza que sostiene lo que carga — y lo abrí al público con Tailscale Funnel, para que cualquiera vea el brazo y presione STOP desde un link.",
+            pt: "🏆 Vencedor do MLH Best Use of Tiger Data no SharkByte 2026. Feito em uma equipe de 4: um braço robótico SO-101 impresso em 3D que separa resíduos com a visão do Gemini e registra cada separação no Tiger Data (PostgreSQL). Escrevi os comandos HOME, SORT e STOP do controlador do braço — com um STOP à prova de condições de corrida e uma garra que segura o que carrega — e o abri ao público com o Tailscale Funnel, para que qualquer pessoa veja o braço e aperte STOP a partir de um link."
+        },
+        category: "personal",
+        tags: ["Python", "LeRobot", "SO-101", "Gemini", "Tiger Data", "Tailscale", "Auth0"],
+        links: [
+            { text: "Devpost", url: "https://devpost.com/software/sortarm", kind: "demo" },
+            { text: "View Code", url: "https://github.com/abhiwasabi/SortArm", kind: "code" }
+        ]
+    },
+    {
         id: "handoff",
         featured: true,
         image: "assets/thumbs/handoff.png",
